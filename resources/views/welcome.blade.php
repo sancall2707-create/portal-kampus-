@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SIAP PL Deltamas — Sistem Informasi & Administrasi Pegawai</title>
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -28,14 +30,10 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         code, .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
-    <script>
-        if (localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
-            document.documentElement.classList.remove('dark');
-        } else {
-            document.documentElement.classList.add('dark');
-        }
-    </script>
+
     <!-- PWA Manifest & Meta -->
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#1e3a8a">
@@ -43,206 +41,199 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="SIAP PL">
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+
+    <script>
+        if (localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+            document.documentElement.classList.remove('dark');
+        } else {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
 </head>
 <body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen antialiased flex flex-col justify-between transition-colors duration-200 selection:bg-blue-600 selection:text-white">
 
     <!-- Top Navigation Header -->
-    <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-50 transition-colors">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="h-10 w-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20">
-                    PL
-                </div>
+    <header class="border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/90 backdrop-blur sticky top-0 z-40 transition-colors shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-2.5">
+                <img src="{{ asset('images/logo-pangudi-luhur.png') }}" alt="Logo" class="h-9 w-9 object-contain">
                 <div>
-                    <h1 class="text-base font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+                    <h1 class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                         SIAP PL Deltamas
-                        <span class="text-[10px] font-semibold tracking-wider uppercase bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-500/30 px-2 py-0.5 rounded-full">Dev Preview</span>
                     </h1>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Kampus Pangudi Luhur Deltamas (PG-TK, SD, SMP, SMA)</p>
+                    <p class="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium truncate max-w-[170px] sm:max-w-xs">
+                        Kampus Pangudi Luhur Deltamas
+                    </p>
                 </div>
             </div>
 
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-2">
                 <button type="button" onclick="toggleTheme()" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition" title="Ganti Tema">
                     <i id="themeIconSun" class="bi bi-sun-fill text-amber-500 hidden dark:inline"></i>
                     <i id="themeIconMoon" class="bi bi-moon-stars-fill text-slate-600 dark:hidden inline"></i>
                 </button>
 
-                <a href="{{ route('login') }}" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md shadow-blue-600/30 transition flex items-center gap-1.5">
+                <a href="{{ route('login') }}" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md shadow-blue-600/30 transition flex items-center gap-1.5">
                     <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Masuk Portal</span>
+                    <span>Masuk</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-8">
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-6 flex-1 w-full space-y-6">
 
-        <!-- Hero Section -->
-        <div class="rounded-2xl bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white p-6 sm:p-8 relative overflow-hidden shadow-xl border border-blue-800">
-            <div class="relative z-10 max-w-3xl space-y-2">
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug">
-                    Portal Internal Terpadu Guru & Karyawan
+        <!-- Hero Card (Clean & Responsive) -->
+        <div class="rounded-3xl bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white p-5 sm:p-7 relative overflow-hidden shadow-xl border border-blue-800/80">
+            <div class="space-y-2.5 relative z-10">
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 border border-white/20 text-white text-[11px] font-semibold">
+                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                    <span>Portal Pengujian SIAP PL Deltamas</span>
+                </div>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-snug">
+                    Portal Internal Pegawai & Pengujian Sistem
                 </h2>
-                <p class="text-sm sm:text-base text-slate-200 leading-relaxed">
-                    Sistem koordinasi satu arah, perizinan berjenjang, peminjaman aset kampus, penugasan operasional, dan buku tamu gerbang. Dilengkapi dukungan tema terang & gelap, ikon Bootstrap Icons standar, dan 39 tabel aktif.
+                <p class="text-xs sm:text-sm text-slate-200 leading-relaxed max-w-2xl">
+                    Sistem koordinasi resmi satu arah, perizinan berjenjang, peminjaman aset kampus, penugasan operasional, dan buku tamu digital.
                 </p>
                 <div class="pt-2 flex flex-wrap gap-2 text-xs">
-                    <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/20 text-white font-mono">Laravel 12.x</span>
-                    <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/20 text-white font-mono">MariaDB 10.11</span>
-                    <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/20 text-white font-mono">39 Tabel Aplikasi</span>
-                    <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/20 text-white font-mono">41 RBAC Permissions</span>
-                    <span class="px-2.5 py-1 rounded-md bg-blue-500/30 border border-blue-400 text-white font-semibold">Non E-Raport (Tahap Awal)</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/15 text-white font-mono text-[11px]">Laravel 12.x</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/15 text-white font-mono text-[11px]">MariaDB 10.11</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/15 text-white font-mono text-[11px]">39 Tabel Aktif</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/15 text-white font-mono text-[11px]">41 Hak Akses RBAC</span>
                 </div>
             </div>
         </div>
 
         <!-- Testing Credentials Section -->
-        <div>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+        <div class="space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
                 <div>
-                    <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                        Akun Dummy Pengujian (Tahap Pengembangan)
+                    <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="bi bi-people-fill text-blue-600 dark:text-blue-400"></i>
+                        <span>Daftar Akun Pengujian Sistem</span>
                     </h3>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Gunakan akun-akun di bawah ini untuk pengujian peran, validasi wewenang, dan simulasi alur sistem.</p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Pilih salah satu peran untuk simulasi hak akses dan alur kerja di portal.</p>
                 </div>
-                <div class="bg-amber-100 dark:bg-amber-500/10 border border-amber-300 dark:border-amber-500/30 text-amber-800 dark:text-amber-300 px-3 py-1.5 rounded-lg text-xs font-mono shrink-0">
-                    Password Seluruh Akun: <span class="font-bold underline text-slate-900 dark:text-white">password123</span>
+                <div class="inline-flex items-center gap-2 bg-amber-50 dark:bg-amber-500/10 border border-amber-300 dark:border-amber-500/30 text-amber-800 dark:text-amber-300 px-3 py-1.5 rounded-xl text-xs font-mono shrink-0">
+                    <i class="bi bi-key-fill text-amber-500"></i>
+                    <span>Password Seluruh Akun: <strong class="font-bold underline text-slate-900 dark:text-white">password123</strong></span>
                 </div>
             </div>
 
-            <!-- Table of Dummy Users -->
-            <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/40 shadow-sm dark:shadow-xl backdrop-blur transition-colors">
+            <!-- Responsive Cards for Mobile View (Hidden on sm screens and up) -->
+            <div class="grid grid-cols-1 gap-3 sm:hidden">
+                @php
+                $dummyUsers = [
+                    ['nip' => 'PL0001', 'role' => 'Koordinator', 'badge' => 'bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-500/30', 'name' => 'Br. Stefanus Ngadenin, FIC', 'title' => 'Koordinator Sekolah PL Deltamas', 'unit' => 'Seluruh Kampus', 'desc' => 'Super Admin: sapaan wajib, broadcast kampus, approval akhir izin & fasilitas, audit log.'],
+                    ['nip' => 'PL1001', 'role' => 'Kepala Sekolah', 'badge' => 'bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-500/30', 'name' => 'Maria Theresia Sulastri, S.Pd', 'title' => 'Kepala Sekolah PG-TK', 'unit' => 'PG-TK', 'desc' => 'Validasi izin staf PG-TK, approval fasilitas PG-TK, broadcast unit.'],
+                    ['nip' => 'PL1002', 'role' => 'Kepala Sekolah', 'badge' => 'bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-500/30', 'name' => 'Antonius Joko Waluyo, S.Pd', 'title' => 'Kepala Sekolah SD', 'unit' => 'SD', 'desc' => 'Validasi izin staf SD, delegasi Plt, penunjukan guru inval.'],
+                    ['nip' => 'PL1003', 'role' => 'Kepala Sekolah', 'badge' => 'bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-500/30', 'name' => 'Agustinus Tri Wahyudi, M.Pd', 'title' => 'Kepala Sekolah SMP', 'unit' => 'SMP', 'desc' => 'Validasi izin SMP, supervisi grup komunikasi unit SMP.'],
+                    ['nip' => 'PL1004', 'role' => 'Kepala Sekolah', 'badge' => 'bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-500/30', 'name' => 'Drs. FX. Hartono', 'title' => 'Kepala Sekolah SMA', 'unit' => 'SMA', 'desc' => 'Validasi izin SMA, tasking lapangan pelaksana SMA.'],
+                    ['nip' => 'PL2001', 'role' => 'Guru (Single)', 'badge' => 'bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-500/30', 'name' => 'Bernadetha Rini Hastuti, S.Pd', 'title' => 'Guru Kelas SD', 'unit' => 'SD', 'desc' => 'Pengajuan izin/sakit mandiri, pinjam aula/kendaraan, tiket kerusakan.'],
+                    ['nip' => 'PL2002', 'role' => 'Guru (Multi-Unit)', 'badge' => 'bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 border-amber-200 dark:border-amber-500/30', 'name' => 'Yohanes Batista Sandiwan, S.Kom', 'title' => 'Guru Informatika (SMP & SMA)', 'unit' => 'SMP & SMA', 'desc' => 'Simulasi guru multi-unit: mengajar di 2 unit sekolah sekaligus.'],
+                    ['nip' => 'PL2003', 'role' => 'Guru (Single)', 'badge' => 'bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-500/30', 'name' => 'Elisabeth Dewi Anggraini, S.Pd', 'title' => 'Guru Kelas TK B', 'unit' => 'PG-TK', 'desc' => 'Alur pengajuan izin internal jenjang anak usia dini PG-TK.'],
+                    ['nip' => 'PL3001', 'role' => 'Tata Usaha (TU)', 'badge' => 'bg-cyan-100 dark:bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 border-cyan-200 dark:border-cyan-500/30', 'name' => 'Theresia Ratna Juwita, A.Md', 'title' => 'Staf TU Kampus', 'unit' => 'SD / Kampus', 'desc' => 'Screening dokumen peminjam eksternal, register surat otomatis, rekap absensi.'],
+                    ['nip' => 'PL4001', 'role' => 'Satpam', 'badge' => 'bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-500/30', 'name' => 'Petrus Joko Santoso', 'title' => 'Danru Satpam Pos Gerbang', 'unit' => 'SD / Gerbang', 'desc' => 'Buku tamu gerbang, buku jaga/shift, verifikasi e-ticket QR, Panic Button.'],
+                    ['nip' => 'PL4002', 'role' => 'Pelaksana / Teknisi', 'badge' => 'bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-500/30', 'name' => 'Ignatius Budi Prasetyo', 'title' => 'Teknisi Sarpras & Lapangan', 'unit' => 'SMA / Sarpras', 'desc' => 'Penerimaan direct tasking pimpinan, penanganan tiket kerusakan, konfirmasi tugas.'],
+                    ['nip' => 'sekretariat.paroki@gmail.com', 'role' => 'Umum (Eksternal)', 'badge' => 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-600', 'name' => 'Ignatius Denny', 'title' => 'Sie Kepemudaan Paroki Cikarang', 'unit' => 'Eksternal', 'desc' => 'Pengujian peminjaman fasilitas publik (Gua Maria, Kapel, Aula SMA) via Google SSO.']
+                ];
+                @endphp
+
+                @foreach($dummyUsers as $u)
+                    <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-4 space-y-2.5 shadow-sm transition-colors">
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] uppercase font-bold border {{ $u['badge'] }}">
+                                {{ $u['role'] }}
+                            </span>
+                            <span class="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-[11px] font-mono font-bold text-blue-600 dark:text-blue-400">
+                                {{ $u['nip'] }}
+                            </span>
+                        </div>
+
+                        <div>
+                            <div class="text-sm font-bold text-slate-900 dark:text-white leading-snug">{{ $u['name'] }}</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400">{{ $u['title'] }}</div>
+                        </div>
+
+                        <div class="pt-1.5 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-xs">
+                            <span class="text-slate-500 dark:text-slate-400">Penempatan:</span>
+                            <span class="font-bold text-emerald-600 dark:text-emerald-400">{{ $u['unit'] }}</span>
+                        </div>
+
+                        <p class="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-900/60 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800">
+                            {{ $u['desc'] }}
+                        </p>
+
+                        <div class="pt-1">
+                            <a href="{{ route('login') }}" class="w-full py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-xs">
+                                <span>Gunakan Akun Ini untuk Login</span>
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            <!-- Table View for Desktop / Tablet View (Hidden on mobile) -->
+            <div class="hidden sm:block overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 shadow-sm transition-colors">
                 <table class="w-full text-left text-xs border-collapse">
                     <thead class="bg-slate-50 dark:bg-slate-800/90 text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[11px] border-b border-slate-200 dark:border-slate-700 font-semibold">
                         <tr>
                             <th class="py-3 px-4">No</th>
                             <th class="py-3 px-4">Peran (Role)</th>
-                            <th class="py-3 px-4">NIP / Akun Login</th>
-                            <th class="py-3 px-4">Nama Pegawai / Jabatan</th>
-                            <th class="py-3 px-4">Unit Sekolah</th>
+                            <th class="py-3 px-4">NIP / Login</th>
+                            <th class="py-3 px-4">Nama Pegawai & Jabatan</th>
+                            <th class="py-3 px-4">Unit</th>
                             <th class="py-3 px-4">Cakupan Pengujian Wewenang</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition">
-                            <td class="py-3 px-4 font-mono text-slate-400">1</td>
-                            <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-500/30 font-semibold text-[10px]">Koordinator</span></td>
-                            <td class="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white">PL0001</td>
-                            <td class="py-3 px-4"><div class="font-medium text-slate-900 dark:text-white">Br. Stefanus Ngadenin, FIC</div><div class="text-[11px] text-slate-500 dark:text-slate-400">Koordinator Sekolah PL Deltamas</div></td>
-                            <td class="py-3 px-4"><span class="text-purple-600 dark:text-purple-400 font-semibold">Seluruh Kampus</span></td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Super Admin: kelola user, sapaan wajib, broadcast kampus, approval akhir izin & fasilitas.</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition">
-                            <td class="py-3 px-4 font-mono text-slate-400">2</td>
-                            <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30 font-semibold text-[10px]">Kepala Sekolah</span></td>
-                            <td class="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white">PL1001</td>
-                            <td class="py-3 px-4"><div class="font-medium text-slate-900 dark:text-white">Maria Theresia Sulastri, S.Pd</div><div class="text-[11px] text-slate-500 dark:text-slate-400">Kepala Sekolah PG-TK</div></td>
-                            <td class="py-3 px-4"><span class="text-blue-600 dark:text-blue-400 font-semibold">PG-TK</span></td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Validasi izin staf PG-TK, approval fasilitas PG-TK, broadcast unit.</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition">
-                            <td class="py-3 px-4 font-mono text-slate-400">3</td>
-                            <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30 font-semibold text-[10px]">Kepala Sekolah</span></td>
-                            <td class="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white">PL1002</td>
-                            <td class="py-3 px-4"><div class="font-medium text-slate-900 dark:text-white">Antonius Joko Waluyo, S.Pd</div><div class="text-[11px] text-slate-500 dark:text-slate-400">Kepala Sekolah SD</div></td>
-                            <td class="py-3 px-4"><span class="text-blue-600 dark:text-blue-400 font-semibold">SD</span></td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Validasi izin staf SD, delegasi Plt ke guru senior, penunjukan guru inval.</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition">
-                            <td class="py-3 px-4 font-mono text-slate-400">4</td>
-                            <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30 font-semibold text-[10px]">Kepala Sekolah</span></td>
-                            <td class="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white">PL1003</td>
-                            <td class="py-3 px-4"><div class="font-medium text-slate-900 dark:text-white">Agustinus Tri Wahyudi, M.Pd</div><div class="text-[11px] text-slate-500 dark:text-slate-400">Kepala Sekolah SMP</div></td>
-                            <td class="py-3 px-4"><span class="text-blue-600 dark:text-blue-400 font-semibold">SMP</span></td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Validasi izin SMP, supervisi grup komunikasi unit SMP.</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition">
-                            <td class="py-3 px-4 font-mono text-slate-400">5</td>
-                            <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30 font-semibold text-[10px]">Kepala Sekolah</span></td>
-                            <td class="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white">PL1004</td>
-                            <td class="py-3 px-4"><div class="font-medium text-slate-900 dark:text-white">Drs. FX. Hartono</div><div class="text-[11px] text-slate-500 dark:text-slate-400">Kepala Sekolah SMA</div></td>
-                            <td class="py-3 px-4"><span class="text-blue-600 dark:text-blue-400 font-semibold">SMA</span></td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Validasi izin SMA, tasking lapangan pelaksana SMA.</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition">
-                            <td class="py-3 px-4 font-mono text-slate-400">6</td>
-                            <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/30 font-semibold text-[10px]">Guru (Single)</span></td>
-                            <td class="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white">PL2001</td>
-                            <td class="py-3 px-4"><div class="font-medium text-slate-900 dark:text-white">Bernadetha Rini Hastuti, S.Pd</div><div class="text-[11px] text-slate-500 dark:text-slate-400">Guru Kelas SD</div></td>
-                            <td class="py-3 px-4"><span class="text-emerald-600 dark:text-emerald-400 font-semibold">SD</span></td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Pengajuan izin/sakit mandiri, pinjam aula/kendaraan, tiket kerusakan sarpras.</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition bg-indigo-50/50 dark:bg-indigo-950/20">
-                            <td class="py-3 px-4 font-mono text-slate-400">7</td>
-                            <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-500/30 font-semibold text-[10px]">Guru (Multi-Unit)</span></td>
-                            <td class="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white">PL2002</td>
-                            <td class="py-3 px-4"><div class="font-medium text-slate-900 dark:text-white">Yohanes Batista Sandiwan, S.Kom</div><div class="text-[11px] text-slate-500 dark:text-slate-400">Guru Informatika (SMP & SMA)</div></td>
-                            <td class="py-3 px-4"><span class="text-amber-600 dark:text-amber-400 font-semibold">SMP & SMA</span></td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Pengujian multi-unit: guru mengajar di 2 unit sekolah sekaligus.</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition">
-                            <td class="py-3 px-4 font-mono text-slate-400">8</td>
-                            <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/30 font-semibold text-[10px]">Guru (Single)</span></td>
-                            <td class="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white">PL2003</td>
-                            <td class="py-3 px-4"><div class="font-medium text-slate-900 dark:text-white">Elisabeth Dewi Anggraini, S.Pd</div><div class="text-[11px] text-slate-500 dark:text-slate-400">Guru Kelas TK B</div></td>
-                            <td class="py-3 px-4"><span class="text-emerald-600 dark:text-emerald-400 font-semibold">PG-TK</span></td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Alur pengajuan izin internal jenjang anak usia dini PG-TK.</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition">
-                            <td class="py-3 px-4 font-mono text-slate-400">9</td>
-                            <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-cyan-100 dark:bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-500/30 font-semibold text-[10px]">Tata Usaha (TU)</span></td>
-                            <td class="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white">PL3001</td>
-                            <td class="py-3 px-4"><div class="font-medium text-slate-900 dark:text-white">Theresia Ratna Juwita, A.Md</div><div class="text-[11px] text-slate-500 dark:text-slate-400">Staf TU Kampus</div></td>
-                            <td class="py-3 px-4"><span class="text-cyan-600 dark:text-cyan-400 font-semibold">SD / Kampus</span></td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Screening dokumen peminjam eksternal, penomoran surat otomatis, rekap absensi.</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition">
-                            <td class="py-3 px-4 font-mono text-slate-400">10</td>
-                            <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-500/30 font-semibold text-[10px]">Satpam</span></td>
-                            <td class="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white">PL4001</td>
-                            <td class="py-3 px-4"><div class="font-medium text-slate-900 dark:text-white">Petrus Joko Santoso</div><div class="text-[11px] text-slate-500 dark:text-slate-400">Danru Satpam Pos Gerbang</div></td>
-                            <td class="py-3 px-4"><span class="text-rose-600 dark:text-rose-400 font-semibold">SD / Gerbang</span></td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Buku tamu gerbang, buku jaga/shift, verifikasi e-ticket QR, Panic Button.</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition">
-                            <td class="py-3 px-4 font-mono text-slate-400">11</td>
-                            <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-500/30 font-semibold text-[10px]">Pelaksana / Teknisi</span></td>
-                            <td class="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white">PL4002</td>
-                            <td class="py-3 px-4"><div class="font-medium text-slate-900 dark:text-white">Ignatius Budi Prasetyo</div><div class="text-[11px] text-slate-500 dark:text-slate-400">Teknisi Sarpras & Lapangan</div></td>
-                            <td class="py-3 px-4"><span class="text-rose-600 dark:text-rose-400 font-semibold">SMA / Sarpras</span></td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Penerimaan direct tasking pimpinan, penanganan tiket kerusakan, konfirmasi tugas selesai.</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition">
-                            <td class="py-3 px-4 font-mono text-slate-400">12</td>
-                            <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-500/20 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-500/30 font-semibold text-[10px]">Umum (Eksternal)</span></td>
-                            <td class="py-3 px-4 font-mono text-slate-700 dark:text-slate-300 text-[11px]">sekretariat.paroki@gmail.com</td>
-                            <td class="py-3 px-4"><div class="font-medium text-slate-900 dark:text-white">Ignatius Denny</div><div class="text-[11px] text-slate-500 dark:text-slate-400">Sie Kepemudaan Paroki Cikarang</div></td>
-                            <td class="py-3 px-4"><span class="text-slate-500 dark:text-slate-400">Eksternal</span></td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Pengujian peminjaman fasilitas publik (Gua Maria, Kapel, Aula SMA) via Google SSO.</td>
-                        </tr>
+                    <tbody class="divide-y divide-slate-100 dark:divide-slate-700 text-slate-700 dark:text-slate-300">
+                        @foreach($dummyUsers as $idx => $u)
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/60 transition">
+                                <td class="py-3 px-4 font-mono text-slate-400">{{ $idx + 1 }}</td>
+                                <td class="py-3 px-4 whitespace-nowrap">
+                                    <span class="px-2 py-0.5 rounded text-[10px] uppercase font-bold border {{ $u['badge'] }}">
+                                        {{ $u['role'] }}
+                                    </span>
+                                </td>
+                                <td class="py-3 px-4 font-mono font-bold text-blue-600 dark:text-blue-400 whitespace-nowrap">
+                                    {{ $u['nip'] }}
+                                </td>
+                                <td class="py-3 px-4">
+                                    <div class="font-bold text-slate-900 dark:text-white">{{ $u['name'] }}</div>
+                                    <div class="text-[11px] text-slate-500 dark:text-slate-400">{{ $u['title'] }}</div>
+                                </td>
+                                <td class="py-3 px-4 font-semibold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
+                                    {{ $u['unit'] }}
+                                </td>
+                                <td class="py-3 px-4 text-slate-600 dark:text-slate-300 text-xs">
+                                    {{ $u['desc'] }}
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- System Architecture Status -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 p-5 space-y-2 shadow-sm transition-colors">
-                <div class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">Database Schema</div>
-                <div class="text-2xl font-bold text-slate-900 dark:text-white">39 Tabel</div>
-                <p class="text-xs text-slate-500 dark:text-slate-400">402 kolom, 77 relasi FK terdaftar aktif di MariaDB tanpa tabel E-Raport sesuai instruksi.</p>
+        <!-- 3 Architecture Summary Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 space-y-1.5 shadow-sm transition-colors">
+                <div class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">Skema Basis Data</div>
+                <div class="text-2xl font-extrabold text-slate-900 dark:text-white">39 Tabel</div>
+                <p class="text-xs text-slate-500 dark:text-slate-400">402 kolom & 77 relasi FK terdaftar aktif di MariaDB.</p>
             </div>
-            <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 p-5 space-y-2 shadow-sm transition-colors">
-                <div class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">Akses Kontrol (RBAC)</div>
-                <div class="text-2xl font-bold text-emerald-600 dark:text-emerald-400">6 Peran / 41 Izin</div>
-                <p class="text-xs text-slate-500 dark:text-slate-400">Spatie Laravel Permission aktif melindungi otorisasi tiap peran di tingkat kampus & unit.</p>
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 space-y-1.5 shadow-sm transition-colors">
+                <div class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">Akses Kontrol (RBAC)</div>
+                <div class="text-2xl font-extrabold text-emerald-600 dark:text-emerald-400">6 Peran / 41 Izin</div>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Dilindungi penuh oleh Spatie Laravel Permission.</p>
             </div>
-            <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 p-5 space-y-2 shadow-sm transition-colors">
-                <div class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">Unit Sekolah</div>
-                <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">4 Unit Terpadu</div>
-                <p class="text-xs text-slate-500 dark:text-slate-400">PG-TK (satu unit), SD, SMP, dan SMA terhubung dalam satu hierarki kampus Deltamas.</p>
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 space-y-1.5 shadow-sm transition-colors">
+                <div class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">Unit Terpadu</div>
+                <div class="text-2xl font-extrabold text-blue-600 dark:text-blue-400">4 Unit Kampus</div>
+                <p class="text-xs text-slate-500 dark:text-slate-400">PG-TK (satu unit), SD, SMP, dan SMA terhubung dalam satu portal.</p>
             </div>
         </div>
 
@@ -250,7 +241,7 @@
 
     <!-- Footer -->
     <footer class="border-t border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 py-4 text-center text-xs text-slate-500 dark:text-slate-400 transition-colors">
-        &copy; 2026 Yayasan Pangudi Luhur — Kampus Deltamas. Hak cipta dilindungi undang-undang.
+        &copy; 2026 Yayasan Pangudi Luhur Kota Deltamas · SIAP PL Deltamas
     </footer>
 
     <script>
@@ -263,8 +254,7 @@
                 localStorage.theme = 'dark';
             }
         }
-    </script>
-    <script>
+
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js').catch(() => {});

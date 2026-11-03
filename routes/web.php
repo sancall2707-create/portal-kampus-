@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GreetingController;
@@ -22,7 +23,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/sapaan-koordinator', [GreetingController::class, 'show'])->name('greeting.show');
     Route::post('/sapaan-koordinator/acknowledge', [GreetingController::class, 'acknowledge'])->name('greeting.acknowledge');
 
-    // Dashboard Utama & Modul Komunikasi dengan Intersepsi Sapaan Wajib
+    // Dashboard Utama & Modul Operasional dengan Intersepsi Sapaan Wajib
     Route::middleware([CheckMandatoryGreeting::class])->group(function () {
         Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
@@ -33,6 +34,13 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/', [AnnouncementController::class, 'store'])->name('store');
             Route::post('/{id}/read', [AnnouncementController::class, 'markAsRead'])->name('read');
             Route::get('/{id}/receipts', [AnnouncementController::class, 'readReceipts'])->name('receipts');
+        });
+
+        // Modul Kalender & Agenda Kampus (AG-01 s.d. AG-04)
+        Route::prefix('agendas')->name('agendas.')->group(function () {
+            Route::get('/', [AgendaController::class, 'index'])->name('index');
+            Route::get('/create', [AgendaController::class, 'create'])->name('create');
+            Route::post('/', [AgendaController::class, 'store'])->name('store');
         });
     });
 });

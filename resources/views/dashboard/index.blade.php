@@ -88,6 +88,10 @@
 
         <!-- Quick Access Pill Buttons (PR-01) -->
         <div class="flex flex-wrap gap-2.5">
+            <a href="{{ route('agendas.index') }}" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-white transition flex items-center gap-2 shadow-sm">
+                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                <span>Kalender Agenda Kampus</span>
+            </a>
             <a href="{{ route('announcements.index') }}" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-white transition flex items-center gap-2 shadow-sm">
                 <span class="h-2 w-2 rounded-full bg-blue-400"></span>
                 <span>Papan Siaran (Broadcast)</span>

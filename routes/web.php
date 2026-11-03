@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GreetingController;
 use App\Http\Middleware\CheckMandatoryGreeting;
@@ -21,8 +22,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/sapaan-koordinator', [GreetingController::class, 'show'])->name('greeting.show');
     Route::post('/sapaan-koordinator/acknowledge', [GreetingController::class, 'acknowledge'])->name('greeting.acknowledge');
 
-    // Dashboard Utama dengan Intersepsi Sapaan Wajib
+    // Dashboard Utama & Modul Komunikasi dengan Intersepsi Sapaan Wajib
     Route::middleware([CheckMandatoryGreeting::class])->group(function () {
         Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+
+        // Modul Siaran & Pengumuman (COM-03 s.d. COM-05)
+        Route::prefix('announcements')->name('announcements.')->group(function () {
+            Route::get('/', [AnnouncementController::class, 'index'])->name('index');
+            Route::get('/create', [AnnouncementController::class, 'create'])->name('create');
+            Route::post('/', [AnnouncementController::class, 'store'])->name('store');
+            Route::post('/{id}/read', [AnnouncementController::class, 'markAsRead'])->name('read');
+            Route::get('/{id}/receipts', [AnnouncementController::class, 'readReceipts'])->name('receipts');
+        });
     });
 });

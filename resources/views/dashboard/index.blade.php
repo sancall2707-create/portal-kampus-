@@ -35,10 +35,18 @@
             </div>
 
             <div class="flex items-center space-x-3">
+                <a href="{{ route('announcements.index') }}" class="px-3 py-1.5 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/40 text-blue-300 text-xs font-semibold transition flex items-center gap-1.5">
+                    <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                    </svg>
+                    <span>Papan Siaran</span>
+                </a>
+
                 <div class="hidden sm:flex flex-col text-right">
                     <span class="text-xs font-semibold text-white">{{ $user->name }}</span>
                     <span class="text-[10px] text-slate-400 font-mono">{{ $user->nip ?? $user->email }} · {{ ucfirst(str_replace('_', ' ', $user->getRoleNames()->first() ?? 'Staf')) }}</span>
                 </div>
+
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="px-3 py-1.5 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-300 text-xs font-semibold transition flex items-center gap-1.5">
@@ -76,6 +84,18 @@
                     <div>Login: <span class="text-slate-300">{{ now()->format('d M Y, H:i') }} WIB</span></div>
                 </div>
             </div>
+        </div>
+
+        <!-- Quick Access Pill Buttons (PR-01) -->
+        <div class="flex flex-wrap gap-2.5">
+            <a href="{{ route('announcements.index') }}" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-white transition flex items-center gap-2 shadow-sm">
+                <span class="h-2 w-2 rounded-full bg-blue-400"></span>
+                <span>Papan Siaran (Broadcast)</span>
+            </a>
+            <a href="{{ route('greeting.show') }}" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-300 hover:text-white transition flex items-center gap-2 shadow-sm">
+                <span class="h-2 w-2 rounded-full bg-amber-400"></span>
+                <span>Buka Ulang Sapaan Koordinator</span>
+            </a>
         </div>
 
         <!-- Role Badges & Permissions Overview -->
@@ -132,29 +152,29 @@
                 </div>
             </div>
 
-            <!-- Card 3: Status Modul Tahap Awal -->
+            <!-- Card 3: Modul Siap Digunakan -->
             <div class="rounded-xl border border-slate-800 bg-slate-800/40 p-5 space-y-3">
                 <h3 class="text-xs uppercase tracking-wider text-slate-400 font-bold flex items-center gap-1.5">
                     <svg class="h-4 w-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7c-2 0-3 1-3 3z" />
                     </svg>
-                    <span>Modul Siap Dibangun</span>
+                    <span>Status Modul Sistem</span>
                 </h3>
                 <div class="space-y-1.5 text-xs text-slate-300">
                     <div class="flex items-center justify-between p-1.5 rounded bg-slate-900/60">
                         <span>Layar Sapaan Koordinator</span>
-                        <span class="text-amber-400 font-mono text-[10px]">Next</span>
+                        <span class="text-emerald-400 font-mono text-[10px] font-bold">Aktif ✓</span>
                     </div>
                     <div class="flex items-center justify-between p-1.5 rounded bg-slate-900/60">
                         <span>Broadcast & Read Receipts</span>
+                        <span class="text-emerald-400 font-mono text-[10px] font-bold">Aktif ✓</span>
+                    </div>
+                    <div class="flex items-center justify-between p-1.5 rounded bg-slate-900/60">
+                        <span>Kalender & Agenda Kampus</span>
                         <span class="text-amber-400 font-mono text-[10px]">Next</span>
                     </div>
                     <div class="flex items-center justify-between p-1.5 rounded bg-slate-900/60">
                         <span>Perizinan & Guru Inval</span>
-                        <span class="text-amber-400 font-mono text-[10px]">Next</span>
-                    </div>
-                    <div class="flex items-center justify-between p-1.5 rounded bg-slate-900/60">
-                        <span>Peminjaman Fasilitas & QR</span>
                         <span class="text-amber-400 font-mono text-[10px]">Next</span>
                     </div>
                 </div>

@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Masuk — SIAP PL Deltamas</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -12,20 +29,33 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         code, .font-mono { font-family: 'JetBrains Mono', monospace; }
     </style>
+    <script>
+        if (localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+            document.documentElement.classList.remove('dark');
+        } else {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
 </head>
-<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 text-slate-100 min-h-screen flex flex-col justify-between antialiased selection:bg-blue-600 selection:text-white">
+<body class="bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col justify-between antialiased transition-colors duration-200 selection:bg-blue-600 selection:text-white">
 
-    <!-- Top Small Bar -->
-    <header class="w-full border-b border-slate-800/80 bg-slate-950/40 backdrop-blur">
+    <!-- Top Minimal Bar -->
+    <header class="w-full border-b border-slate-200 dark:border-slate-800/80 bg-white/70 dark:bg-slate-950/40 backdrop-blur transition-colors">
         <div class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
-            <div class="flex items-center space-x-2 text-xs text-slate-400">
-                <span class="inline-block h-2 w-2 rounded-full bg-emerald-400"></span>
+            <div class="flex items-center space-x-2 text-xs text-slate-600 dark:text-slate-400">
+                <span class="inline-block h-2 w-2 rounded-full bg-emerald-500"></span>
                 <span>Sistem Informasi & Administrasi Pegawai</span>
             </div>
-            <a href="{{ route('landing') }}" class="text-xs text-blue-400 hover:text-blue-300 transition flex items-center gap-1 font-medium">
-                <span>Daftar Akun Testing</span>
-                <span>&rarr;</span>
-            </a>
+            <div class="flex items-center space-x-3">
+                <button type="button" onclick="toggleTheme()" class="p-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 transition" title="Ganti Tema">
+                    <i id="themeIconSun" class="bi bi-sun-fill text-amber-500 hidden dark:inline"></i>
+                    <i id="themeIconMoon" class="bi bi-moon-stars-fill text-slate-600 dark:hidden inline"></i>
+                </button>
+                <a href="{{ route('landing') }}" class="text-xs text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 font-medium">
+                    <span>Daftar Akun Testing</span>
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
         </div>
     </header>
 
@@ -34,26 +64,23 @@
         <div class="w-full max-w-md">
 
             <!-- Card Container -->
-            <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-black/60 relative overflow-hidden">
-                <div class="absolute -right-20 -top-20 w-48 h-48 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl dark:shadow-2xl dark:shadow-black/60 relative overflow-hidden transition-colors">
 
                 <!-- Logo & Heading -->
                 <div class="text-center space-y-3 mb-7">
-                    <div class="inline-flex items-center justify-center p-2 rounded-2xl bg-slate-800/80 border border-slate-700/60 shadow-inner">
+                    <div class="inline-flex items-center justify-center p-2 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 shadow-inner">
                         <img src="{{ asset('images/logo-pangudi-luhur.png') }}" alt="Logo Pangudi Luhur Kota Deltamas" class="h-20 w-20 object-contain drop-shadow-md">
                     </div>
                     <div>
-                        <h1 class="text-2xl font-extrabold text-white tracking-tight">SIAP PL Deltamas</h1>
-                        <p class="text-xs text-slate-400 mt-1">Yayasan Pangudi Luhur — Kampus Deltamas</p>
+                        <h1 class="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">SIAP PL Deltamas</h1>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Yayasan Pangudi Luhur — Kampus Deltamas</p>
                     </div>
                 </div>
 
                 <!-- Alert Errors -->
                 @if ($errors->any())
-                    <div class="mb-5 p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-start space-x-2">
-                        <svg class="h-4 w-4 text-rose-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                    <div class="mb-5 p-3.5 rounded-xl bg-rose-50 dark:bg-rose-500/10 border border-rose-200 dark:border-rose-500/30 text-rose-700 dark:text-rose-300 text-xs flex items-start space-x-2">
+                        <i class="bi bi-exclamation-triangle-fill text-rose-600 dark:text-rose-400 shrink-0 mt-0.5"></i>
                         <div>
                             @foreach ($errors->all() as $error)
                                 <p>{{ $error }}</p>
@@ -67,7 +94,7 @@
                     @csrf
 
                     <div>
-                        <label for="login" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+                        <label for="login" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
                             NIP Pegawai / Email
                         </label>
                         <div class="relative">
@@ -79,107 +106,100 @@
                                 placeholder="Contoh: PL0001, PL2002" 
                                 required 
                                 autofocus
-                                class="w-full px-4 py-3 bg-slate-950/70 border border-slate-700/80 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono tracking-wide transition"
+                                class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950/70 border border-slate-300 dark:border-slate-700 rounded-xl text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono tracking-wide transition"
                             >
-                            <span class="absolute right-3 top-3 text-slate-500 text-xs">
-                                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                </svg>
+                            <span class="absolute right-3.5 top-3.5 text-slate-400 dark:text-slate-500 text-sm">
+                                <i class="bi bi-person-badge"></i>
                             </span>
                         </div>
                     </div>
 
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
-                            <label for="password" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                            <label for="password" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                                 Kata Sandi
                             </label>
-                            <span class="text-[11px] text-slate-400">Default test: <code class="text-blue-300 font-mono">password123</code></span>
+                            <span class="text-[11px] text-slate-500 dark:text-slate-400">Default: <code class="text-blue-600 dark:text-blue-300 font-mono font-bold">password123</code></span>
                         </div>
                         <div class="relative">
                             <input 
                                 type="password" 
                                 id="password" 
                                 name="password" 
-                                placeholder="••••••••" 
+                                placeholder="Password akun" 
                                 required 
-                                class="w-full px-4 py-3 bg-slate-950/70 border border-slate-700/80 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono tracking-wide transition"
+                                class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950/70 border border-slate-300 dark:border-slate-700 rounded-xl text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono tracking-wide transition"
                             >
-                            <button type="button" onclick="togglePassword()" class="absolute right-3 top-3 text-slate-500 hover:text-slate-300 text-xs">
-                                <svg id="eyeIcon" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                </svg>
+                            <button type="button" onclick="togglePassword()" class="absolute right-3.5 top-3.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 text-sm">
+                                <i id="eyeIcon" class="bi bi-eye"></i>
                             </button>
                         </div>
                     </div>
 
                     <div class="flex items-center justify-between pt-1">
-                        <label class="flex items-center space-x-2 text-xs text-slate-300 cursor-pointer select-none">
-                            <input type="checkbox" name="remember" class="h-4 w-4 rounded bg-slate-950 border-slate-700 text-blue-600 focus:ring-blue-500/20">
+                        <label class="flex items-center space-x-2 text-xs text-slate-600 dark:text-slate-300 cursor-pointer select-none">
+                            <input type="checkbox" name="remember" class="h-4 w-4 rounded bg-slate-100 dark:bg-slate-950 border-slate-300 dark:border-slate-700 text-blue-600 focus:ring-blue-500">
                             <span>Ingat sesi saya</span>
                         </label>
-                        <span class="text-xs text-slate-500">Lupa sandi? Hub. TU</span>
+                        <span class="text-xs text-slate-400">Lupa sandi? Hub. TU</span>
                     </div>
 
                     <div class="pt-2">
-                        <button type="submit" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 active:scale-[0.99] font-bold text-sm text-white shadow-lg shadow-blue-600/30 transition duration-150 flex items-center justify-center space-x-2">
+                        <button type="submit" class="w-full py-3.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 active:scale-[0.99] font-bold text-sm text-white shadow-lg shadow-blue-600/30 transition flex items-center justify-center space-x-2">
                             <span>Masuk ke Portal</span>
-                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
+                            <i class="bi bi-box-arrow-in-right"></i>
                         </button>
                     </div>
                 </form>
 
-                <!-- Quick Fill Buttons for Testing -->
-                <div class="mt-6 pt-5 border-t border-slate-800">
-                    <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2.5 text-center">
+                <!-- Quick Fill Buttons -->
+                <div class="mt-6 pt-5 border-t border-slate-200 dark:border-slate-800">
+                    <p class="text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2.5 text-center">
                         Pilih Cepat Akun Pengujian
                     </p>
                     <div class="grid grid-cols-2 gap-2 text-xs">
-                        <button type="button" onclick="fillTest('PL0001', 'password123')" class="px-2.5 py-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700/70 text-left transition flex items-center justify-between">
+                        <button type="button" onclick="fillTest('PL0001', 'password123')" class="px-2.5 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-left transition flex items-center justify-between">
                             <div>
-                                <div class="font-bold text-purple-300">Koordinator</div>
-                                <div class="text-[10px] text-slate-400 font-mono">PL0001</div>
+                                <div class="font-bold text-purple-600 dark:text-purple-300">Koordinator</div>
+                                <div class="text-[10px] text-slate-500 dark:text-slate-400 font-mono">PL0001</div>
                             </div>
-                            <span class="text-slate-500 text-xs">&rarr;</span>
+                            <i class="bi bi-chevron-right text-slate-400 text-xs"></i>
                         </button>
-                        <button type="button" onclick="fillTest('PL1002', 'password123')" class="px-2.5 py-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700/70 text-left transition flex items-center justify-between">
+                        <button type="button" onclick="fillTest('PL1002', 'password123')" class="px-2.5 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-left transition flex items-center justify-between">
                             <div>
-                                <div class="font-bold text-blue-300">Kepsek SD</div>
-                                <div class="text-[10px] text-slate-400 font-mono">PL1002</div>
+                                <div class="font-bold text-blue-600 dark:text-blue-300">Kepsek SD</div>
+                                <div class="text-[10px] text-slate-500 dark:text-slate-400 font-mono">PL1002</div>
                             </div>
-                            <span class="text-slate-500 text-xs">&rarr;</span>
+                            <i class="bi bi-chevron-right text-slate-400 text-xs"></i>
                         </button>
-                        <button type="button" onclick="fillTest('PL2002', 'password123')" class="px-2.5 py-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700/70 text-left transition flex items-center justify-between">
+                        <button type="button" onclick="fillTest('PL2002', 'password123')" class="px-2.5 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-left transition flex items-center justify-between">
                             <div>
-                                <div class="font-bold text-amber-300">Guru Multi-Unit</div>
-                                <div class="text-[10px] text-slate-400 font-mono">PL2002 (SMP-SMA)</div>
+                                <div class="font-bold text-amber-600 dark:text-amber-300">Guru Multi-Unit</div>
+                                <div class="text-[10px] text-slate-500 dark:text-slate-400 font-mono">PL2002 (SMP-SMA)</div>
                             </div>
-                            <span class="text-slate-500 text-xs">&rarr;</span>
+                            <i class="bi bi-chevron-right text-slate-400 text-xs"></i>
                         </button>
-                        <button type="button" onclick="fillTest('PL4001', 'password123')" class="px-2.5 py-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700/70 text-left transition flex items-center justify-between">
+                        <button type="button" onclick="fillTest('PL4001', 'password123')" class="px-2.5 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-left transition flex items-center justify-between">
                             <div>
-                                <div class="font-bold text-rose-300">Satpam Gerbang</div>
-                                <div class="text-[10px] text-slate-400 font-mono">PL4001</div>
+                                <div class="font-bold text-rose-600 dark:text-rose-300">Satpam Gerbang</div>
+                                <div class="text-[10px] text-slate-500 dark:text-slate-400 font-mono">PL4001</div>
                             </div>
-                            <span class="text-slate-500 text-xs">&rarr;</span>
+                            <i class="bi bi-chevron-right text-slate-400 text-xs"></i>
                         </button>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Hint below card -->
-            <p class="text-center text-xs text-slate-500 mt-4">
+            <!-- Footer info -->
+            <p class="text-center text-xs text-slate-500 dark:text-slate-400 mt-4">
                 Memerlukan bantuan teknis? Hubungi Tim IT / Tata Usaha Kampus PL Deltamas.
             </p>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="w-full border-t border-slate-800/80 bg-slate-950/40 py-3 text-center text-xs text-slate-500">
+    <footer class="w-full border-t border-slate-200 dark:border-slate-800/80 bg-white/70 dark:bg-slate-950/40 py-3 text-center text-xs text-slate-500 dark:text-slate-400 transition-colors">
         &copy; 2026 Yayasan Pangudi Luhur Kota Deltamas · Dilindungi Hak Cipta
     </footer>
 
@@ -191,10 +211,23 @@
 
         function togglePassword() {
             const pwd = document.getElementById('password');
+            const icon = document.getElementById('eyeIcon');
             if (pwd.type === 'password') {
                 pwd.type = 'text';
+                icon.className = 'bi bi-eye-slash';
             } else {
                 pwd.type = 'password';
+                icon.className = 'bi bi-eye';
+            }
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
             }
         }
     </script>

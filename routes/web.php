@@ -4,6 +4,7 @@ use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GreetingController;
+use App\Http\Controllers\LeaveController;
 use App\Http\Middleware\CheckMandatoryGreeting;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +24,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/sapaan-koordinator', [GreetingController::class, 'show'])->name('greeting.show');
     Route::post('/sapaan-koordinator/acknowledge', [GreetingController::class, 'acknowledge'])->name('greeting.acknowledge');
 
-    // Dashboard Utama & Modul Operasional dengan Intersepsi Sapaan Wajib
+    // Dashboard Utama & Seluruh Modul Operasional dengan Intersepsi Sapaan Wajib
     Route::middleware([CheckMandatoryGreeting::class])->group(function () {
         Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
@@ -41,6 +42,17 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [AgendaController::class, 'index'])->name('index');
             Route::get('/create', [AgendaController::class, 'create'])->name('create');
             Route::post('/', [AgendaController::class, 'store'])->name('store');
+        });
+
+        // Modul Perizinan Pegawai & Guru Inval (LV-01 s.d. LV-07)
+        Route::prefix('leaves')->name('leaves.')->group(function () {
+            Route::get('/', [LeaveController::class, 'index'])->name('index');
+            Route::get('/create', [LeaveController::class, 'create'])->name('create');
+            Route::post('/', [LeaveController::class, 'store'])->name('store');
+            Route::get('/{id}', [LeaveController::class, 'show'])->name('show');
+            Route::post('/{id}/approve-unit', [LeaveController::class, 'approveUnit'])->name('approve_unit');
+            Route::post('/{id}/approve-coordinator', [LeaveController::class, 'approveCoordinator'])->name('approve_coordinator');
+            Route::post('/substitutes/{id}/acknowledge', [LeaveController::class, 'acknowledgeSubstitute'])->name('acknowledge_substitute');
         });
     });
 });

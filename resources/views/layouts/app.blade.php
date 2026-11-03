@@ -90,6 +90,11 @@
                         <span class="hidden sm:inline">Agenda</span>
                     </a>
 
+                    <a href="{{ route('leaves.index') }}" class="px-3 py-1.5 rounded-lg bg-amber-50 dark:bg-amber-600/20 hover:bg-amber-100 dark:hover:bg-amber-600/30 border border-amber-200 dark:border-amber-500/40 text-amber-700 dark:text-amber-300 text-xs font-semibold transition flex items-center gap-1.5">
+                        <i class="bi bi-file-earmark-check-fill text-amber-600 dark:text-amber-400"></i>
+                        <span class="hidden sm:inline">Perizinan</span>
+                    </a>
+
                     <div class="hidden md:flex flex-col text-right pl-2 border-l border-slate-200 dark:border-slate-800">
                         <span class="text-xs font-semibold text-slate-900 dark:text-white">{{ Auth::user()->name }}</span>
                         <span class="text-[10px] text-slate-500 dark:text-slate-400 font-mono">{{ Auth::user()->nip ?? Auth::user()->email }}</span>

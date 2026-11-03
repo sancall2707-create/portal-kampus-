@@ -38,6 +38,8 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         code, .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 
     <script>
@@ -52,80 +54,144 @@
 <body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col justify-between antialiased transition-colors duration-200 selection:bg-blue-600 selection:text-white">
 
     <!-- Top App Bar -->
-    <header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur sticky top-0 z-50 transition-colors">
+    <header class="border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur sticky top-0 z-40 transition-colors shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            
+            <!-- Left: Logo & Portal Title -->
             <div class="flex items-center space-x-3">
-                <a href="{{ route('dashboard') }}" class="flex items-center space-x-3">
-                    <img src="{{ asset('images/logo-pangudi-luhur.png') }}" alt="Logo" class="h-10 w-10 object-contain">
+                <a href="{{ route('dashboard') }}" class="flex items-center space-x-2.5">
+                    <img src="{{ asset('images/logo-pangudi-luhur.png') }}" alt="Logo" class="h-9 w-9 sm:h-10 sm:w-10 object-contain">
                     <div>
-                        <h1 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+                        <h1 class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                             SIAP PL Deltamas
                         </h1>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400">
+                        <p class="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium truncate max-w-[170px] sm:max-w-xs">
                             @if(isset($user) && $user->units->isNotEmpty())
                                 Unit {{ $user->units->pluck('code')->implode(' & ') }}
                             @else
-                                Tingkat Kampus
+                                Kampus Deltamas
                             @endif
                         </p>
                     </div>
                 </a>
             </div>
 
-            <div class="flex items-center space-x-2 sm:space-x-3">
+            <!-- Right: Theme Toggle & Hamburger Button -->
+            <div class="flex items-center space-x-2">
                 <!-- Theme Toggle Button -->
-                <button type="button" onclick="toggleTheme()" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition" title="Ganti Tema Terang/Gelap">
+                <button type="button" onclick="toggleTheme()" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition" title="Ganti Tema">
                     <i id="themeIconSun" class="bi bi-sun-fill text-amber-500 hidden dark:inline"></i>
                     <i id="themeIconMoon" class="bi bi-moon-stars-fill text-slate-600 dark:hidden inline"></i>
                 </button>
 
                 @auth
-                    <a href="{{ route('announcements.index') }}" class="px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-600/20 hover:bg-blue-100 dark:hover:bg-blue-600/30 border border-blue-200 dark:border-blue-500/40 text-blue-700 dark:text-blue-300 text-xs font-semibold transition flex items-center gap-1.5">
-                        <i class="bi bi-megaphone-fill text-blue-600 dark:text-blue-400"></i>
-                        <span class="hidden sm:inline">Papan Siaran</span>
-                    </a>
-
-                    <a href="{{ route('agendas.index') }}" class="px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-600/20 hover:bg-emerald-100 dark:hover:bg-emerald-600/30 border border-emerald-200 dark:border-emerald-500/40 text-emerald-700 dark:text-emerald-300 text-xs font-semibold transition flex items-center gap-1.5">
-                        <i class="bi bi-calendar3 text-emerald-600 dark:text-emerald-400"></i>
-                        <span class="hidden sm:inline">Agenda</span>
-                    </a>
-
-                    <a href="{{ route('leaves.index') }}" class="px-3 py-1.5 rounded-lg bg-amber-50 dark:bg-amber-600/20 hover:bg-amber-100 dark:hover:bg-amber-600/30 border border-amber-200 dark:border-amber-500/40 text-amber-700 dark:text-amber-300 text-xs font-semibold transition flex items-center gap-1.5">
-                        <i class="bi bi-file-earmark-check-fill text-amber-600 dark:text-amber-400"></i>
-                        <span class="hidden sm:inline">Perizinan</span>
-                    </a>
-
-                    <a href="{{ route('facilities.index') }}" class="px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-600/20 hover:bg-indigo-100 dark:hover:bg-indigo-600/30 border border-indigo-200 dark:border-indigo-500/40 text-indigo-700 dark:text-indigo-300 text-xs font-semibold transition flex items-center gap-1.5">
-                        <i class="bi bi-building text-indigo-600 dark:text-indigo-400"></i>
-                        <span class="hidden sm:inline">Fasilitas</span>
-                    </a>
-
-                    <a href="{{ route('operational.index') }}" class="px-3 py-1.5 rounded-lg bg-cyan-50 dark:bg-cyan-600/20 hover:bg-cyan-100 dark:hover:bg-cyan-600/30 border border-cyan-200 dark:border-cyan-500/40 text-cyan-700 dark:text-cyan-300 text-xs font-semibold transition flex items-center gap-1.5">
-                        <i class="bi bi-tools text-cyan-600 dark:text-cyan-400"></i>
-                        <span class="hidden sm:inline">Operasional</span>
-                    </a>
-
-                    <a href="{{ route('letters.index') }}" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold transition flex items-center gap-1.5">
-                        <i class="bi bi-envelope-paper text-slate-600 dark:text-slate-400"></i>
-                        <span class="hidden sm:inline">Surat</span>
-                    </a>
-
-                    <div class="hidden md:flex flex-col text-right pl-2 border-l border-slate-200 dark:border-slate-800">
-                        <span class="text-xs font-semibold text-slate-900 dark:text-white">{{ Auth::user()->name }}</span>
-                        <span class="text-[10px] text-slate-500 dark:text-slate-400 font-mono">{{ Auth::user()->nip ?? Auth::user()->email }}</span>
-                    </div>
-
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="px-3 py-1.5 rounded-lg bg-rose-50 dark:bg-rose-500/10 hover:bg-rose-100 dark:hover:bg-rose-500/20 border border-rose-200 dark:border-rose-500/30 text-rose-700 dark:text-rose-300 text-xs font-semibold transition flex items-center gap-1.5">
-                            <i class="bi bi-box-arrow-right"></i>
-                            <span class="hidden sm:inline">Keluar</span>
-                        </button>
-                    </form>
+                    <!-- Hamburger Menu Button (Mobile & Desktop Clean Access) -->
+                    <button type="button" onclick="toggleNavDrawer()" class="p-2 sm:px-3 sm:py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition flex items-center gap-1.5 shadow-md shadow-blue-600/20" title="Buka Menu Navigasi">
+                        <i class="bi bi-list text-lg leading-none"></i>
+                        <span class="hidden sm:inline">Menu</span>
+                    </button>
                 @endauth
             </div>
         </div>
     </header>
+
+    @auth
+    <!-- Slide-over Off-canvas Drawer Navigation (Hamburger Menu) -->
+    <div id="navDrawerBackdrop" onclick="toggleNavDrawer()" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none"></div>
+
+    <aside id="navDrawer" class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between">
+        
+        <!-- Drawer Header -->
+        <div>
+            <div class="p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                <div class="flex items-center space-x-2.5">
+                    <div class="h-9 w-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center font-bold text-white shadow-md">
+                        <i class="bi bi-grid-fill"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-sm font-bold text-slate-900 dark:text-white leading-tight">Menu Navigasi</h2>
+                        <span class="text-[10px] uppercase font-semibold text-blue-600 dark:text-blue-400">SIAP PL Deltamas</span>
+                    </div>
+                </div>
+                <button type="button" onclick="toggleNavDrawer()" class="p-2 rounded-lg text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <i class="bi bi-x-lg text-base"></i>
+                </button>
+            </div>
+
+            <!-- Current User Profile Card in Drawer -->
+            <div class="p-4 mx-4 mt-4 rounded-2xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60">
+                <div class="flex items-center space-x-3">
+                    <div class="h-10 w-10 rounded-xl bg-blue-600 text-white font-bold flex items-center justify-center text-sm shadow">
+                        {{ substr(Auth::user()->name, 0, 2) }}
+                    </div>
+                    <div class="overflow-hidden">
+                        <div class="text-xs font-bold text-slate-900 dark:text-white truncate">{{ Auth::user()->name }}</div>
+                        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-mono truncate">{{ Auth::user()->nip ?? Auth::user()->email }}</div>
+                        <span class="inline-block mt-0.5 px-2 py-0.2 rounded text-[9px] uppercase font-bold bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300">
+                            {{ ucfirst(str_replace('_', ' ', Auth::user()->getRoleNames()->first() ?? 'Staf')) }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nav Links List -->
+            <nav class="p-4 space-y-1.5 overflow-y-auto max-h-[calc(100vh-280px)]">
+                <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition {{ request()->routeIs('dashboard') ? 'bg-blue-600 text-white shadow-md' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800' }}">
+                    <i class="bi bi-house-door-fill text-base w-5 text-center"></i>
+                    <span>Dashboard Beranda</span>
+                </a>
+
+                <a href="{{ route('announcements.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition {{ request()->routeIs('announcements.*') ? 'bg-blue-600 text-white shadow-md' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800' }}">
+                    <i class="bi bi-megaphone-fill text-base w-5 text-center text-blue-500"></i>
+                    <span>Papan Siaran (Broadcast)</span>
+                </a>
+
+                <a href="{{ route('agendas.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition {{ request()->routeIs('agendas.*') ? 'bg-blue-600 text-white shadow-md' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800' }}">
+                    <i class="bi bi-calendar3 text-base w-5 text-center text-emerald-500"></i>
+                    <span>Kalender Agenda Kampus</span>
+                </a>
+
+                <a href="{{ route('leaves.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition {{ request()->routeIs('leaves.*') ? 'bg-blue-600 text-white shadow-md' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800' }}">
+                    <i class="bi bi-file-earmark-check-fill text-base w-5 text-center text-amber-500"></i>
+                    <span>Perizinan & Guru Inval</span>
+                </a>
+
+                <a href="{{ route('facilities.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition {{ request()->routeIs('facilities.*') ? 'bg-blue-600 text-white shadow-md' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800' }}">
+                    <i class="bi bi-building text-base w-5 text-center text-indigo-500"></i>
+                    <span>Fasilitas & E-Ticket QR</span>
+                </a>
+
+                <a href="{{ route('operational.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition {{ request()->routeIs('operational.*') ? 'bg-blue-600 text-white shadow-md' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800' }}">
+                    <i class="bi bi-tools text-base w-5 text-center text-cyan-500"></i>
+                    <span>Operasional Lapangan</span>
+                </a>
+
+                <a href="{{ route('letters.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition {{ request()->routeIs('letters.*') ? 'bg-blue-600 text-white shadow-md' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800' }}">
+                    <i class="bi bi-envelope-paper-fill text-base w-5 text-center text-slate-400"></i>
+                    <span>Tata Persuratan & Arsip</span>
+                </a>
+
+                <div class="pt-2 border-t border-slate-200 dark:border-slate-800 mt-2">
+                    <a href="{{ route('greeting.show') }}" class="flex items-center gap-3 px-3.5 py-2 rounded-xl text-xs font-medium text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                        <i class="bi bi-chat-quote-fill text-amber-500 w-5 text-center"></i>
+                        <span>Sapaan Koordinator</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Drawer Footer: Logout Button -->
+        <div class="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50">
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="w-full py-2.5 px-4 rounded-xl bg-rose-50 dark:bg-rose-500/10 hover:bg-rose-100 dark:hover:bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-500/30 text-xs font-bold transition flex items-center justify-center gap-2">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Keluar dari Akun</span>
+                </button>
+            </form>
+        </div>
+    </aside>
+    @endauth
 
     <!-- Main Content Yield -->
     <main class="flex-1 w-full">
@@ -145,6 +211,23 @@
             } else {
                 document.documentElement.classList.add('dark');
                 localStorage.theme = 'dark';
+            }
+        }
+
+        function toggleNavDrawer() {
+            const drawer = document.getElementById('navDrawer');
+            const backdrop = document.getElementById('navDrawerBackdrop');
+            if (!drawer || !backdrop) return;
+
+            const isClosed = drawer.classList.contains('translate-x-full');
+            if (isClosed) {
+                drawer.classList.remove('translate-x-full');
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+                backdrop.classList.add('opacity-100');
+            } else {
+                drawer.classList.add('translate-x-full');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+                backdrop.classList.remove('opacity-100');
             }
         }
     </script>

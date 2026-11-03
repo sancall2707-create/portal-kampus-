@@ -3,16 +3,16 @@
 @section('title', 'Operasional Lapangan & Keamanan — SIAP PL Deltamas')
 
 @section('content')
-<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
-    <!-- Header Section -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-5">
+    <!-- Header Section: Clean Responsive Header -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-800 pb-4">
         <div>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
-                <span>Operasional Lapangan & Keamanan</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+                Operasional Lapangan & Keamanan
             </h2>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                Pusat penugasan langsung (direct tasking), tiket sarpras, tombol darurat (Panic Button), dan buku tamu gerbang.
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                Pusat penugasan langsung, helpdesk kerusakan, tombol darurat, dan buku tamu gerbang.
             </p>
         </div>
 
@@ -20,7 +20,7 @@
         @if($user->can('panic.trigger'))
             <form action="{{ route('operational.panic') }}" method="POST" onsubmit="return confirm('PERINGATAN: Apakah Anda yakin ingin memicu sinyal PANIC BUTTON darurat? Notifikasi prioritas tinggi akan segera dikirimkan ke seluruh pimpinan kampus.')">
                 @csrf
-                <button type="submit" class="py-2.5 px-4 rounded-xl bg-rose-600 hover:bg-rose-500 active:scale-95 text-white font-extrabold text-xs shadow-lg shadow-rose-600/40 transition flex items-center gap-2 animate-pulse">
+                <button type="submit" class="w-full sm:w-auto py-2.5 px-4 rounded-xl bg-rose-600 hover:bg-rose-500 active:scale-95 text-white font-extrabold text-xs shadow-lg shadow-rose-600/30 transition flex items-center justify-center gap-2 animate-pulse">
                     <i class="bi bi-exclamation-octagon-fill text-sm"></i>
                     <span>PANIC BUTTON (DARURAT)</span>
                 </button>
@@ -36,44 +36,44 @@
         </div>
     @endif
 
-    <!-- Sub Navigation Tabs (OP-01 s.d. OP-05) -->
-    <div class="flex items-center space-x-2 border-b border-slate-200 dark:border-slate-800 overflow-x-auto pb-1">
+    <!-- Mobile-Optimized Sub Navigation (Scrollable Pill Tabs) -->
+    <div class="flex items-center space-x-2 border-b border-slate-200 dark:border-slate-800 overflow-x-auto no-scrollbar pb-1 -mx-4 px-4 sm:mx-0 sm:px-0">
         <a href="{{ route('operational.index', ['tab' => 'tasks']) }}" 
-           class="px-4 py-2 text-xs font-bold transition flex items-center gap-2 rounded-t-xl {{ $viewTab === 'tasks' ? 'bg-blue-600 text-white' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800' }}">
+           class="px-3.5 py-2 text-xs font-bold transition flex items-center gap-2 rounded-xl shrink-0 whitespace-nowrap {{ $viewTab === 'tasks' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800' }}">
             <i class="bi bi-check2-square"></i>
-            <span>Direct Tasking ({{ $tasks->count() }})</span>
+            <span>Tugas Langsung ({{ $tasks->count() }})</span>
         </a>
         <a href="{{ route('operational.index', ['tab' => 'tickets']) }}" 
-           class="px-4 py-2 text-xs font-bold transition flex items-center gap-2 rounded-t-xl {{ $viewTab === 'tickets' ? 'bg-blue-600 text-white' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800' }}">
+           class="px-3.5 py-2 text-xs font-bold transition flex items-center gap-2 rounded-xl shrink-0 whitespace-nowrap {{ $viewTab === 'tickets' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800' }}">
             <i class="bi bi-wrench-adjustable"></i>
             <span>Tiket Kerusakan ({{ $tickets->count() }})</span>
         </a>
         <a href="{{ route('operational.index', ['tab' => 'panic']) }}" 
-           class="px-4 py-2 text-xs font-bold transition flex items-center gap-2 rounded-t-xl {{ $viewTab === 'panic' ? 'bg-rose-600 text-white' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800' }}">
+           class="px-3.5 py-2 text-xs font-bold transition flex items-center gap-2 rounded-xl shrink-0 whitespace-nowrap {{ $viewTab === 'panic' ? 'bg-rose-600 text-white shadow-sm' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800' }}">
             <i class="bi bi-bell-fill"></i>
-            <span>Log Panic Button ({{ $panicAlerts->count() }})</span>
+            <span>Log Panic ({{ $panicAlerts->count() }})</span>
         </a>
         <a href="{{ route('operational.index', ['tab' => 'guests']) }}" 
-           class="px-4 py-2 text-xs font-bold transition flex items-center gap-2 rounded-t-xl {{ $viewTab === 'guests' ? 'bg-blue-600 text-white' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800' }}">
+           class="px-3.5 py-2 text-xs font-bold transition flex items-center gap-2 rounded-xl shrink-0 whitespace-nowrap {{ $viewTab === 'guests' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800' }}">
             <i class="bi bi-journal-text"></i>
-            <span>Buku Tamu Digital ({{ $guestLogs->count() }})</span>
+            <span>Buku Tamu ({{ $guestLogs->count() }})</span>
         </a>
     </div>
 
     @if($viewTab === 'tasks')
         <!-- TAB 1: DIRECT TASKING (OP-01 & OP-02) -->
         <div class="space-y-4">
-            <div class="flex items-center justify-between">
-                <span class="text-xs text-slate-500 font-medium">Penugasan operasional langsung ke TU, Pelaksana Kebersihan, dan Satpam.</span>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <span class="text-xs text-slate-500 font-medium">Instruksi kerja pimpinan langsung ke TU, Pelaksana Kebersihan, dan Satpam.</span>
                 @if($user->can('task.assign'))
-                    <button type="button" onclick="document.getElementById('modalTask').classList.remove('hidden')" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition flex items-center gap-1.5 shadow-sm">
+                    <button type="button" onclick="document.getElementById('modalTask').classList.remove('hidden')" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
                         <i class="bi bi-plus-lg"></i>
                         <span>Beri Tugas Baru</span>
                     </button>
                 @endif
             </div>
 
-            <!-- Task List -->
+            <!-- Task List Cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 @forelse($tasks as $t)
                     <div class="rounded-2xl border {{ $t->status === 'done' ? 'border-emerald-200 dark:border-emerald-500/30 bg-emerald-50/20 dark:bg-emerald-950/10' : ($t->priority === 'urgent' ? 'border-rose-300 dark:border-rose-500/40 bg-rose-50/30 dark:bg-rose-950/20' : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850') }} p-5 space-y-3 shadow-sm transition-colors">
@@ -87,7 +87,7 @@
                                 </span>
                             @else
                                 <span class="px-2.5 py-0.5 rounded-full text-[10px] uppercase font-bold bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-300">
-                                    Menunggu / Dikerjakan
+                                    Menunggu
                                 </span>
                             @endif
                         </div>
@@ -109,15 +109,15 @@
                         @if($t->status !== 'done' && $user->can('task.receive'))
                             <form action="{{ route('operational.complete_task', $t->id) }}" method="POST" class="pt-1">
                                 @csrf
-                                <button type="submit" class="w-full py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 shadow">
-                                    <i class="bi bi-check2-circle"></i>
+                                <button type="submit" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 shadow">
+                                    <i class="bi bi-check2-circle text-base"></i>
                                     <span>Konfirmasi Selesai Tugas (Satu Ketukan)</span>
                                 </button>
                             </form>
                         @endif
                     </div>
                 @empty
-                    <div class="col-span-2 py-12 text-center text-slate-400">
+                    <div class="col-span-1 md:col-span-2 py-12 text-center text-slate-400 border border-dashed border-slate-200 dark:border-slate-800 rounded-2xl bg-white/40 dark:bg-slate-850/40">
                         <i class="bi bi-check2-all text-3xl"></i>
                         <p class="mt-2 text-xs font-semibold">Tidak ada tugas lapangan aktif saat ini.</p>
                     </div>
@@ -128,15 +128,15 @@
     @elseif($viewTab === 'tickets')
         <!-- TAB 2: TIKET KERUSAKAN (OP-03) -->
         <div class="space-y-4">
-            <div class="flex items-center justify-between">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <span class="text-xs text-slate-500 font-medium">Helpdesk pelaporan kerusakan sarpras dan insiden lapangan.</span>
-                <button type="button" onclick="document.getElementById('modalTicket').classList.remove('hidden')" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition flex items-center gap-1.5 shadow-sm">
+                <button type="button" onclick="document.getElementById('modalTicket').classList.remove('hidden')" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
                     <i class="bi bi-plus-lg"></i>
                     <span>Lapor Kerusakan</span>
                 </button>
             </div>
 
-            <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/40 shadow-sm transition-colors">
+            <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850 shadow-sm transition-colors">
                 <table class="w-full text-left text-xs border-collapse">
                     <thead class="bg-slate-50 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[11px] border-b border-slate-200 dark:border-slate-700 font-semibold">
                         <tr>
@@ -150,14 +150,14 @@
                     <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
                         @forelse($tickets as $tk)
                             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition">
-                                <td class="py-3 px-4 font-mono font-bold text-blue-600 dark:text-blue-400">{{ $tk->ticket_no }}</td>
+                                <td class="py-3 px-4 font-mono font-bold text-blue-600 dark:text-blue-400 whitespace-nowrap">{{ $tk->ticket_no }}</td>
                                 <td class="py-3 px-4">
                                     <div class="font-bold text-slate-900 dark:text-white">{{ $tk->location_text }}</div>
                                     <div class="text-[11px] text-slate-500">{{ $tk->facility_name ?? "Unit {$tk->unit_code}" }}</div>
                                 </td>
                                 <td class="py-3 px-4 max-w-xs">{{ $tk->description }}</td>
-                                <td class="py-3 px-4 text-slate-600 dark:text-slate-400">{{ $tk->reporter_name }}</td>
-                                <td class="py-3 px-4">
+                                <td class="py-3 px-4 text-slate-600 dark:text-slate-400 whitespace-nowrap">{{ $tk->reporter_name }}</td>
+                                <td class="py-3 px-4 whitespace-nowrap">
                                     <span class="px-2 py-0.5 rounded text-[10px] uppercase font-bold {{ $tk->severity === 'high' ? 'bg-rose-100 text-rose-700 dark:bg-rose-500/20 dark:text-rose-300' : 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300' }}">
                                         {{ $tk->severity }}
                                     </span>
@@ -187,7 +187,7 @@
                 <span class="font-mono font-bold uppercase text-[10px] bg-rose-200 dark:bg-rose-900/50 px-2 py-1 rounded">Prioritas Darurat</span>
             </div>
 
-            <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/40 shadow-sm transition-colors">
+            <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850 shadow-sm transition-colors">
                 <table class="w-full text-left text-xs border-collapse">
                     <thead class="bg-slate-50 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[11px] border-b border-slate-200 dark:border-slate-700 font-semibold">
                         <tr>
@@ -201,13 +201,13 @@
                     <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
                         @forelse($panicAlerts as $pa)
                             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition {{ $pa->status === 'active' ? 'bg-rose-50/50 dark:bg-rose-950/30' : '' }}">
-                                <td class="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white">
+                                <td class="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white whitespace-nowrap">
                                     {{ \Carbon\Carbon::parse($pa->triggered_at)->translatedFormat('d M Y, H:i:s') }} WIB
                                 </td>
-                                <td class="py-3 px-4 font-bold text-rose-600 dark:text-rose-400">{{ $pa->trigger_name }}</td>
-                                <td class="py-3 px-4">{{ $pa->location_text }}</td>
+                                <td class="py-3 px-4 font-bold text-rose-600 dark:text-rose-400 whitespace-nowrap">{{ $pa->trigger_name }}</td>
+                                <td class="py-3 px-4 whitespace-nowrap">{{ $pa->location_text }}</td>
                                 <td class="py-3 px-4 text-slate-800 dark:text-slate-200">{{ $pa->note }}</td>
-                                <td class="py-3 px-4">
+                                <td class="py-3 px-4 whitespace-nowrap">
                                     @if($pa->status === 'active')
                                         <span class="px-2 py-0.5 rounded text-[10px] uppercase font-bold bg-rose-600 text-white animate-pulse">
                                             AKTIF
@@ -232,17 +232,17 @@
     @else
         <!-- TAB 4: BUKU TAMU DIGITAL (OP-05) -->
         <div class="space-y-4">
-            <div class="flex items-center justify-between">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <span class="text-xs text-slate-500 font-medium">Pencatatan identitas tamu, vendor, dan wali murid di gerbang masuk kampus.</span>
                 @if($user->can('guestbook.record'))
-                    <button type="button" onclick="document.getElementById('modalGuest').classList.remove('hidden')" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition flex items-center gap-1.5 shadow-sm">
+                    <button type="button" onclick="document.getElementById('modalGuest').classList.remove('hidden')" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
                         <i class="bi bi-person-plus-fill"></i>
                         <span>Catat Tamu Masuk</span>
                     </button>
                 @endif
             </div>
 
-            <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/40 shadow-sm transition-colors">
+            <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850 shadow-sm transition-colors">
                 <table class="w-full text-left text-xs border-collapse">
                     <thead class="bg-slate-50 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[11px] border-b border-slate-200 dark:border-slate-700 font-semibold">
                         <tr>
@@ -250,27 +250,27 @@
                             <th class="py-3 px-4">Nama Tamu & Instansi</th>
                             <th class="py-3 px-4">Plat Kendaraan</th>
                             <th class="py-3 px-4">Tujuan / Menuju</th>
-                            <th class="py-3 px-4">Satpam Pencatat</th>
+                            <th class="py-3 px-4">Satpam</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
                         @forelse($guestLogs as $gl)
                             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition">
-                                <td class="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white">
+                                <td class="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white whitespace-nowrap">
                                     {{ \Carbon\Carbon::parse($gl->check_in_at)->translatedFormat('d M H:i') }} WIB
                                 </td>
                                 <td class="py-3 px-4">
                                     <div class="font-bold text-slate-900 dark:text-white">{{ $gl->guest_name }}</div>
                                     <div class="text-[11px] text-slate-500">{{ $gl->institution ?? 'Pribadi' }} ({{ ucfirst($gl->guest_type) }})</div>
                                 </td>
-                                <td class="py-3 px-4 font-mono font-bold text-blue-600 dark:text-blue-400">{{ $gl->vehicle_plate ?: '-' }}</td>
+                                <td class="py-3 px-4 font-mono font-bold text-blue-600 dark:text-blue-400 whitespace-nowrap">{{ $gl->vehicle_plate ?: '-' }}</td>
                                 <td class="py-3 px-4">
                                     <div class="text-slate-800 dark:text-slate-200">{{ $gl->purpose }}</div>
                                     @if($gl->visit_to)
                                         <div class="text-[11px] text-slate-400 font-mono">Menuju: {{ $gl->visit_to }}</div>
                                     @endif
                                 </td>
-                                <td class="py-3 px-4 text-slate-500">{{ $gl->satpam_name }}</td>
+                                <td class="py-3 px-4 text-slate-500 whitespace-nowrap">{{ $gl->satpam_name }}</td>
                             </tr>
                         @empty
                             <tr>

@@ -2,48 +2,55 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, HasRoles, Notifiable, SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'user_type', 'nip', 'name', 'email', 'google_id', 'password', 'phone_wa',
+        'photo_path', 'birth_date', 'nik', 'job_title', 'staff_category',
+        'organization_name', 'status', 'last_login_at',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = ['password', 'remember_token', 'nik'];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'nik' => 'encrypted',
+            'birth_date' => 'date',
+            'last_login_at' => 'datetime',
         ];
+    }
+
+    public function placements(): HasMany
+    {
+        return $this->hasMany(UserUnit::class);
+    }
+
+    public function units(): BelongsToMany
+    {
+        return $this->belongsToMany(Unit::class, 'user_units')
+            ->withPivot(['position', 'is_primary', 'start_date', 'end_date'])
+            ->wherePivotNull('end_date');
+    }
+
+    public function isStaff(): bool
+    {
+        return $this->user_type === 'staff';
+    }
+
+    public function isActive(): bool
+    {
+        return $this->status === 'active';
     }
 }

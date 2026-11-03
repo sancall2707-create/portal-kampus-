@@ -3,8 +3,11 @@
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\GreetingController;
 use App\Http\Controllers\LeaveController;
+use App\Http\Controllers\LetterController;
+use App\Http\Controllers\OperationalController;
 use App\Http\Middleware\CheckMandatoryGreeting;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +21,7 @@ Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Rute Terproteksi Staf
+// Rute Terproteksi Staf & Admin
 Route::middleware(['auth'])->group(function () {
     // Layar Sapaan Intersepsi Koordinator (COM-01)
     Route::get('/sapaan-koordinator', [GreetingController::class, 'show'])->name('greeting.show');
@@ -28,7 +31,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware([CheckMandatoryGreeting::class])->group(function () {
         Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
-        // Modul Siaran & Pengumuman (COM-03 s.d. COM-05)
+        // 1. Modul Siaran & Pengumuman (COM-03 s.d. COM-05)
         Route::prefix('announcements')->name('announcements.')->group(function () {
             Route::get('/', [AnnouncementController::class, 'index'])->name('index');
             Route::get('/create', [AnnouncementController::class, 'create'])->name('create');
@@ -37,14 +40,14 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/{id}/receipts', [AnnouncementController::class, 'readReceipts'])->name('receipts');
         });
 
-        // Modul Kalender & Agenda Kampus (AG-01 s.d. AG-04)
+        // 2. Modul Kalender & Agenda Kampus (AG-01 s.d. AG-04)
         Route::prefix('agendas')->name('agendas.')->group(function () {
             Route::get('/', [AgendaController::class, 'index'])->name('index');
             Route::get('/create', [AgendaController::class, 'create'])->name('create');
             Route::post('/', [AgendaController::class, 'store'])->name('store');
         });
 
-        // Modul Perizinan Pegawai & Guru Inval (LV-01 s.d. LV-07)
+        // 3. Modul Perizinan Pegawai & Guru Inval (LV-01 s.d. LV-07)
         Route::prefix('leaves')->name('leaves.')->group(function () {
             Route::get('/', [LeaveController::class, 'index'])->name('index');
             Route::get('/create', [LeaveController::class, 'create'])->name('create');
@@ -53,6 +56,33 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/{id}/approve-unit', [LeaveController::class, 'approveUnit'])->name('approve_unit');
             Route::post('/{id}/approve-coordinator', [LeaveController::class, 'approveCoordinator'])->name('approve_coordinator');
             Route::post('/substitutes/{id}/acknowledge', [LeaveController::class, 'acknowledgeSubstitute'])->name('acknowledge_substitute');
+        });
+
+        // 4. Modul Fasilitas & Reservasi (FC-01 s.d. FC-10)
+        Route::prefix('facilities')->name('facilities.')->group(function () {
+            Route::get('/', [FacilityController::class, 'index'])->name('index');
+            Route::get('/create', [FacilityController::class, 'create'])->name('create');
+            Route::post('/', [FacilityController::class, 'store'])->name('store');
+            Route::get('/{id}', [FacilityController::class, 'show'])->name('show');
+            Route::post('/{id}/screen-tu', [FacilityController::class, 'actionScreenTU'])->name('action_screening');
+            Route::post('/{id}/approve-unit', [FacilityController::class, 'actionApproveUnit'])->name('action_approve_unit');
+            Route::post('/{id}/approve-coordinator', [FacilityController::class, 'actionApproveCoordinator'])->name('action_approve_coordinator');
+        });
+
+        // 5. Modul Operasional Lapangan (Direct Tasking, Tiket, Panic Button, Buku Tamu)
+        Route::prefix('operational')->name('operational.')->group(function () {
+            Route::get('/', [OperationalController::class, 'index'])->name('index');
+            Route::post('/tasks', [OperationalController::class, 'storeTask'])->name('store_task');
+            Route::post('/tasks/{id}/complete', [OperationalController::class, 'completeTask'])->name('complete_task');
+            Route::post('/tickets', [OperationalController::class, 'storeTicket'])->name('store_ticket');
+            Route::post('/panic', [OperationalController::class, 'triggerPanic'])->name('panic');
+            Route::post('/guests', [OperationalController::class, 'storeGuest'])->name('store_guest');
+        });
+
+        // 6. Modul Tata Persuratan & Penomoran Otomatis (OP-07)
+        Route::prefix('letters')->name('letters.')->group(function () {
+            Route::get('/', [LetterController::class, 'index'])->name('index');
+            Route::post('/', [LetterController::class, 'store'])->name('store');
         });
     });
 });

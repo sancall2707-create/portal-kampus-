@@ -95,6 +95,21 @@
                         <span class="hidden sm:inline">Perizinan</span>
                     </a>
 
+                    <a href="{{ route('facilities.index') }}" class="px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-600/20 hover:bg-indigo-100 dark:hover:bg-indigo-600/30 border border-indigo-200 dark:border-indigo-500/40 text-indigo-700 dark:text-indigo-300 text-xs font-semibold transition flex items-center gap-1.5">
+                        <i class="bi bi-building text-indigo-600 dark:text-indigo-400"></i>
+                        <span class="hidden sm:inline">Fasilitas</span>
+                    </a>
+
+                    <a href="{{ route('operational.index') }}" class="px-3 py-1.5 rounded-lg bg-cyan-50 dark:bg-cyan-600/20 hover:bg-cyan-100 dark:hover:bg-cyan-600/30 border border-cyan-200 dark:border-cyan-500/40 text-cyan-700 dark:text-cyan-300 text-xs font-semibold transition flex items-center gap-1.5">
+                        <i class="bi bi-tools text-cyan-600 dark:text-cyan-400"></i>
+                        <span class="hidden sm:inline">Operasional</span>
+                    </a>
+
+                    <a href="{{ route('letters.index') }}" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold transition flex items-center gap-1.5">
+                        <i class="bi bi-envelope-paper text-slate-600 dark:text-slate-400"></i>
+                        <span class="hidden sm:inline">Surat</span>
+                    </a>
+
                     <div class="hidden md:flex flex-col text-right pl-2 border-l border-slate-200 dark:border-slate-800">
                         <span class="text-xs font-semibold text-slate-900 dark:text-white">{{ Auth::user()->name }}</span>
                         <span class="text-[10px] text-slate-500 dark:text-slate-400 font-mono">{{ Auth::user()->nip ?? Auth::user()->email }}</span>

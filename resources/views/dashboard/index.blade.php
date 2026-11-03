@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    <!-- Quick Navigation Hub (Menu Cepat Kotak Rapi) -->
+    <!-- Quick Navigation Hub (Menu Cepat Kotak Rapi Termasuk E-Raport) -->
     <div class="space-y-3">
         <div class="flex items-center justify-between">
             <h3 class="text-xs uppercase font-extrabold tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
@@ -38,7 +38,7 @@
             <span class="text-[11px] text-slate-400">Atau buka tombol Menu di kanan atas</span>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
             <!-- 1. Papan Siaran -->
             <a href="{{ route('announcements.index') }}" class="p-4 rounded-2xl bg-white dark:bg-slate-800/80 hover:bg-slate-50 dark:hover:bg-slate-750 border border-slate-200 dark:border-slate-800 text-center transition shadow-sm hover:shadow-md hover:border-blue-500 group flex flex-col items-center justify-center space-y-2">
                 <div class="h-11 w-11 rounded-2xl bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
@@ -92,6 +92,18 @@
                 <div class="text-xs font-bold text-slate-800 dark:text-white leading-tight">Tata Persuratan</div>
                 <div class="text-[10px] text-slate-400 dark:text-slate-400 font-medium">Arsip & No. Surat</div>
             </a>
+
+            <!-- 7. E-Raport (Disisipkan dengan status masih dalam pengembangan) -->
+            <button type="button" onclick="showDevelopmentNotice('E-Raport')" class="p-4 rounded-2xl bg-white dark:bg-slate-800/80 hover:bg-rose-50/50 dark:hover:bg-rose-950/20 border border-dashed border-rose-300 dark:border-rose-500/40 text-center transition shadow-sm hover:shadow-md hover:border-rose-500 group flex flex-col items-center justify-center space-y-2 relative overflow-hidden">
+                <span class="absolute top-2 right-2 px-1.5 py-0.2 rounded text-[8px] uppercase font-extrabold bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-500/30">
+                    Tahap II
+                </span>
+                <div class="h-11 w-11 rounded-2xl bg-rose-100 dark:bg-rose-500/20 text-rose-600 dark:text-rose-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
+                    <i class="bi bi-mortarboard-fill"></i>
+                </div>
+                <div class="text-xs font-bold text-slate-800 dark:text-white leading-tight">E-Raport</div>
+                <div class="text-[10px] text-rose-600 dark:text-rose-400 font-medium">Pengembangan</div>
+            </button>
         </div>
     </div>
 
@@ -149,35 +161,28 @@
         <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850 p-6 space-y-4 shadow-sm transition-colors">
             <h3 class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-extrabold flex items-center gap-1.5">
                 <i class="bi bi-layers-fill text-emerald-600 dark:text-emerald-400 text-sm"></i>
-                <span>Status Modul Tahap Awal</span>
+                <span>Status Modul Pengembangan</span>
             </h3>
             <div class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
                 <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800">
-                    <span>Sapaan & Broadcast</span>
+                    <span>Tahap I: Komunikasi & Fasilitas</span>
                     <span class="text-emerald-600 dark:text-emerald-400 font-mono text-[10px] font-bold flex items-center gap-1">
                         <i class="bi bi-check-circle-fill"></i>
-                        <span>Aktif</span>
+                        <span>Selesai</span>
                     </span>
                 </div>
                 <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800">
-                    <span>Kalender & Agenda</span>
+                    <span>Tahap I: Izin & Operasional</span>
                     <span class="text-emerald-600 dark:text-emerald-400 font-mono text-[10px] font-bold flex items-center gap-1">
                         <i class="bi bi-check-circle-fill"></i>
-                        <span>Aktif</span>
+                        <span>Selesai</span>
                     </span>
                 </div>
                 <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800">
-                    <span>Izin Berjenjang & Inval</span>
-                    <span class="text-emerald-600 dark:text-emerald-400 font-mono text-[10px] font-bold flex items-center gap-1">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Aktif</span>
-                    </span>
-                </div>
-                <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800">
-                    <span>Fasilitas & E-Ticket QR</span>
-                    <span class="text-emerald-600 dark:text-emerald-400 font-mono text-[10px] font-bold flex items-center gap-1">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Aktif</span>
+                    <span>Tahap II: Modul E-Raport</span>
+                    <span class="text-amber-500 font-mono text-[10px] font-semibold flex items-center gap-1">
+                        <i class="bi bi-cone-striped"></i>
+                        <span>Pengembangan</span>
                     </span>
                 </div>
             </div>

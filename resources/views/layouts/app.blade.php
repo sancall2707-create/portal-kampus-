@@ -85,7 +85,7 @@
                 </button>
 
                 @auth
-                    <!-- Hamburger Menu Button (Mobile & Desktop Clean Access) -->
+                    <!-- Hamburger Menu Button -->
                     <button type="button" onclick="toggleNavDrawer()" class="p-2 sm:px-3 sm:py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition flex items-center gap-1.5 shadow-md shadow-blue-600/20" title="Buka Menu Navigasi">
                         <i class="bi bi-list text-lg leading-none"></i>
                         <span class="hidden sm:inline">Menu</span>
@@ -101,7 +101,7 @@
 
     <aside id="navDrawer" class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between">
         
-        <!-- Drawer Header -->
+        <!-- Drawer Content -->
         <div>
             <div class="p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
                 <div class="flex items-center space-x-2.5">
@@ -118,7 +118,7 @@
                 </button>
             </div>
 
-            <!-- Current User Profile Card in Drawer -->
+            <!-- Profile Info in Drawer -->
             <div class="p-4 mx-4 mt-4 rounded-2xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60">
                 <div class="flex items-center space-x-3">
                     <div class="h-10 w-10 rounded-xl bg-blue-600 text-white font-bold flex items-center justify-center text-sm shadow">
@@ -171,6 +171,17 @@
                     <span>Tata Persuratan & Arsip</span>
                 </a>
 
+                <!-- E-Raport Drawer Button (Under Development) -->
+                <button type="button" onclick="showDevelopmentNotice('E-Raport')" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-rose-50 dark:hover:bg-rose-950/20 hover:text-rose-600 dark:hover:text-rose-400 transition text-left group">
+                    <div class="flex items-center gap-3">
+                        <i class="bi bi-mortarboard-fill text-base w-5 text-center text-rose-500"></i>
+                        <span>E-Raport</span>
+                    </div>
+                    <span class="text-[9px] uppercase font-bold px-2 py-0.5 rounded-md bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-500/30">
+                        Tahap II
+                    </span>
+                </button>
+
                 <div class="pt-2 border-t border-slate-200 dark:border-slate-800 mt-2">
                     <a href="{{ route('greeting.show') }}" class="flex items-center gap-3 px-3.5 py-2 rounded-xl text-xs font-medium text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
                         <i class="bi bi-chat-quote-fill text-amber-500 w-5 text-center"></i>
@@ -197,6 +208,31 @@
     <main class="flex-1 w-full">
         @yield('content')
     </main>
+
+    <!-- Modal Pemberitahuan Pengembangan (E-Raport) -->
+    <div id="devNoticeModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden transition-opacity">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-7 w-full max-w-sm space-y-4 shadow-2xl text-center">
+            <div class="h-16 w-16 rounded-full bg-amber-100 dark:bg-amber-500/20 border-2 border-amber-300 dark:border-amber-500/30 text-amber-600 dark:text-amber-400 flex items-center justify-center text-3xl mx-auto shadow-inner">
+                <i class="bi bi-cone-striped"></i>
+            </div>
+            
+            <div class="space-y-1.5">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Modul E-Raport</h3>
+                <div class="inline-block px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-500/30 text-[10px] font-bold uppercase tracking-wider">
+                    Tahap Pengembangan Lanjutan
+                </div>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pt-2">
+                    Fitur E-Raport (Master Siswa, Rombel, Master TP, Input Nilai, dan Cetak Raport PDF) saat ini <strong class="text-slate-900 dark:text-white">masih dalam proses pengembangan</strong> dan dijadwalkan rilis pada Tahap II.
+                </p>
+            </div>
+
+            <div class="pt-2">
+                <button type="button" onclick="closeDevelopmentNotice()" class="w-full py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold text-xs text-white shadow-lg shadow-blue-600/30 transition">
+                    Mengerti & Tutup
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="border-t border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 py-4 text-center text-xs text-slate-500 dark:text-slate-400 transition-colors">
@@ -228,6 +264,28 @@
                 drawer.classList.add('translate-x-full');
                 backdrop.classList.add('opacity-0', 'pointer-events-none');
                 backdrop.classList.remove('opacity-100');
+            }
+        }
+
+        function showDevelopmentNotice(featureName) {
+            const modal = document.getElementById('devNoticeModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+            }
+            // Tutup drawer jika sedang terbuka
+            const drawer = document.getElementById('navDrawer');
+            const backdrop = document.getElementById('navDrawerBackdrop');
+            if (drawer && !drawer.classList.contains('translate-x-full')) {
+                drawer.classList.add('translate-x-full');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+                backdrop.classList.remove('opacity-100');
+            }
+        }
+
+        function closeDevelopmentNotice() {
+            const modal = document.getElementById('devNoticeModal');
+            if (modal) {
+                modal.classList.add('hidden');
             }
         }
     </script>

@@ -145,7 +145,7 @@
 
             </div>
         @empty
-            <div class="text-center py-12 border border-dashed border-slate-300 dark:border-slate-800 rounded-2xl bg-white/40 dark:bg-slate-850/40 p-8 space-y-3">
+            <div class="text-center py-12 border border-dashed border-slate-300 dark:border-slate-800 rounded-2xl bg-white/40 dark:bg-slate-800/40 p-8 space-y-3">
                 <i class="bi bi-inbox text-3xl text-slate-400"></i>
                 <h3 class="text-sm font-bold text-slate-800 dark:text-white">Tidak ada siaran untuk kategori ini</h3>
                 <p class="text-xs text-slate-500 dark:text-slate-400">Seluruh pengumuman resmi terbaru akan ditampilkan secara real-time di halaman ini.</p>

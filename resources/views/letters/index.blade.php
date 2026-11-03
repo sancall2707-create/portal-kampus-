@@ -52,7 +52,7 @@
     </div>
 
     <!-- Letters Table -->
-    <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850 shadow-sm dark:shadow-xl backdrop-blur transition-colors">
+    <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 shadow-sm dark:shadow-xl backdrop-blur transition-colors">
         <table class="w-full text-left text-xs border-collapse">
             <thead class="bg-slate-50 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[11px] border-b border-slate-200 dark:border-slate-700 font-semibold">
                 <tr>

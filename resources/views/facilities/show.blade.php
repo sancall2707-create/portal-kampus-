@@ -74,7 +74,7 @@
     @endif
 
     <!-- Card 2: Informasi Detail Pengajuan -->
-    <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850 p-6 sm:p-8 space-y-6 shadow-sm dark:shadow-xl transition-colors">
+    <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-6 sm:p-8 space-y-6 shadow-sm dark:shadow-xl transition-colors">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-5">
             <div>
                 <span class="text-xs uppercase font-bold text-blue-600 dark:text-blue-400 tracking-wider">Detail Permohonan Fasilitas</span>
@@ -123,7 +123,7 @@
     </div>
 
     <!-- Card 3: Alur Persetujuan Berjenjang (Approvals Log) -->
-    <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850 p-6 sm:p-8 space-y-4 shadow-sm dark:shadow-xl transition-colors">
+    <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-6 sm:p-8 space-y-4 shadow-sm dark:shadow-xl transition-colors">
         <h3 class="text-xs uppercase font-bold text-slate-500 dark:text-slate-400 tracking-wider flex items-center gap-1.5">
             <i class="bi bi-diagram-3-fill text-purple-600 dark:text-purple-400 text-sm"></i>
             <span>Jejak Persetujuan Berjenjang Fasilitas</span>

@@ -41,7 +41,7 @@
     @endif
 
     <!-- Card 1: Informasi Permohonan -->
-    <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850 p-6 sm:p-8 space-y-6 shadow-sm dark:shadow-xl transition-colors">
+    <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-6 sm:p-8 space-y-6 shadow-sm dark:shadow-xl transition-colors">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-5">
             <div>
                 <span class="text-xs uppercase font-bold text-blue-600 dark:text-blue-400 tracking-wider">Permohonan Izin Pegawai</span>
@@ -98,7 +98,7 @@
 
     <!-- Card 2: Status Guru Pengganti (Inval - LV-05) -->
     @if($substitute)
-        <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850 p-6 space-y-4 shadow-sm dark:shadow-xl transition-colors">
+        <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-6 space-y-4 shadow-sm dark:shadow-xl transition-colors">
             <h3 class="text-xs uppercase font-bold text-slate-500 dark:text-slate-400 tracking-wider flex items-center gap-1.5">
                 <i class="bi bi-person-lines-fill text-blue-600 dark:text-blue-400 text-sm"></i>
                 <span>Penugasan Guru Pengganti (Inval) (LV-05)</span>
@@ -140,7 +140,7 @@
     @endif
 
     <!-- Card 3: Jejak Persetujuan Berjenjang (Tiered Approval Log - Bagian 6) -->
-    <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850 p-6 sm:p-8 space-y-4 shadow-sm dark:shadow-xl transition-colors">
+    <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-6 sm:p-8 space-y-4 shadow-sm dark:shadow-xl transition-colors">
         <h3 class="text-xs uppercase font-bold text-slate-500 dark:text-slate-400 tracking-wider flex items-center gap-1.5">
             <i class="bi bi-diagram-3-fill text-purple-600 dark:text-purple-400 text-sm"></i>
             <span>Alur Persetujuan Berjenjang (Tiered Approval)</span>

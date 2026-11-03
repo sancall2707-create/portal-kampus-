@@ -38,7 +38,7 @@
     @endif
 
     <!-- Monitor Ketidakhadiran Real-Time Hari Ini (LV-07) -->
-    <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850 p-5 space-y-3 shadow-sm dark:shadow-xl transition-colors">
+    <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 space-y-3 shadow-sm dark:shadow-xl transition-colors">
         <div class="flex items-center justify-between">
             <h3 class="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
                 <i class="bi bi-person-x-fill text-rose-500 text-sm"></i>

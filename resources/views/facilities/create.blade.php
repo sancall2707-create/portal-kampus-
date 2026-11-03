@@ -28,7 +28,7 @@
     @endif
 
     <!-- Form Card (FC-04 & FC-05) -->
-    <form action="{{ route('facilities.store') }}" method="POST" enctype="multipart/form-data" class="bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 space-y-5 shadow-sm dark:shadow-2xl transition-colors">
+    <form action="{{ route('facilities.store') }}" method="POST" enctype="multipart/form-data" class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 space-y-5 shadow-sm dark:shadow-2xl transition-colors">
         @csrf
 
         <!-- Pilih Fasilitas -->

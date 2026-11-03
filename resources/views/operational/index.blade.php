@@ -76,7 +76,7 @@
             <!-- Task List Cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 @forelse($tasks as $t)
-                    <div class="rounded-2xl border {{ $t->status === 'done' ? 'border-emerald-200 dark:border-emerald-500/30 bg-emerald-50/20 dark:bg-emerald-950/10' : ($t->priority === 'urgent' ? 'border-rose-300 dark:border-rose-500/40 bg-rose-50/30 dark:bg-rose-950/20' : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850') }} p-5 space-y-3 shadow-sm transition-colors">
+                    <div class="rounded-2xl border {{ $t->status === 'done' ? 'border-emerald-200 dark:border-emerald-500/30 bg-emerald-50/20 dark:bg-emerald-950/10' : ($t->priority === 'urgent' ? 'border-rose-300 dark:border-rose-500/40 bg-rose-50/30 dark:bg-rose-950/20' : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800') }} p-5 space-y-3 shadow-sm transition-colors">
                         <div class="flex items-center justify-between">
                             <span class="px-2 py-0.5 rounded text-[10px] uppercase font-bold {{ $t->priority === 'urgent' ? 'bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-300' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300' }}">
                                 Prioritas: {{ $t->priority }}
@@ -117,7 +117,7 @@
                         @endif
                     </div>
                 @empty
-                    <div class="col-span-1 md:col-span-2 py-12 text-center text-slate-400 border border-dashed border-slate-200 dark:border-slate-800 rounded-2xl bg-white/40 dark:bg-slate-850/40">
+                    <div class="col-span-1 md:col-span-2 py-12 text-center text-slate-400 border border-dashed border-slate-200 dark:border-slate-800 rounded-2xl bg-white/40 dark:bg-slate-800/40">
                         <i class="bi bi-check2-all text-3xl"></i>
                         <p class="mt-2 text-xs font-semibold">Tidak ada tugas lapangan aktif saat ini.</p>
                     </div>
@@ -136,7 +136,7 @@
                 </button>
             </div>
 
-            <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850 shadow-sm transition-colors">
+            <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 shadow-sm transition-colors">
                 <table class="w-full text-left text-xs border-collapse">
                     <thead class="bg-slate-50 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[11px] border-b border-slate-200 dark:border-slate-700 font-semibold">
                         <tr>
@@ -187,7 +187,7 @@
                 <span class="font-mono font-bold uppercase text-[10px] bg-rose-200 dark:bg-rose-900/50 px-2 py-1 rounded">Prioritas Darurat</span>
             </div>
 
-            <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850 shadow-sm transition-colors">
+            <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 shadow-sm transition-colors">
                 <table class="w-full text-left text-xs border-collapse">
                     <thead class="bg-slate-50 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[11px] border-b border-slate-200 dark:border-slate-700 font-semibold">
                         <tr>
@@ -242,7 +242,7 @@
                 @endif
             </div>
 
-            <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850 shadow-sm transition-colors">
+            <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 shadow-sm transition-colors">
                 <table class="w-full text-left text-xs border-collapse">
                     <thead class="bg-slate-50 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[11px] border-b border-slate-200 dark:border-slate-700 font-semibold">
                         <tr>

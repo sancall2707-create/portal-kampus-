@@ -161,7 +161,7 @@
         <!-- TAB 2: CATALOG OF FACILITIES (FC-01) -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             @foreach($facilities as $f)
-                <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850 p-6 space-y-4 shadow-sm dark:shadow-xl transition-colors">
+                <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-6 space-y-4 shadow-sm dark:shadow-xl transition-colors">
                     <div class="flex items-start justify-between gap-3">
                         <div>
                             <div class="flex items-center space-x-2">

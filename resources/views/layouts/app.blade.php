@@ -171,11 +171,11 @@
                     <span>Tata Persuratan & Arsip</span>
                 </a>
 
-                <!-- E-Raport Drawer Button (Tanpa tulisan tahap 2) -->
+                <!-- Kurikulum Drawer Button -->
                 <button type="button" onclick="showDevelopmentNotice()" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition text-left group">
                     <div class="flex items-center gap-3">
-                        <i class="bi bi-mortarboard-fill text-base w-5 text-center text-blue-600 dark:text-blue-400"></i>
-                        <span>E-Raport</span>
+                        <i class="bi bi-book-half text-base w-5 text-center text-blue-600 dark:text-blue-400"></i>
+                        <span>Kurikulum</span>
                     </div>
                 </button>
 
@@ -206,7 +206,7 @@
         @yield('content')
     </main>
 
-    <!-- Modal Pemberitahuan Pengembangan (E-Raport) -->
+    <!-- Modal Pemberitahuan Pengembangan (Kurikulum) -->
     <div id="devNoticeModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden transition-opacity">
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-7 w-full max-w-sm space-y-4 shadow-2xl text-center">
             <div class="h-16 w-16 rounded-full bg-blue-100 dark:bg-blue-500/20 border-2 border-blue-200 dark:border-blue-500/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-3xl mx-auto shadow-inner">
@@ -214,7 +214,7 @@
             </div>
             
             <div class="space-y-1.5">
-                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Modul E-Raport</h3>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Modul Kurikulum</h3>
                 <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pt-1">
                     Fitur ini <strong class="text-slate-900 dark:text-white">masih dalam pengembangan</strong>.
                 </p>

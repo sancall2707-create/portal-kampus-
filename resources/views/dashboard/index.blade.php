@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    <!-- Quick Navigation Hub (Menu Cepat Kotak Rapi Tanpa Tulisan Tahap 2) -->
+    <!-- Quick Navigation Hub (Menu Cepat Kotak Rapi) -->
     <div class="space-y-3">
         <div class="flex items-center justify-between">
             <h3 class="text-xs uppercase font-extrabold tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
@@ -93,13 +93,13 @@
                 <div class="text-[10px] text-slate-400 dark:text-slate-400 font-medium">Arsip & No. Surat</div>
             </a>
 
-            <!-- 7. E-Raport (Tanpa tulisan tahap 2) -->
+            <!-- 7. Kurikulum (Ganti dari E-Raport) -->
             <button type="button" onclick="showDevelopmentNotice()" class="p-4 rounded-2xl bg-white dark:bg-slate-800/80 hover:bg-slate-50 dark:hover:bg-slate-750 border border-slate-200 dark:border-slate-800 text-center transition shadow-sm hover:shadow-md hover:border-blue-500 group flex flex-col items-center justify-center space-y-2">
                 <div class="h-11 w-11 rounded-2xl bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
-                    <i class="bi bi-mortarboard-fill"></i>
+                    <i class="bi bi-book-half"></i>
                 </div>
-                <div class="text-xs font-bold text-slate-800 dark:text-white leading-tight">E-Raport</div>
-                <div class="text-[10px] text-slate-400 dark:text-slate-400 font-medium">Akademik Nilai</div>
+                <div class="text-xs font-bold text-slate-800 dark:text-white leading-tight">Kurikulum</div>
+                <div class="text-[10px] text-slate-400 dark:text-slate-400 font-medium">Akademik & Nilai</div>
             </button>
         </div>
     </div>
@@ -176,7 +176,7 @@
                     </span>
                 </div>
                 <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800">
-                    <span>Modul E-Raport</span>
+                    <span>Modul Kurikulum</span>
                     <span class="text-amber-500 font-mono text-[10px] font-semibold flex items-center gap-1">
                         <i class="bi bi-info-circle-fill"></i>
                         <span>Pengembangan</span>

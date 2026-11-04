@@ -202,52 +202,52 @@
             </div>
 
             <!-- Visual Timeline Grid (Fasilitas x 7 Hari) -->
-            <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 shadow-sm transition-colors">
-                <table class="w-full text-left text-xs border-collapse">
-                    <thead class="bg-slate-50 dark:bg-slate-850 text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[11px] border-b border-slate-200 dark:border-slate-700 font-semibold">
+            <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition-colors">
+                <table class="w-full text-left text-xs border-collapse bg-white dark:bg-slate-800">
+                    <thead class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 uppercase tracking-wider text-[11px] border-b border-slate-200 dark:border-slate-700 font-semibold">
                         <tr>
-                            <th class="py-3 px-4 min-w-[200px]">Nama Sarpras / Fasilitas</th>
-                            @foreach($calendarDays as $day)
-                                <th class="py-3 px-3 text-center min-w-[120px] {{ $day->isToday() ? 'bg-blue-50/80 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400' : '' }}">
-                                    <div>{{ $day->translatedFormat('D') }}</div>
-                                    <div class="text-[10px] font-mono font-normal">{{ $day->format('d M') }}</div>
+                            <th class="py-3 px-4 min-w-[200px] text-slate-800 dark:text-slate-200">Nama Sarpras / Fasilitas</th>
+                            @foreach( as )
+                                <th class="py-3 px-3 text-center min-w-[120px] {{ ->isToday() ? 'bg-blue-100/70 dark:bg-blue-950/80 text-blue-900 dark:text-blue-300 font-bold border-x border-blue-200 dark:border-blue-800/40' : 'text-slate-700 dark:text-slate-300' }}">
+                                    <div class="leading-tight">{{ ->translatedFormat('D') }}</div>
+                                    <div class="text-[10px] font-mono font-normal {{ ->isToday() ? 'text-blue-800 dark:text-blue-300 font-bold' : 'text-slate-500 dark:text-slate-400' }}">{{ ->format('d M') }}</div>
                                 </th>
                             @endforeach
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-700 text-slate-700 dark:text-slate-300">
-                        @foreach($facilities as $f)
-                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-750 transition">
-                                <td class="py-3 px-4">
-                                    <div class="font-bold text-slate-900 dark:text-white">{{ $f->name }}</div>
-                                    <div class="text-[10px] text-slate-500 dark:text-slate-400">{{ $f->category_name }} · {{ $f->scope === 'campus' ? 'Skala Kampus' : 'Unit ' . $f->unit_code }}</div>
+                    <tbody class="divide-y divide-slate-100 dark:divide-slate-700 text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-800">
+                        @foreach( as )
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
+                                <td class="py-3.5 px-4 bg-white dark:bg-slate-800">
+                                    <div class="font-bold text-slate-900 dark:text-white leading-snug">{{ ->name }}</div>
+                                    <div class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">{{ ->category_name }} · {{ ->scope === 'campus' ? 'Skala Kampus' : 'Unit ' . ->unit_code }}</div>
                                 </td>
-                                @foreach($calendarDays as $day)
+                                @foreach( as )
                                     @php
-                                        $dayStr = $day->toDateString();
-                                        $bookingsOnThisDay = $activeBookingsForCalendar->filter(function($b) use ($f, $dayStr) {
-                                            if ($b->facility_id != $f->id) return false;
-                                            $bStart = substr($b->start_at, 0, 10);
-                                            $bEnd = substr($b->end_at, 0, 10);
-                                            return ($dayStr >= $bStart && $dayStr <= $bEnd);
+                                         = ->toDateString();
+                                         = ->filter(function() use (, ) {
+                                            if (->facility_id != ->id) return false;
+                                             = substr(->start_at, 0, 10);
+                                             = substr(->end_at, 0, 10);
+                                            return ( >=  &&  <= );
                                         });
                                     @endphp
-                                    <td class="py-3 px-2 text-center align-middle {{ $day->isToday() ? 'bg-blue-50/30 dark:bg-blue-900/10' : '' }}">
-                                        @if($bookingsOnThisDay->isEmpty())
-                                            <a href="{{ route('facilities.create', ['facility_id' => $f->id]) }}" class="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 hover:bg-emerald-100 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/30 text-[10px] font-bold transition" title="Fasilitas Kosong - Klik untuk Pesan">
+                                    <td class="py-3 px-2 text-center align-middle {{ ->isToday() ? 'bg-blue-50/40 dark:bg-blue-950/30 border-x border-blue-100 dark:border-blue-900/30' : 'bg-white dark:bg-slate-800' }}">
+                                        @if(->isEmpty())
+                                            <a href="{{ route('facilities.create', ['facility_id' => ->id]) }}" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/30 text-[10px] font-bold transition" title="Fasilitas Kosong - Klik untuk Pesan">
                                                 <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
                                                 <span>Tersedia</span>
                                             </a>
                                         @else
-                                            @foreach($bookingsOnThisDay as $bd)
-                                                @if($bd->status === 'approved')
-                                                    <div class="p-1 rounded bg-rose-50 dark:bg-rose-500/10 border border-rose-200 dark:border-rose-500/30 text-rose-700 dark:text-rose-300 text-[10px] font-bold leading-tight my-0.5">
-                                                        <span class="h-1.5 w-1.5 rounded-full bg-rose-500 inline-block"></span>
+                                            @foreach( as )
+                                                @if(->status === 'approved')
+                                                    <div class="p-1 rounded-lg bg-rose-50 dark:bg-rose-950/50 border border-rose-200 dark:border-rose-500/30 text-rose-800 dark:text-rose-300 text-[10px] font-bold leading-tight my-0.5 shadow-xs">
+                                                        <span class="h-1.5 w-1.5 rounded-full bg-rose-500 inline-block mr-1"></span>
                                                         <span>Dipesan</span>
                                                     </div>
                                                 @else
-                                                    <div class="p-1 rounded bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 text-amber-700 dark:text-amber-300 text-[10px] font-bold leading-tight my-0.5">
-                                                        <span class="h-1.5 w-1.5 rounded-full bg-amber-500 inline-block"></span>
+                                                    <div class="p-1 rounded-lg bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-500/30 text-amber-800 dark:text-amber-300 text-[10px] font-bold leading-tight my-0.5 shadow-xs">
+                                                        <span class="h-1.5 w-1.5 rounded-full bg-amber-500 inline-block mr-1"></span>
                                                         <span>Verifikasi</span>
                                                     </div>
                                                 @endif

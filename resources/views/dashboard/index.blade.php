@@ -113,7 +113,7 @@
             </a>
 
             <!-- 6. Tata Persuratan -->
-            <a href="{{ route('letters.index') }}" class="p-4 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 border border-slate-200 dark:border-slate-700 text-center transition shadow-sm hover:shadow-md hover:border-slate-500 group flex flex-col items-center justify-center space-y-2">
+            <a href="{{ route('letters.index') }}" class="p-4 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-center transition shadow-sm hover:shadow-md hover:border-slate-500 group flex flex-col items-center justify-center space-y-2">
                 <div class="h-11 w-11 rounded-2xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center text-xl group-hover:scale-110 transition">
                     <i class="bi bi-envelope-paper-fill"></i>
                 </div>

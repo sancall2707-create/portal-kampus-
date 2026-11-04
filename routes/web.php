@@ -65,6 +65,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/create', [FacilityController::class, 'create'])->name('create');
             Route::post('/', [FacilityController::class, 'store'])->name('store');
             Route::get('/{id}', [FacilityController::class, 'show'])->name('show');
+            Route::get('/{id}/letter', [FacilityController::class, 'letter'])->name('letter');
             Route::post('/{id}/screen-tu', [FacilityController::class, 'actionScreenTU'])->name('action_screening');
             Route::post('/{id}/approve-unit', [FacilityController::class, 'actionApproveUnit'])->name('action_approve_unit');
             Route::post('/{id}/approve-coordinator', [FacilityController::class, 'actionApproveCoordinator'])->name('action_approve_coordinator');

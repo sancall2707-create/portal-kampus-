@@ -55,15 +55,16 @@
     <!-- Top Navigation Header -->
     <header class="border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/90 backdrop-blur sticky top-0 z-40 transition-colors shadow-sm">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-2.5">
-                <div class="h-10 w-10 rounded-full bg-white/90 dark:bg-white/10 p-0.5 shadow-sm border border-slate-200 dark:border-white/15 flex items-center justify-center shrink-0 overflow-hidden">
-                    <img src="{{ asset('images/logo-pangudi-luhur.png') }}" alt="Logo" class="h-full w-full object-contain rounded-full drop-shadow-xs">
+            <div class="flex items-center gap-3">
+                <!-- Logo dengan lis & kontainer putih melingkar -->
+                <div class="h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-white p-1 flex items-center justify-center shrink-0 shadow-sm border border-slate-200/80 dark:border-white/20">
+                    <img src="{{ asset('images/logo-pangudi-luhur.png') }}" alt="Logo PL Deltamas" class="h-full w-full object-contain rounded-full" />
                 </div>
-                <div>
+                <div class="text-left">
                     <h1 class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                         SIAP PL Deltamas
                     </h1>
-                    <p class="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium truncate max-w-[170px] sm:max-w-xs">
+                    <p class="text-[10px] sm:text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-0.5 truncate max-w-[170px] sm:max-w-xs">
                         Kampus Pangudi Luhur Deltamas
                     </p>
                 </div>

@@ -73,15 +73,14 @@
             <!-- Card Container -->
             <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl dark:shadow-2xl dark:shadow-black/60 relative overflow-hidden transition-colors">
 
-                <!-- Logo & Heading -->
-                <div class="text-center space-y-3 mb-7">
-                    <div class="inline-flex items-center justify-center p-2 rounded-full bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 shadow-md ring-4 ring-slate-100 dark:ring-white/5">
-                        <img src="{{ asset('images/logo-pangudi-luhur.png') }}" alt="Logo Pangudi Luhur Kota Deltamas" class="h-20 w-20 object-contain drop-shadow-md">
+                <!-- Logo & Heading (Format Stacked Center Sesuai Panduan) -->
+                <div class="flex flex-col items-center justify-center text-center mb-7">
+                    <!-- Logo dengan lis & kontainer putih melingkar -->
+                    <div class="h-20 w-20 rounded-full bg-white p-1.5 mb-3 shadow-md flex items-center justify-center shrink-0 border border-slate-200 dark:border-white/20">
+                        <img src="{{ asset('images/logo-pangudi-luhur.png') }}" alt="Logo PL Deltamas" class="h-full w-full object-contain rounded-full" />
                     </div>
-                    <div>
-                        <h1 class="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">SIAP PL Deltamas</h1>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Yayasan Pangudi Luhur — Kampus Deltamas</p>
-                    </div>
+                    <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">SIAP PL Deltamas</h1>
+                    <p class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">Yayasan Pangudi Luhur — Kampus Deltamas</p>
                 </div>
 
                 <!-- Alert Errors -->

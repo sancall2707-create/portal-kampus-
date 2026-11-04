@@ -13,6 +13,7 @@ class PrivateMessage extends Model
     protected $fillable = [
         'sender_id',
         'recipient_id',
+        'batch_code',
         'subject',
         'body',
         'category',

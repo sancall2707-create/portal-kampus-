@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Http\Request;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -11,7 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // Percayai seluruh reverse proxy / Cloudflare Tunnel agar header X-Forwarded-Proto (HTTPS) terbaca akurat
+        $middleware->trustProxies(at: '*');
+
+        // Pastikan cookie session bisa bekerja baik di HTTPS tunnel maupun HTTP biasa
+        $middleware->encryptCookies(except: []);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

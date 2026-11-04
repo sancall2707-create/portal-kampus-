@@ -44,6 +44,11 @@ class User extends Authenticatable
             ->wherePivotNull('end_date');
     }
 
+    public function pushSubscriptions(): HasMany
+    {
+        return $this->hasMany(PushSubscription::class);
+    }
+
     public function isStaff(): bool
     {
         return $this->user_type === 'staff';

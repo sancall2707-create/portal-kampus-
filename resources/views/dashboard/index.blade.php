@@ -28,6 +28,34 @@
         </div>
     </div>
 
+    <!-- Push Notification PWA Banner -->
+    <div class="rounded-2xl border border-blue-200 dark:border-blue-900/50 bg-blue-50/70 dark:bg-blue-950/30 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+        <div class="flex items-center space-x-3">
+            <div class="h-10 w-10 rounded-xl bg-blue-600 text-white flex items-center justify-center text-lg shrink-0 shadow-md">
+                <i class="bi bi-bell-fill"></i>
+            </div>
+            <div>
+                <h4 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <span>Notifikasi Smartphone (Web Push PWA)</span>
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-bold bg-blue-200 dark:bg-blue-800 text-blue-900 dark:text-blue-100 uppercase">Baru</span>
+                </h4>
+                <p class="text-[11px] text-slate-600 dark:text-slate-300">
+                    Dapatkan siaran kampus, persetujuan izin, dan alarm darurat langsung di status bar HP.
+                </p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-2 shrink-0">
+            <button type="button" onclick="openNotificationModal()" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-sm transition flex items-center gap-1.5">
+                <i class="bi bi-bell text-xs"></i>
+                <span>Atur Notifikasi</span>
+            </button>
+            <button type="button" onclick="handleSendTestPush()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-sm transition flex items-center gap-1.5">
+                <i class="bi bi-send-check text-xs"></i>
+                <span>Tes Notifikasi</span>
+            </button>
+        </div>
+    </div>
+
     <!-- Quick Navigation Hub -->
     <div class="space-y-3">
         <div class="flex items-center justify-between">

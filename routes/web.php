@@ -8,6 +8,7 @@ use App\Http\Controllers\GreetingController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\LetterController;
 use App\Http\Controllers\OperationalController;
+use App\Http\Controllers\PushNotificationController;
 use App\Http\Middleware\CheckMandatoryGreeting;
 use Illuminate\Support\Facades\Route;
 
@@ -83,6 +84,14 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('letters')->name('letters.')->group(function () {
             Route::get('/', [LetterController::class, 'index'])->name('index');
             Route::post('/', [LetterController::class, 'store'])->name('store');
+        });
+ 
+        // 7. Modul Web Push Notifications ke Smartphone
+        Route::prefix('push')->name('push.')->group(function () {
+            Route::get('/key', [PushNotificationController::class, 'getKey'])->name('key');
+            Route::post('/subscribe', [PushNotificationController::class, 'subscribe'])->name('subscribe');
+            Route::post('/unsubscribe', [PushNotificationController::class, 'unsubscribe'])->name('unsubscribe');
+            Route::post('/test', [PushNotificationController::class, 'sendTest'])->name('test');
         });
     });
 });

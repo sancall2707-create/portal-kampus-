@@ -66,7 +66,7 @@
             <span class="text-[11px] text-slate-500 dark:text-slate-400">Atau buka tombol Menu di kanan atas</span>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-8 gap-3">
             <!-- 1. Papan Siaran -->
             <a href="{{ route('announcements.index') }}" class="p-4 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-center transition shadow-sm hover:shadow-md hover:border-blue-500 group flex flex-col items-center justify-center space-y-2">
                 <div class="h-11 w-11 rounded-2xl bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
@@ -121,7 +121,16 @@
                 <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">Arsip & No. Surat</div>
             </a>
 
-            <!-- 7. Kurikulum -->
+            <!-- 7. Pesan Satu Arah Pribadi -->
+            <a href="{{ route('messages.index') }}" class="p-4 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-center transition shadow-sm hover:shadow-md hover:border-purple-500 group flex flex-col items-center justify-center space-y-2 relative">
+                <div class="h-11 w-11 rounded-2xl bg-purple-100 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
+                    <i class="bi bi-chat-left-lock-fill"></i>
+                </div>
+                <div class="text-xs font-bold text-slate-900 dark:text-white leading-tight">Pesan Pribadi</div>
+                <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">1-on-1 Rahasia</div>
+            </a>
+
+            <!-- 8. Kurikulum -->
             <button type="button" onclick="showDevelopmentNotice()" class="p-4 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-center transition shadow-sm hover:shadow-md hover:border-blue-500 group flex flex-col items-center justify-center space-y-2">
                 <div class="h-11 w-11 rounded-2xl bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
                     <i class="bi bi-book-half"></i>

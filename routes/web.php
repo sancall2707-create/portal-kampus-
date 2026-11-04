@@ -9,6 +9,7 @@ use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\LetterController;
 use App\Http\Controllers\OperationalController;
 use App\Http\Controllers\PushNotificationController;
+use App\Http\Controllers\PrivateMessageController;
 use App\Http\Middleware\CheckMandatoryGreeting;
 use Illuminate\Support\Facades\Route;
 
@@ -87,6 +88,16 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/', [LetterController::class, 'store'])->name('store');
         });
  
+
+        // 8. Modul Pesan Satu Arah Pribadi (Direct Private Memo)
+        Route::prefix('messages')->name('messages.')->group(function () {
+            Route::get('/', [PrivateMessageController::class, 'index'])->name('index');
+            Route::get('/create', [PrivateMessageController::class, 'create'])->name('create');
+            Route::post('/', [PrivateMessageController::class, 'store'])->name('store');
+            Route::get('/{id}', [PrivateMessageController::class, 'show'])->name('show');
+            Route::delete('/{id}', [PrivateMessageController::class, 'destroy'])->name('destroy');
+        });
+
         // 7. Modul Web Push Notifications ke Smartphone
         Route::prefix('push')->name('push.')->group(function () {
             Route::get('/key', [PushNotificationController::class, 'getKey'])->name('key');

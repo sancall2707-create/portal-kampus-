@@ -75,7 +75,7 @@
 
                 <!-- Logo & Heading -->
                 <div class="text-center space-y-3 mb-7">
-                    <div class="inline-flex items-center justify-center p-2 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 shadow-inner">
+                    <div class="inline-flex items-center justify-center p-2 rounded-full bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 shadow-md ring-4 ring-slate-100 dark:ring-white/5">
                         <img src="{{ asset('images/logo-pangudi-luhur.png') }}" alt="Logo Pangudi Luhur Kota Deltamas" class="h-20 w-20 object-contain drop-shadow-md">
                     </div>
                     <div>

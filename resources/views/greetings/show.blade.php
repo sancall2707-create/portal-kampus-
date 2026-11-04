@@ -50,7 +50,9 @@
     <header class="w-full border-b border-slate-200 dark:border-slate-800/80 bg-white/70 dark:bg-slate-950/40 backdrop-blur transition-colors">
         <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
             <div class="flex items-center space-x-2.5">
-                <img src="{{ asset('images/logo-pangudi-luhur.png') }}" alt="Logo" class="h-8 w-8 object-contain">
+                <div class="h-9 w-9 rounded-full bg-white/90 dark:bg-white/10 p-0.5 shadow-sm border border-slate-200 dark:border-white/15 flex items-center justify-center shrink-0 overflow-hidden">
+                    <img src="{{ asset('images/logo-pangudi-luhur.png') }}" alt="Logo" class="h-full w-full object-contain rounded-full">
+                </div>
                 <span class="text-xs font-bold text-slate-900 dark:text-white tracking-wide">SIAP PL Deltamas</span>
                 <span class="text-[10px] uppercase font-semibold bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full">Sapaan Intersepsi</span>
             </div>

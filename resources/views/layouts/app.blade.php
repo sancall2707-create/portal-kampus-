@@ -69,7 +69,9 @@
             <!-- Left: Logo & Portal Title -->
             <div class="flex items-center space-x-3">
                 <a href="{{ route('dashboard') }}" class="flex items-center space-x-2.5">
-                    <img src="{{ asset('images/logo-pangudi-luhur.png') }}" alt="Logo" class="h-9 w-9 sm:h-10 sm:w-10 object-contain">
+                    <div class="h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-white/90 dark:bg-white/10 p-0.5 shadow-sm border border-slate-200 dark:border-white/15 flex items-center justify-center shrink-0 overflow-hidden">
+                        <img src="{{ asset('images/logo-pangudi-luhur.png') }}" alt="Logo" class="h-full w-full object-contain rounded-full drop-shadow-xs">
+                    </div>
                     <div>
                         <h1 class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                             SIAP PL Deltamas

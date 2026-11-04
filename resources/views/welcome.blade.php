@@ -56,7 +56,9 @@
     <header class="border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/90 backdrop-blur sticky top-0 z-40 transition-colors shadow-sm">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-2.5">
-                <img src="{{ asset('images/logo-pangudi-luhur.png') }}" alt="Logo" class="h-9 w-9 object-contain">
+                <div class="h-10 w-10 rounded-full bg-white/90 dark:bg-white/10 p-0.5 shadow-sm border border-slate-200 dark:border-white/15 flex items-center justify-center shrink-0 overflow-hidden">
+                    <img src="{{ asset('images/logo-pangudi-luhur.png') }}" alt="Logo" class="h-full w-full object-contain rounded-full drop-shadow-xs">
+                </div>
                 <div>
                     <h1 class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                         SIAP PL Deltamas

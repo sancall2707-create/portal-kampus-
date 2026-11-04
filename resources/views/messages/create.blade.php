@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tulis Pesan Satu Arah Pribadi — SIAP PL Deltamas')
+@section('title', 'Tulis Pesan — SIAP PL Deltamas')
 
 @section('content')
 <div class="max-w-2xl mx-auto px-4 py-8 space-y-6">
@@ -11,7 +11,7 @@
             <span>Batal & Kembali ke Kotak Pesan</span>
         </a>
         <h1 class="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
-            <span>Tulis Pesan Satu Arah Pribadi</span>
+            <span>Tulis Pesan</span>
         </h1>
         <p class="text-xs text-slate-500 dark:text-slate-400">Pesan pribadi terenkripsi internal. Hanya Anda dan penerima yang dapat membuka dan membaca pesan ini.</p>
     </div>

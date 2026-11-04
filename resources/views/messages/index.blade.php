@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Pesan Satu Arah Pribadi — SIAP PL Deltamas')
+@section('title', 'Pesan — SIAP PL Deltamas')
 
 @section('content')
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
@@ -9,7 +9,7 @@
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-5">
         <div>
             <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
-                <span>Pesan Satu Arah Pribadi</span>
+                <span>Pesan</span>
                 <span class="text-xs font-mono font-normal px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30">
                     Rahasia & Terbatas
                 </span>
@@ -22,7 +22,7 @@
         <div class="flex items-center space-x-3">
             <a href="{{ route('messages.create') }}" class="py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-lg shadow-blue-600/30 transition flex items-center gap-2">
                 <i class="bi bi-pencil-square"></i>
-                <span>Tulis Pesan Pribadi</span>
+                <span>Tulis Pesan</span>
             </a>
         </div>
     </div>
@@ -135,7 +135,7 @@
         @empty
             <div class="p-12 text-center rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-400 space-y-2">
                 <i class="bi bi-chat-left-lock text-4xl"></i>
-                <div class="text-xs font-semibold">Tidak ada pesan pribadi pada kotak ini.</div>
+                <div class="text-xs font-semibold">Tidak ada pesan pada kotak ini.</div>
             </div>
         @endforelse
     </div>

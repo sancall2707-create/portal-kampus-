@@ -126,8 +126,8 @@
                 <div class="h-11 w-11 rounded-2xl bg-purple-100 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
                     <i class="bi bi-chat-left-lock-fill"></i>
                 </div>
-                <div class="text-xs font-bold text-slate-900 dark:text-white leading-tight">Pesan Pribadi</div>
-                <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">1-on-1 Rahasia</div>
+                <div class="text-xs font-bold text-slate-900 dark:text-white leading-tight">Pesan</div>
+                <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">Satu Arah</div>
             </a>
 
             <!-- 8. Kurikulum -->

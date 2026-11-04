@@ -191,7 +191,7 @@
 
                 <a href="{{ route('messages.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition {{ request()->routeIs('messages.*') ? 'bg-blue-600 text-white shadow-md' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800' }}">
                     <i class="bi bi-chat-left-lock-fill text-base w-5 text-center text-purple-500"></i>
-                    <span>Pesan Satu Arah Pribadi</span>
+                    <span>Pesan</span>
                 </a>
 
                 <!-- Kurikulum Drawer Button -->

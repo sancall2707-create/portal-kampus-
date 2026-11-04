@@ -159,25 +159,9 @@
 
             <!-- Nav Links List -->
             <nav class="p-4 space-y-1.5 overflow-y-auto max-h-[calc(100vh-280px)]">
-                <a href="{{ route('dashboard') }}" class="flex items-center gap-3">
-                    <!-- Logo dengan lis & kontainer putih melingkar -->
-                    <div class="h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-white p-1 flex items-center justify-center shrink-0 shadow-sm border border-slate-200/80 dark:border-white/20">
-                        <img src="{{ asset('images/logo-pangudi-luhur.png') }}" alt="Logo PL Deltamas" class="h-full w-full object-contain rounded-full" />
-                    </div>
-
-                    <!-- Teks -->
-                    <div class="text-left">
-                        <h1 class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-                            SIAP PL Deltamas
-                        </h1>
-                        <p class="text-[10px] sm:text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-0.5 truncate max-w-[170px] sm:max-w-xs">
-                            @if(isset($user) && $user->units->isNotEmpty())
-                                Unit {{ $user->units->pluck('code')->implode(' & ') }}
-                            @else
-                                Kampus Deltamas
-                            @endif
-                        </p>
-                    </div>
+                <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition {{ request()->routeIs('dashboard') ? 'bg-blue-600 text-white shadow-md' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800' }}">
+                    <i class="bi bi-house-door-fill text-base w-5 text-center text-blue-500 {{ request()->routeIs('dashboard') ? 'text-white' : '' }}"></i>
+                    <span>Dashboard Beranda</span>
                 </a>
 
                 <a href="{{ route('announcements.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition {{ request()->routeIs('announcements.*') ? 'bg-blue-600 text-white shadow-md' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800' }}">

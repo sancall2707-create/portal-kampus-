@@ -3,14 +3,14 @@
 @section('title', 'Tulis Pesan — SIAP PL Deltamas')
 
 @section('content')
-<div class="max-w-3xl mx-auto px-4 py-8 space-y-6">
+<div class="w-full max-w-3xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8 space-y-6">
 
     <div class="space-y-1">
         <a href="{{ route('messages.index') }}" class="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 transition mb-2">
             <i class="bi bi-arrow-left"></i>
             <span>Batal & Kembali ke Kotak Pesan</span>
         </a>
-        <h1 class="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+        <h1 class="font-display text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
             <span>Tulis Pesan Satu Arah</span>
         </h1>
         <p class="text-xs text-slate-500 dark:text-slate-400">

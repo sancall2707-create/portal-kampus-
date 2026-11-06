@@ -3,7 +3,7 @@
 @section('title', $message->subject . ' — SIAP PL Deltamas')
 
 @section('content')
-<div class="max-w-3xl mx-auto px-4 py-8 space-y-6">
+<div class="w-full max-w-3xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8 space-y-6">
 
     <!-- Header Actions -->
     <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
@@ -45,7 +45,7 @@
                 </span>
             </div>
 
-            <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug">
+            <h1 class="font-display text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white tracking-tight leading-snug">
                 {{ $message->subject }}
             </h1>
         </div>

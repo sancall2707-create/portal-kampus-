@@ -3,12 +3,12 @@
 @section('title', 'Operasional Lapangan & Keamanan — SIAP PL Deltamas')
 
 @section('content')
-<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+<div class="w-full px-4 py-6 sm:px-6 sm:py-8 lg:px-8 space-y-7">
 
     <!-- Header Section: Clean Responsive Header -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-800 pb-4">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+            <h2 class="font-display text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white tracking-tight">
                 Operasional Lapangan & Keamanan
             </h2>
             <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
@@ -37,7 +37,7 @@
     @endif
 
     <!-- Mobile-Optimized Sub Navigation (Scrollable Pill Tabs) -->
-    <div class="flex items-center space-x-2 border-b border-slate-200 dark:border-slate-800 overflow-x-auto no-scrollbar pb-1 -mx-4 px-4 sm:mx-0 sm:px-0">
+    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-3 dark:border-slate-800">
         <a href="{{ route('operational.index', ['tab' => 'tasks']) }}" 
            class="px-3.5 py-2 text-xs font-bold transition flex items-center gap-2 rounded-xl shrink-0 whitespace-nowrap {{ $viewTab === 'tasks' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800' }}">
             <i class="bi bi-check2-square"></i>

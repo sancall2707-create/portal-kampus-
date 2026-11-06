@@ -3,7 +3,7 @@
 @section('title', 'Detail Reservasi — SIAP PL Deltamas')
 
 @section('content')
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+<div class="w-full px-4 py-6 sm:px-6 sm:py-8 lg:px-8 space-y-7">
 
     <!-- Header Back -->
     <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
@@ -59,7 +59,7 @@
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-emerald-500/30 pb-4">
                 <div class="space-y-1.5">
                     <span class="px-2.5 py-0.5 rounded text-[10px] uppercase font-bold bg-emerald-500 text-slate-950">E-Ticket Sah Kampus</span>
-                    <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Izin Reservasi Fasilitas Disahkan</h2>
+                    <h2 class="font-display text-2xl sm:text-3xl font-semibold text-white tracking-tight">Izin Reservasi Fasilitas Disahkan</h2>
                     <p class="text-xs text-slate-300">Tunjukkan e-ticket QR ini kepada Satpam di gerbang kampus saat penggunaan fasilitas.</p>
                 </div>
                 <div class="text-center sm:text-right shrink-0">
@@ -93,7 +93,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-5">
             <div>
                 <span class="text-xs uppercase font-bold text-blue-600 dark:text-blue-400 tracking-wider">Detail Permohonan Fasilitas</span>
-                <h1 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-1">{{ $booking->facility_name }}</h1>
+                <h1 class="font-display text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white mt-1">{{ $booking->facility_name }}</h1>
                 <p class="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5">Kategori: {{ $booking->category_name }} · Kode: {{ $booking->booking_code }}</p>
                 @if($booking->letter_number)
                     <p class="text-xs text-emerald-600 dark:text-emerald-400 font-mono mt-0.5">No. Surat: {{ $booking->letter_number }}</p>

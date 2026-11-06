@@ -3,7 +3,7 @@
 @section('title', 'Detail Perizinan — SIAP PL Deltamas')
 
 @section('content')
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+<div class="w-full px-4 py-6 sm:px-6 sm:py-8 lg:px-8 space-y-7">
 
     <!-- Header Back -->
     <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
@@ -45,7 +45,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-5">
             <div>
                 <span class="text-xs uppercase font-bold text-blue-600 dark:text-blue-400 tracking-wider">Permohonan Izin Pegawai</span>
-                <h1 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-1">{{ $leave->applicant_name }}</h1>
+                <h1 class="font-display text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white mt-1">{{ $leave->applicant_name }}</h1>
                 <p class="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5">NIP: {{ $leave->applicant_nip ?? '-' }} · Unit {{ $leave->unit_code }} ({{ $leave->applicant_title }})</p>
             </div>
             <div class="text-left sm:text-right font-mono text-xs text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-800 shrink-0">

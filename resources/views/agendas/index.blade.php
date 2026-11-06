@@ -3,12 +3,12 @@
 @section('title', 'Kalender & Agenda — SIAP PL Deltamas')
 
 @section('content')
-<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+<div class="w-full px-4 py-6 sm:px-6 sm:py-8 lg:px-8 space-y-7">
 
     <!-- Header Action & Filters -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-5">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+            <h2 class="font-display text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
                 <span>Kalender Agenda Kampus</span>
                 <span class="text-xs font-mono font-normal px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30">
                     {{ $agendas->count() }} Kegiatan
@@ -38,7 +38,7 @@
     @endif
 
     <!-- Filter Pills -->
-    <div class="flex items-center space-x-2 text-xs overflow-x-auto pb-1">
+    <div class="flex flex-wrap items-center gap-2 text-xs">
         <a href="{{ route('agendas.index', ['category' => 'all']) }}" 
            class="px-3.5 py-1.5 rounded-lg border font-semibold transition shrink-0 {{ $category === 'all' ? 'bg-blue-600 border-blue-500 text-white shadow' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white' }}">
             Semua Agenda

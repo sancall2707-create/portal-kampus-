@@ -3,7 +3,7 @@
 @section('title', 'Laporan Keterbacaan — SIAP PL Deltamas')
 
 @section('content')
-<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+<div class="w-full px-4 py-6 sm:px-6 sm:py-8 lg:px-8 space-y-7">
 
     <!-- Announcement Summary Card -->
     <div class="rounded-2xl border {{ $announcement->is_urgent ? 'border-rose-300 dark:border-rose-500/40 bg-rose-50/50 dark:bg-rose-950/20' : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50' }} p-6 space-y-3 shadow-sm dark:shadow-xl backdrop-blur transition-colors">

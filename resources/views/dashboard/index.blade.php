@@ -3,226 +3,168 @@
 @section('title', 'Beranda — SIAP PL Deltamas')
 
 @section('content')
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-8 space-y-6">
+<div class="w-full space-y-8 px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
 
-    <!-- Welcome Banner Card -->
-    <div class="rounded-3xl bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white p-5 sm:p-7 relative overflow-hidden shadow-xl border border-blue-800/80">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
-            <div class="space-y-1.5">
-                <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/10 border border-white/20 text-white text-[11px] font-semibold">
-                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+    <section class="grid items-end gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.8fr)]">
+        <div class="space-y-3">
+            <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-600 dark:text-gold-400">Beranda pegawai</p>
+            <h2 class="font-display text-3xl leading-tight text-slate-900 dark:text-white sm:text-4xl">
+                Selamat datang, {{ $user->name }}
+            </h2>
+            <p class="max-w-2xl text-sm text-slate-600 dark:text-slate-300">
+                {{ $user->job_title ?? 'Pegawai Kampus Pangudi Luhur Deltamas' }}
+            </p>
+            <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
+                <span class="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 font-semibold text-emerald-800 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-300">
+                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
                     Login Berhasil sebagai {{ strtoupper(str_replace('_', ' ', $user->getRoleNames()->first() ?? 'STAF')) }}
-                </div>
-                <h2 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
-                    Selamat datang, {{ $user->name }}
-                </h2>
-                <p class="text-xs sm:text-sm text-slate-200">
-                    {{ $user->job_title ?? 'Pegawai Kampus Pangudi Luhur Deltamas' }}
-                </p>
-            </div>
-            <div class="text-left sm:text-right text-xs text-slate-300 font-mono bg-slate-950/40 p-3 rounded-2xl border border-white/10 shrink-0 space-y-0.5">
-                <div>NIP: <span class="text-white font-bold">{{ $user->nip ?? '-' }}</span></div>
-                <div>Tahun Ajaran: <span class="text-emerald-300 font-semibold">2026/2027 (Ganjil)</span></div>
-                <div>Waktu: <span class="text-slate-200">{{ now()->format('d M Y, H:i') }} WIB</span></div>
+                </span>
             </div>
         </div>
-    </div>
 
-    <!-- Push Notification PWA Banner -->
-    <div class="rounded-2xl border border-blue-200 dark:border-blue-900/50 bg-blue-50/70 dark:bg-blue-950/30 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
-        <div class="flex items-center space-x-3">
-            <div class="h-10 w-10 rounded-xl bg-blue-600 text-white flex items-center justify-center text-lg shrink-0 shadow-md">
-                <i class="bi bi-bell-fill"></i>
+        <dl class="grid grid-cols-1 divide-y divide-slate-200 overflow-hidden rounded-2xl border border-slate-200 bg-white text-sm dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-900 sm:grid-cols-3 sm:divide-x sm:divide-y-0 lg:grid-cols-1 lg:divide-x-0 lg:divide-y">
+            <div class="px-4 py-3">
+                <dt class="text-[11px] uppercase tracking-wide text-slate-500">NIP</dt>
+                <dd class="mt-0.5 font-mono font-semibold text-slate-900 dark:text-white">{{ $user->nip ?? '-' }}</dd>
             </div>
+            <div class="px-4 py-3">
+                <dt class="text-[11px] uppercase tracking-wide text-slate-500">Tahun Ajaran</dt>
+                <dd class="mt-0.5 font-semibold text-slate-900 dark:text-white">2026/2027 (Ganjil)</dd>
+            </div>
+            <div class="px-4 py-3">
+                <dt class="text-[11px] uppercase tracking-wide text-slate-500">Waktu</dt>
+                <dd class="mt-0.5 font-mono text-slate-700 dark:text-slate-200">{{ now()->format('d M Y, H:i') }} WIB</dd>
+            </div>
+        </dl>
+    </section>
+
+    <section class="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900 sm:flex-row sm:items-center sm:justify-between sm:p-5">
+        <div class="flex items-start gap-3">
+            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-ink-900 text-lg text-gold-300">
+                <i class="bi bi-bell"></i>
+            </span>
             <div>
-                <h4 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <h3 class="flex flex-wrap items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
                     <span>Notifikasi Smartphone (Web Push PWA)</span>
-                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-bold bg-blue-200 dark:bg-blue-800 text-blue-900 dark:text-blue-100 uppercase">Baru</span>
-                </h4>
-                <p class="text-[11px] text-slate-600 dark:text-slate-300">
+                    <span class="rounded-full bg-gold-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-gold-600 dark:text-gold-300">Baru</span>
+                </h3>
+                <p class="mt-1 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
                     Dapatkan siaran kampus, persetujuan izin, dan alarm darurat langsung di status bar HP.
                 </p>
             </div>
         </div>
-        <div class="flex items-center space-x-2 shrink-0">
-            <button type="button" onclick="openNotificationModal()" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-sm transition flex items-center gap-1.5">
-                <i class="bi bi-bell text-xs"></i>
+        <div class="flex shrink-0 items-center gap-2">
+            <button type="button" onclick="openNotificationModal()" class="inline-flex items-center gap-1.5 rounded-xl bg-ink-900 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-ink-800">
+                <i class="bi bi-bell"></i>
                 <span>Atur Notifikasi</span>
             </button>
-            <button type="button" onclick="handleSendTestPush()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-sm transition flex items-center gap-1.5">
-                <i class="bi bi-send-check text-xs"></i>
+            <button type="button" onclick="handleSendTestPush()" class="inline-flex items-center gap-1.5 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs font-semibold text-slate-800 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700">
+                <i class="bi bi-send-check"></i>
                 <span>Tes Notifikasi</span>
             </button>
         </div>
-    </div>
+    </section>
 
-    <!-- Quick Navigation Hub -->
-    <div class="space-y-3">
-        <div class="flex items-center justify-between">
-            <h3 class="text-xs uppercase font-extrabold tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                <i class="bi bi-grid-fill text-blue-600 dark:text-blue-400"></i>
-                <span>Akses Menu Cepat</span>
-            </h3>
-            <span class="text-[11px] text-slate-500 dark:text-slate-400">Atau buka tombol Menu di kanan atas</span>
+    <section class="space-y-4">
+        <div class="flex items-end justify-between gap-3">
+            <div>
+                <h3 class="font-display text-2xl text-slate-900 dark:text-white">Akses Menu Cepat</h3>
+                <p class="mt-1 text-xs text-slate-500">Atau buka menu navigasi.</p>
+            </div>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-8 gap-3">
-            <!-- 1. Papan Siaran -->
-            <a href="{{ route('announcements.index') }}" class="p-4 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-center transition shadow-sm hover:shadow-md hover:border-blue-500 group flex flex-col items-center justify-center space-y-2">
-                <div class="h-11 w-11 rounded-2xl bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
-                    <i class="bi bi-megaphone-fill"></i>
-                </div>
-                <div class="text-xs font-bold text-slate-900 dark:text-white leading-tight">Papan Siaran</div>
-                <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">Broadcast Info</div>
-            </a>
-
-            <!-- 2. Kalender Agenda -->
-            <a href="{{ route('agendas.index') }}" class="p-4 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-center transition shadow-sm hover:shadow-md hover:border-emerald-500 group flex flex-col items-center justify-center space-y-2">
-                <div class="h-11 w-11 rounded-2xl bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
-                    <i class="bi bi-calendar3"></i>
-                </div>
-                <div class="text-xs font-bold text-slate-900 dark:text-white leading-tight">Agenda Kampus</div>
-                <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">Jadwal Kegiatan</div>
-            </a>
-
-            <!-- 3. Perizinan & Inval -->
-            <a href="{{ route('leaves.index') }}" class="p-4 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-center transition shadow-sm hover:shadow-md hover:border-amber-500 group flex flex-col items-center justify-center space-y-2">
-                <div class="h-11 w-11 rounded-2xl bg-amber-100 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
-                    <i class="bi bi-file-earmark-check-fill"></i>
-                </div>
-                <div class="text-xs font-bold text-slate-900 dark:text-white leading-tight">Perizinan Staf</div>
-                <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">Izin & Guru Inval</div>
-            </a>
-
-            <!-- 4. Fasilitas & E-Ticket -->
-            <a href="{{ route('facilities.index') }}" class="p-4 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-center transition shadow-sm hover:shadow-md hover:border-indigo-500 group flex flex-col items-center justify-center space-y-2">
-                <div class="h-11 w-11 rounded-2xl bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
-                    <i class="bi bi-building"></i>
-                </div>
-                <div class="text-xs font-bold text-slate-900 dark:text-white leading-tight">Fasilitas Kampus</div>
-                <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">Reservasi & QR</div>
-            </a>
-
-            <!-- 5. Operasional Lapangan -->
-            <a href="{{ route('operational.index') }}" class="p-4 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-center transition shadow-sm hover:shadow-md hover:border-cyan-500 group flex flex-col items-center justify-center space-y-2">
-                <div class="h-11 w-11 rounded-2xl bg-cyan-100 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
-                    <i class="bi bi-tools"></i>
-                </div>
-                <div class="text-xs font-bold text-slate-900 dark:text-white leading-tight">Operasional</div>
-                <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">Tugas, Tiket, Tamu</div>
-            </a>
-
-            <!-- 6. Tata Persuratan -->
-            <a href="{{ route('letters.index') }}" class="p-4 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-center transition shadow-sm hover:shadow-md hover:border-slate-500 group flex flex-col items-center justify-center space-y-2">
-                <div class="h-11 w-11 rounded-2xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center text-xl group-hover:scale-110 transition">
-                    <i class="bi bi-envelope-paper-fill"></i>
-                </div>
-                <div class="text-xs font-bold text-slate-900 dark:text-white leading-tight">Tata Persuratan</div>
-                <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">Arsip & No. Surat</div>
-            </a>
-
-            <!-- 7. Pesan Satu Arah Pribadi -->
-            <a href="{{ route('messages.index') }}" class="p-4 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-center transition shadow-sm hover:shadow-md hover:border-purple-500 group flex flex-col items-center justify-center space-y-2 relative">
-                <div class="h-11 w-11 rounded-2xl bg-purple-100 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
-                    <i class="bi bi-chat-left-lock-fill"></i>
-                </div>
-                <div class="text-xs font-bold text-slate-900 dark:text-white leading-tight">Pesan</div>
-                <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">Satu Arah</div>
-            </a>
-
-            <!-- 8. Kurikulum -->
-            <button type="button" onclick="showDevelopmentNotice()" class="p-4 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-center transition shadow-sm hover:shadow-md hover:border-blue-500 group flex flex-col items-center justify-center space-y-2">
-                <div class="h-11 w-11 rounded-2xl bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
+        <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            @php
+                $shortcuts = [
+                    ['route' => 'announcements.index', 'icon' => 'bi-megaphone', 'title' => 'Papan Siaran', 'hint' => 'Broadcast Info'],
+                    ['route' => 'agendas.index', 'icon' => 'bi-calendar3', 'title' => 'Agenda Kampus', 'hint' => 'Jadwal Kegiatan'],
+                    ['route' => 'leaves.index', 'icon' => 'bi-file-earmark-check', 'title' => 'Perizinan Staf', 'hint' => 'Izin & Guru Inval'],
+                    ['route' => 'facilities.index', 'icon' => 'bi-building', 'title' => 'Fasilitas Kampus', 'hint' => 'Reservasi & QR'],
+                    ['route' => 'operational.index', 'icon' => 'bi-tools', 'title' => 'Operasional', 'hint' => 'Tugas, Tiket, Tamu'],
+                    ['route' => 'letters.index', 'icon' => 'bi-envelope-paper', 'title' => 'Tata Persuratan', 'hint' => 'Arsip & No. Surat'],
+                    ['route' => 'messages.index', 'icon' => 'bi-chat-left-text', 'title' => 'Pesan', 'hint' => 'Satu Arah'],
+                ];
+            @endphp
+            @foreach($shortcuts as $item)
+                <a href="{{ route($item['route']) }}" class="group flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-blue-700 hover:shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-400">
+                    <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-slate-100 text-lg text-blue-800 transition group-hover:bg-ink-900 group-hover:text-gold-300 dark:bg-slate-800 dark:text-blue-300">
+                        <i class="bi {{ $item['icon'] }}"></i>
+                    </span>
+                    <span class="min-w-0">
+                        <span class="block text-sm font-semibold text-slate-900 dark:text-white">{{ $item['title'] }}</span>
+                        <span class="block text-xs text-slate-500">{{ $item['hint'] }}</span>
+                    </span>
+                </a>
+            @endforeach
+            <button type="button" onclick="showDevelopmentNotice()" class="group flex items-center gap-3 rounded-2xl border border-dashed border-slate-300 bg-white/70 p-4 text-left transition hover:border-blue-700 dark:border-slate-700 dark:bg-slate-900/70">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-slate-100 text-lg text-blue-800 dark:bg-slate-800 dark:text-blue-300">
                     <i class="bi bi-book-half"></i>
-                </div>
-                <div class="text-xs font-bold text-slate-900 dark:text-white leading-tight">Kurikulum</div>
-                <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">Akademik & Nilai</div>
+                </span>
+                <span class="min-w-0">
+                    <span class="block text-sm font-semibold text-slate-900 dark:text-white">Kurikulum</span>
+                    <span class="block text-xs text-slate-500">Akademik & Nilai</span>
+                </span>
             </button>
         </div>
-    </div>
+    </section>
 
-    <!-- 3 Informational Cards: Mode Terang & Gelap Diselaraskan -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-
-        <!-- Card 1: Profil Akun -->
-        <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-6 space-y-4 shadow-sm transition-colors">
-            <h3 class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-extrabold flex items-center gap-1.5">
-                <i class="bi bi-person-circle text-blue-600 dark:text-blue-400 text-sm"></i>
-                <span>Informasi Akun Pegawai</span>
-            </h3>
-            <div class="space-y-2.5 text-xs divide-y divide-slate-100 dark:divide-slate-700 text-slate-700 dark:text-slate-300">
-                <div class="pt-1 flex justify-between">
-                    <span class="text-slate-500 dark:text-slate-400">Peran Utama:</span>
-                    <span class="font-bold text-purple-600 dark:text-purple-300">{{ ucfirst(str_replace('_', ' ', $user->getRoleNames()->first() ?? 'Staf')) }}</span>
+    <section class="grid gap-4 lg:grid-cols-3">
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Informasi Akun Pegawai</h3>
+            <dl class="mt-4 space-y-3 text-sm">
+                <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-3 dark:border-slate-800">
+                    <dt class="text-slate-500">Peran Utama</dt>
+                    <dd class="text-right font-semibold text-slate-900 dark:text-white">{{ ucfirst(str_replace('_', ' ', $user->getRoleNames()->first() ?? 'Staf')) }}</dd>
                 </div>
-                <div class="pt-2 flex justify-between">
-                    <span class="text-slate-500 dark:text-slate-400">Kategori:</span>
-                    <span class="font-medium text-slate-900 dark:text-white">{{ ucfirst($user->staff_category ?? 'Umum') }}</span>
+                <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-3 dark:border-slate-800">
+                    <dt class="text-slate-500">Kategori</dt>
+                    <dd class="text-right font-medium text-slate-900 dark:text-white">{{ ucfirst($user->staff_category ?? 'Umum') }}</dd>
                 </div>
-                <div class="pt-2 flex justify-between">
-                    <span class="text-slate-500 dark:text-slate-400">Penempatan:</span>
-                    <span class="font-medium text-emerald-600 dark:text-emerald-400 text-right">
+                <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-3 dark:border-slate-800">
+                    <dt class="text-slate-500">Penempatan</dt>
+                    <dd class="text-right font-medium text-slate-900 dark:text-white">
                         {{ $user->units->isNotEmpty() ? $user->units->pluck('name')->implode(', ') : 'Kampus Deltamas' }}
-                    </span>
+                    </dd>
                 </div>
-                <div class="pt-2 flex justify-between items-center">
-                    <span class="text-slate-500 dark:text-slate-400">Status Akun:</span>
-                    <span class="px-2.5 py-0.5 rounded text-[10px] bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-extrabold uppercase border border-emerald-200 dark:border-emerald-500/30">AKTIF</span>
+                <div class="flex items-center justify-between gap-4">
+                    <dt class="text-slate-500">Status Akun</dt>
+                    <dd class="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300">Aktif</dd>
                 </div>
-            </div>
-        </div>
+            </dl>
+        </article>
 
-        <!-- Card 2: Wewenang RBAC -->
-        <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-6 space-y-4 shadow-sm transition-colors">
-            <h3 class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-extrabold flex items-center gap-1.5">
-                <i class="bi bi-shield-check text-purple-600 dark:text-purple-400 text-sm"></i>
-                <span>Hak Akses Otorisasi (RBAC)</span>
-            </h3>
-            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                Akun ini memiliki <strong class="text-slate-900 dark:text-white font-mono">{{ $user->getAllPermissions()->count() }} izin aktif</strong> yang diatur melalui paket <code class="text-blue-600 dark:text-blue-300 font-mono">spatie/laravel-permission</code>.
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Hak Akses Otorisasi (RBAC)</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                Akun ini memiliki <strong class="font-mono text-slate-900 dark:text-white">{{ $user->getAllPermissions()->count() }} izin aktif</strong> yang diatur melalui paket <code class="font-mono text-blue-700 dark:text-blue-300">spatie/laravel-permission</code>.
             </p>
-            <div class="max-h-36 overflow-y-auto pr-1 space-y-1.5 text-[11px] font-mono text-slate-700 dark:text-slate-300">
+            <div class="mt-4 flex max-h-40 flex-wrap gap-1.5 overflow-y-auto">
                 @foreach($user->getAllPermissions() as $p)
-                    <div class="bg-slate-50 dark:bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-between">
-                        <span class="text-slate-700 dark:text-slate-300">{{ $p->name }}</span>
-                        <i class="bi bi-check-circle-fill text-emerald-500 text-xs"></i>
-                    </div>
+                    <span class="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 font-mono text-[11px] text-slate-700 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300">
+                        <i class="bi bi-check2 text-emerald-600"></i>
+                        {{ $p->name }}
+                    </span>
                 @endforeach
             </div>
-        </div>
+        </article>
 
-        <!-- Card 3: Status Modul -->
-        <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-6 space-y-4 shadow-sm transition-colors">
-            <h3 class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-extrabold flex items-center gap-1.5">
-                <i class="bi bi-layers-fill text-emerald-600 dark:text-emerald-400 text-sm"></i>
-                <span>Status Modul Sistem</span>
-            </h3>
-            <div class="space-y-2 text-xs text-slate-700 dark:text-slate-300">
-                <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Status Modul Sistem</h3>
+            <ul class="mt-4 space-y-2 text-sm">
+                <li class="flex items-center justify-between rounded-xl bg-slate-50 px-3 py-3 dark:bg-slate-950">
                     <span class="font-medium text-slate-800 dark:text-slate-200">Komunikasi & Fasilitas</span>
-                    <span class="text-emerald-600 dark:text-emerald-400 font-mono text-[10px] font-bold flex items-center gap-1">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Aktif</span>
-                    </span>
-                </div>
-                <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+                    <span class="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700 dark:text-emerald-300"><i class="bi bi-check-circle-fill"></i> Aktif</span>
+                </li>
+                <li class="flex items-center justify-between rounded-xl bg-slate-50 px-3 py-3 dark:bg-slate-950">
                     <span class="font-medium text-slate-800 dark:text-slate-200">Perizinan & Operasional</span>
-                    <span class="text-emerald-600 dark:text-emerald-400 font-mono text-[10px] font-bold flex items-center gap-1">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Aktif</span>
-                    </span>
-                </div>
-                <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+                    <span class="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700 dark:text-emerald-300"><i class="bi bi-check-circle-fill"></i> Aktif</span>
+                </li>
+                <li class="flex items-center justify-between rounded-xl bg-slate-50 px-3 py-3 dark:bg-slate-950">
                     <span class="font-medium text-slate-800 dark:text-slate-200">Modul Kurikulum</span>
-                    <span class="text-amber-500 font-mono text-[10px] font-semibold flex items-center gap-1">
-                        <i class="bi bi-info-circle-fill"></i>
-                        <span>Pengembangan</span>
-                    </span>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
+                    <span class="inline-flex items-center gap-1 text-xs font-semibold text-amber-600"><i class="bi bi-info-circle-fill"></i> Pengembangan</span>
+                </li>
+            </ul>
+        </article>
+    </section>
 </div>
 @endsection

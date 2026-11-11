@@ -39,9 +39,21 @@
             ],
             'Komunikasi' => [
                 ['route' => 'messages.index', 'pattern' => 'messages.*', 'icon' => 'bi-chat-left-text', 'label' => 'Pesan'],
+                ['route' => 'groups.index', 'pattern' => 'groups.*', 'icon' => 'bi-people', 'label' => 'Grup & Kepanitiaan'],
                 ['route' => 'greeting.show', 'pattern' => 'greeting.show', 'icon' => 'bi-chat-quote', 'label' => 'Sapaan Koordinator'],
             ],
         ];
+
+        // Kelompok Pimpinan hanya tampil bagi pemilik wewenang panel admin
+        if ($portalUser->hasPermissionTo('dashboard.analytics')) {
+            $navGroups['Pimpinan'] = [
+                ['route' => 'admin.dashboard', 'pattern' => 'admin.dashboard', 'icon' => 'bi-speedometer2', 'label' => 'Panel Koordinator'],
+                ['route' => 'admin.users', 'pattern' => 'admin.users', 'icon' => 'bi-people-fill', 'label' => 'Akun Pegawai'],
+                ['route' => 'admin.delegations', 'pattern' => 'admin.delegations', 'icon' => 'bi-person-fill-up', 'label' => 'Delegasi Wewenang'],
+                ['route' => 'admin.audit', 'pattern' => 'admin.audit', 'icon' => 'bi-shield-check', 'label' => 'Jejak Audit'],
+                ['route' => 'admin.master', 'pattern' => 'admin.master', 'icon' => 'bi-diagram-3-fill', 'label' => 'Data Induk'],
+            ];
+        }
     @endphp
 
     <div id="navDrawerBackdrop" onclick="toggleNavDrawer()" class="fixed inset-0 bg-ink-950/70 backdrop-blur-sm z-40 transition-opacity duration-300 opacity-0 pointer-events-none lg:hidden"></div>
@@ -166,6 +178,26 @@
         </header>
 
         <main class="w-full min-w-0 flex-1">
+            @if(session('impersonator_id'))
+                {{-- Pita peringatan mode simulasi akun agar koordinator tidak lupa keluar --}}
+                <div class="flex flex-col gap-3 border-b border-amber-300 bg-amber-100 px-4 py-3 text-amber-900 dark:border-amber-500/30 dark:bg-amber-500/15 dark:text-amber-200 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+                    <p class="flex items-start gap-2 text-xs">
+                        <i class="bi bi-person-badge mt-0.5 shrink-0"></i>
+                        <span>
+                            <span class="font-bold">Mode simulasi akun aktif.</span>
+                            Anda melihat portal sebagai <span class="font-semibold">{{ $portalUser->name }}</span> ({{ $portalUser->nip }}). Seluruh aktivitas tercatat di jejak audit.
+                        </span>
+                    </p>
+                    <form action="{{ route('admin.stop_impersonate') }}" method="POST" class="shrink-0">
+                        @csrf
+                        <button type="submit" class="flex items-center gap-1.5 rounded-xl bg-ink-900 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-ink-800">
+                            <i class="bi bi-box-arrow-left"></i>
+                            <span>Akhiri Simulasi</span>
+                        </button>
+                    </form>
+                </div>
+            @endif
+
             @yield('content')
         </main>
 

@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\GreetingController;
 use App\Http\Controllers\LeaveController;
@@ -25,6 +27,10 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Rute Terproteksi Staf & Admin
 Route::middleware(['auth'])->group(function () {
+    // Akhiri mode simulasi akun — harus di luar grup admin karena akun
+    // yang sedang disimulasikan tidak memiliki izin panel admin.
+    Route::post('/stop-impersonate', [AdminController::class, 'stopImpersonate'])->name('admin.stop_impersonate');
+
     // Layar Sapaan Intersepsi Koordinator (COM-01)
     Route::get('/sapaan-koordinator', [GreetingController::class, 'show'])->name('greeting.show');
     Route::post('/sapaan-koordinator/acknowledge', [GreetingController::class, 'acknowledge'])->name('greeting.acknowledge');
@@ -86,6 +92,42 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('letters')->name('letters.')->group(function () {
             Route::get('/', [LetterController::class, 'index'])->name('index');
             Route::post('/', [LetterController::class, 'store'])->name('store');
+        });
+
+        // 9. Modul Grup & Kepanitiaan (GR-01 s.d. GR-04)
+        Route::prefix('groups')->name('groups.')->group(function () {
+            Route::get('/', [GroupController::class, 'index'])->name('index');
+            Route::post('/', [GroupController::class, 'store'])->name('store');
+            Route::get('/{id}', [GroupController::class, 'show'])->name('show');
+            Route::post('/{id}/review', [GroupController::class, 'review'])->name('review');
+            Route::post('/{id}/members', [GroupController::class, 'addMember'])->name('add_member');
+            Route::delete('/{id}/members/{membershipId}', [GroupController::class, 'removeMember'])->name('remove_member');
+        });
+
+        // 10. Panel Admin Koordinator (Pusat Kendali Super Admin)
+        Route::prefix('admin')->name('admin.')->group(function () {
+            Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
+
+            // Manajemen akun pegawai
+            Route::get('/users', [AdminController::class, 'users'])->name('users');
+            Route::post('/users', [AdminController::class, 'storeUser'])->name('users.store');
+            Route::put('/users/{id}', [AdminController::class, 'updateUser'])->name('users.update');
+            Route::post('/users/{id}/reset-password', [AdminController::class, 'resetPassword'])->name('users.reset_password');
+            Route::post('/users/{id}/toggle-status', [AdminController::class, 'toggleStatus'])->name('users.toggle_status');
+            Route::post('/users/{id}/impersonate', [AdminController::class, 'impersonate'])->name('users.impersonate');
+
+            // Delegasi wewenang (Plt / Acting Role)
+            Route::get('/delegations', [AdminController::class, 'delegations'])->name('delegations');
+            Route::post('/delegations', [AdminController::class, 'storeDelegation'])->name('delegations.store');
+            Route::post('/delegations/{id}/revoke', [AdminController::class, 'revokeDelegation'])->name('delegations.revoke');
+
+            // Jejak audit & riwayat login
+            Route::get('/audit', [AdminController::class, 'audit'])->name('audit');
+
+            // Data induk & pengaturan sistem
+            Route::get('/master', [AdminController::class, 'masterData'])->name('master');
+            Route::post('/master/period', [AdminController::class, 'setActivePeriod'])->name('master.period');
+            Route::post('/master/setting', [AdminController::class, 'updateSetting'])->name('master.setting');
         });
  
 

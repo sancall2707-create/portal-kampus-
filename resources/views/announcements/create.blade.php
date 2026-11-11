@@ -6,12 +6,12 @@
 <div class="w-full max-w-2xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8 space-y-6">
 
     <div class="space-y-1">
-        <a href="{{ route('announcements.index') }}" class="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 transition mb-2">
+        <a href="{{ route('announcements.index') }}" class="text-xs text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 transition mb-2">
             <i class="bi bi-arrow-left"></i>
             <span>Batal & Kembali ke Papan Siaran</span>
         </a>
         <h1 class="font-display text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white tracking-tight">Kirim Pengumuman Baru</h1>
-        <p class="text-xs text-slate-500 dark:text-slate-400">Siarkan arahan, agenda darurat, atau reminder resmi satu arah ke target pegawai.</p>
+        <p class="text-xs text-slate-600 dark:text-slate-300">Siarkan arahan, agenda darurat, atau reminder resmi satu arah ke target pegawai.</p>
     </div>
 
     <!-- Alert Validation Errors -->
@@ -42,7 +42,7 @@
                         <input type="radio" name="scope" value="campus" {{ old('scope', 'campus') === 'campus' ? 'checked' : '' }} onchange="toggleUnitSelect(this.value)" class="h-4 w-4 text-blue-600 bg-white dark:bg-slate-950 border-slate-300 dark:border-slate-700 focus:ring-blue-500">
                         <div class="ml-3">
                             <div class="text-xs font-bold text-slate-900 dark:text-white">Seluruh Kampus</div>
-                            <div class="text-[11px] text-slate-500 dark:text-slate-400">Seluruh pegawai PG-TK s.d. SMA</div>
+                            <div class="text-[11px] text-slate-600 dark:text-slate-300">Seluruh pegawai PG-TK s.d. SMA</div>
                         </div>
                     </label>
                 @endif
@@ -52,7 +52,7 @@
                         <input type="radio" name="scope" value="unit" {{ (old('scope') === 'unit' || !$canCreateCampus) ? 'checked' : '' }} onchange="toggleUnitSelect(this.value)" class="h-4 w-4 text-blue-600 bg-white dark:bg-slate-950 border-slate-300 dark:border-slate-700 focus:ring-blue-500">
                         <div class="ml-3">
                             <div class="text-xs font-bold text-slate-900 dark:text-white">Unit Sekolah Tertentu</div>
-                            <div class="text-[11px] text-slate-500 dark:text-slate-400">Hanya staf pada unit terpilih</div>
+                            <div class="text-[11px] text-slate-600 dark:text-slate-300">Hanya staf pada unit terpilih</div>
                         </div>
                     </label>
                 @endif
@@ -106,7 +106,7 @@
                 <label for="body" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Isi Pengumuman
                 </label>
-                <span class="text-[11px] font-mono text-slate-500 dark:text-slate-400">
+                <span class="text-[11px] font-mono text-slate-600 dark:text-slate-300">
                     <span id="charCount">0</span> / {{ $maxChars }} Karakter
                 </span>
             </div>
@@ -120,7 +120,7 @@
                 oninput="updateCharCount(this.value)"
                 class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700 rounded-2xl text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition leading-relaxed"
             >{{ old('body') }}</textarea>
-            <p class="text-[11px] text-slate-400 dark:text-slate-500 mt-1">
+            <p class="text-[11px] text-slate-600 dark:text-slate-400 mt-1">
                 Aturan sistem: batas maksimal {{ $maxChars }} karakter agar informasi penting tidak bertele-tele dan mudah dipindai di HP.
             </p>
         </div>
@@ -129,7 +129,7 @@
         <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex items-center justify-between">
             <div>
                 <div class="text-xs font-bold text-slate-900 dark:text-white">Tandai Sebagai Pesan PENTING (Urgent)</div>
-                <div class="text-[11px] text-slate-500 dark:text-slate-400">Pesan akan diberi sorotan visual merah dan diprioritaskan di daftar teratas.</div>
+                <div class="text-[11px] text-slate-600 dark:text-slate-300">Pesan akan diberi sorotan visual merah dan diprioritaskan di daftar teratas.</div>
             </div>
             <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" name="is_urgent" value="1" {{ old('is_urgent') ? 'checked' : '' }} class="sr-only peer">

@@ -21,7 +21,7 @@
                 </span>
                 <span>
                     <span class="block font-display text-xl font-semibold">SIAP PL Deltamas</span>
-                    <span class="block text-xs text-slate-400">Yayasan Pangudi Luhur — Kampus Deltamas</span>
+                    <span class="block text-xs text-slate-600 dark:text-slate-400">Yayasan Pangudi Luhur — Kampus Deltamas</span>
                 </span>
             </div>
             <div class="max-w-md space-y-4">
@@ -29,7 +29,7 @@
                 <h1 class="font-display text-4xl leading-tight">Satu pintu untuk staf, guru, dan pimpinan kampus.</h1>
                 <p class="text-sm leading-relaxed text-slate-300">Siaran, agenda, perizinan, fasilitas, operasional lapangan, dan persuratan tetap di alur yang sama.</p>
             </div>
-            <p class="text-xs text-slate-500">&copy; 2026 Yayasan Pangudi Luhur Kota Deltamas · Dilindungi Hak Cipta</p>
+            <p class="text-xs text-slate-600 dark:text-slate-300">&copy; 2026 Yayasan Pangudi Luhur Kota Deltamas · Dilindungi Hak Cipta</p>
         </aside>
 
         <main class="flex flex-col">
@@ -53,7 +53,7 @@
                 <div class="w-full max-w-md">
                     <div class="mb-7">
                         <h1 class="font-display text-3xl text-slate-900 dark:text-white">Masuk ke Portal</h1>
-                        <p class="mt-1 text-sm text-slate-500">Gunakan NIP pegawai atau email yang sudah terdaftar.</p>
+                        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Gunakan NIP pegawai atau email yang sudah terdaftar.</p>
                     </div>
 
                     @if ($errors->any())
@@ -73,17 +73,17 @@
                             <label for="login" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">NIP Pegawai / Email</label>
                             <div class="relative">
                                 <input type="text" id="login" name="login" value="{{ old('login') }}" placeholder="Contoh: PL0001, PL2002" required autofocus class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 pr-11 font-mono text-sm tracking-wide text-slate-900 placeholder-slate-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
-                                <span class="absolute right-3.5 top-3.5 text-sm text-slate-400"><i class="bi bi-person-badge"></i></span>
+                                <span class="absolute right-3.5 top-3.5 text-sm text-slate-600 dark:text-slate-400"><i class="bi bi-person-badge"></i></span>
                             </div>
                         </div>
                         <div>
                             <div class="mb-1.5 flex items-center justify-between">
                                 <label for="password" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Kata Sandi</label>
-                                <span class="text-[11px] text-slate-500">Default: <code class="font-mono font-bold text-blue-700 dark:text-blue-300">password123</code></span>
+                                <span class="text-[11px] text-slate-600 dark:text-slate-300">Default: <code class="font-mono font-bold text-blue-700 dark:text-blue-300">password123</code></span>
                             </div>
                             <div class="relative">
                                 <input type="password" id="password" name="password" placeholder="Password akun" required class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 pr-11 font-mono text-sm tracking-wide text-slate-900 placeholder-slate-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
-                                <button type="button" onclick="togglePassword()" class="absolute right-3.5 top-3.5 text-sm text-slate-400 hover:text-slate-700 dark:hover:text-slate-200">
+                                <button type="button" onclick="togglePassword()" class="absolute right-3.5 top-3.5 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200">
                                     <i id="eyeIcon" class="bi bi-eye"></i>
                                 </button>
                             </div>
@@ -93,7 +93,7 @@
                                 <input type="checkbox" name="remember" class="h-4 w-4 rounded border-slate-300 text-blue-700 focus:ring-blue-600">
                                 <span>Ingat sesi saya</span>
                             </label>
-                            <span class="text-xs text-slate-400">Lupa sandi? Hub. TU</span>
+                            <span class="text-xs text-slate-600 dark:text-slate-400">Lupa sandi? Hub. TU</span>
                         </div>
                         <button type="submit" class="flex w-full items-center justify-center gap-2 rounded-xl bg-ink-900 py-3.5 text-sm font-semibold text-white transition hover:bg-ink-800">
                             <span>Masuk ke Portal</span>
@@ -102,39 +102,39 @@
                     </form>
 
                     <div class="mt-6 border-t border-slate-200 pt-5 dark:border-slate-800">
-                        <p class="mb-2.5 text-center text-[11px] font-semibold uppercase tracking-wider text-slate-500">Pilih Cepat Akun Pengujian</p>
+                        <p class="mb-2.5 text-center text-[11px] font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300">Pilih Cepat Akun Pengujian</p>
                         <div class="grid grid-cols-2 gap-2 text-xs">
                             <button type="button" onclick="fillTest('PL0001', 'password123')" class="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-2.5 py-2 text-left transition hover:border-slate-300 dark:border-slate-700 dark:bg-slate-900">
                                 <span>
                                     <span class="block font-semibold text-purple-700 dark:text-purple-300">Koordinator</span>
-                                    <span class="font-mono text-[10px] text-slate-500">PL0001</span>
+                                    <span class="font-mono text-[10px] text-slate-600 dark:text-slate-300">PL0001</span>
                                 </span>
-                                <i class="bi bi-chevron-right text-xs text-slate-400"></i>
+                                <i class="bi bi-chevron-right text-xs text-slate-600 dark:text-slate-400"></i>
                             </button>
                             <button type="button" onclick="fillTest('PL1002', 'password123')" class="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-2.5 py-2 text-left transition hover:border-slate-300 dark:border-slate-700 dark:bg-slate-900">
                                 <span>
                                     <span class="block font-semibold text-blue-700 dark:text-blue-300">Kepsek SD</span>
-                                    <span class="font-mono text-[10px] text-slate-500">PL1002</span>
+                                    <span class="font-mono text-[10px] text-slate-600 dark:text-slate-300">PL1002</span>
                                 </span>
-                                <i class="bi bi-chevron-right text-xs text-slate-400"></i>
+                                <i class="bi bi-chevron-right text-xs text-slate-600 dark:text-slate-400"></i>
                             </button>
                             <button type="button" onclick="fillTest('PL2002', 'password123')" class="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-2.5 py-2 text-left transition hover:border-slate-300 dark:border-slate-700 dark:bg-slate-900">
                                 <span>
                                     <span class="block font-semibold text-amber-700 dark:text-amber-300">Guru Multi-Unit</span>
-                                    <span class="font-mono text-[10px] text-slate-500">PL2002 (SMP-SMA)</span>
+                                    <span class="font-mono text-[10px] text-slate-600 dark:text-slate-300">PL2002 (SMP-SMA)</span>
                                 </span>
-                                <i class="bi bi-chevron-right text-xs text-slate-400"></i>
+                                <i class="bi bi-chevron-right text-xs text-slate-600 dark:text-slate-400"></i>
                             </button>
                             <button type="button" onclick="fillTest('PL4001', 'password123')" class="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-2.5 py-2 text-left transition hover:border-slate-300 dark:border-slate-700 dark:bg-slate-900">
                                 <span>
                                     <span class="block font-semibold text-rose-700 dark:text-rose-300">Satpam Gerbang</span>
-                                    <span class="font-mono text-[10px] text-slate-500">PL4001</span>
+                                    <span class="font-mono text-[10px] text-slate-600 dark:text-slate-300">PL4001</span>
                                 </span>
-                                <i class="bi bi-chevron-right text-xs text-slate-400"></i>
+                                <i class="bi bi-chevron-right text-xs text-slate-600 dark:text-slate-400"></i>
                             </button>
                         </div>
                     </div>
-                    <p class="mt-6 text-center text-xs text-slate-500">Memerlukan bantuan teknis? Hubungi Tim IT / Tata Usaha Kampus PL Deltamas.</p>
+                    <p class="mt-6 text-center text-xs text-slate-600 dark:text-slate-300">Memerlukan bantuan teknis? Hubungi Tim IT / Tata Usaha Kampus PL Deltamas.</p>
                 </div>
             </div>
         </main>

@@ -6,14 +6,14 @@
 <div class="w-full max-w-3xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8 space-y-6">
 
     <div class="space-y-1">
-        <a href="{{ route('messages.index') }}" class="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 transition mb-2">
+        <a href="{{ route('messages.index') }}" class="text-xs text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 transition mb-2">
             <i class="bi bi-arrow-left"></i>
             <span>Batal & Kembali ke Kotak Pesan</span>
         </a>
         <h1 class="font-display text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
             <span>Tulis Pesan Satu Arah</span>
         </h1>
-        <p class="text-xs text-slate-500 dark:text-slate-400">
+        <p class="text-xs text-slate-600 dark:text-slate-300">
             Dapat dikirim ke 1 hingga maksimal <strong>50 penerima</strong> sekaligus. Setiap penerima menerima pesan secara privat dan tidak dapat melihat penerima lainnya.
         </p>
     </div>
@@ -37,13 +37,13 @@
                     <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                         Pilih Pegawai Penerima <span class="text-rose-500">*</span>
                     </label>
-                    <span class="text-[11px] text-slate-500 dark:text-slate-400">Pilih satu per satu atau gunakan filter unit di bawah.</span>
+                    <span class="text-[11px] text-slate-600 dark:text-slate-300">Pilih satu per satu atau gunakan filter unit di bawah.</span>
                 </div>
                 <div class="flex items-center gap-2">
                     <span id="counterBadge" class="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30">
                         0 / 50 Terpilih
                     </span>
-                    <button type="button" onclick="clearAllSelections()" class="text-[11px] font-semibold text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 underline">
+                    <button type="button" onclick="clearAllSelections()" class="text-[11px] font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200 underline">
                         Reset
                     </button>
                 </div>
@@ -52,7 +52,7 @@
             <!-- Search Box & Filter Unit Tabs -->
             <div class="space-y-2">
                 <div class="relative">
-                    <i class="bi bi-search absolute left-3.5 top-2.5 text-slate-400 text-xs"></i>
+                    <i class="bi bi-search absolute left-3.5 top-2.5 text-slate-600 dark:text-slate-400 text-xs"></i>
                     <input 
                         type="text" 
                         id="searchRecipientInput" 
@@ -95,7 +95,7 @@
                             >
                             <div class="truncate">
                                 <div class="text-xs font-bold text-slate-900 dark:text-white truncate">{{ $rec->name }}</div>
-                                <div class="text-[10px] text-slate-500 dark:text-slate-400 font-mono truncate">
+                                <div class="text-[10px] text-slate-600 dark:text-slate-300 font-mono truncate">
                                     NIP: {{ $rec->nip ?? '-' }} · {{ $rec->job_title ?? 'Pegawai' }}
                                 </div>
                             </div>

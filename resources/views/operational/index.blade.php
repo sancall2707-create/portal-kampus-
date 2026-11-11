@@ -11,7 +11,7 @@
             <h2 class="font-display text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white tracking-tight">
                 Operasional Lapangan & Keamanan
             </h2>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-0.5">
                 Pusat penugasan langsung, helpdesk kerusakan, tombol darurat, dan buku tamu gerbang.
             </p>
         </div>
@@ -64,7 +64,7 @@
         <!-- TAB 1: DIRECT TASKING (OP-01 & OP-02) -->
         <div class="space-y-4">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <span class="text-xs text-slate-500 font-medium">Instruksi kerja pimpinan langsung ke TU, Pelaksana Kebersihan, dan Satpam.</span>
+                <span class="text-xs text-slate-600 dark:text-slate-300 font-medium">Instruksi kerja pimpinan langsung ke TU, Pelaksana Kebersihan, dan Satpam.</span>
                 @if($user->can('task.assign'))
                     <button type="button" onclick="document.getElementById('modalTask').classList.remove('hidden')" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
                         <i class="bi bi-plus-lg"></i>
@@ -99,7 +99,7 @@
                             @endif
                         </div>
 
-                        <div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400">
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-600 dark:text-slate-300">
                             <div>Dari: <strong class="text-slate-700 dark:text-slate-300">{{ $t->creator_name }}</strong></div>
                             @if($t->due_at)
                                 <div class="font-mono">Tenggat: {{ \Carbon\Carbon::parse($t->due_at)->format('d M H:i') }} WIB</div>
@@ -117,7 +117,7 @@
                         @endif
                     </div>
                 @empty
-                    <div class="col-span-1 md:col-span-2 py-12 text-center text-slate-400 border border-dashed border-slate-200 dark:border-slate-800 rounded-2xl bg-white/40 dark:bg-slate-800/40">
+                    <div class="col-span-1 md:col-span-2 py-12 text-center text-slate-600 dark:text-slate-400 border border-dashed border-slate-200 dark:border-slate-800 rounded-2xl bg-white/40 dark:bg-slate-800/40">
                         <i class="bi bi-check2-all text-3xl"></i>
                         <p class="mt-2 text-xs font-semibold">Tidak ada tugas lapangan aktif saat ini.</p>
                     </div>
@@ -129,7 +129,7 @@
         <!-- TAB 2: TIKET KERUSAKAN (OP-03) -->
         <div class="space-y-4">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <span class="text-xs text-slate-500 font-medium">Helpdesk pelaporan kerusakan sarpras dan insiden lapangan.</span>
+                <span class="text-xs text-slate-600 dark:text-slate-300 font-medium">Helpdesk pelaporan kerusakan sarpras dan insiden lapangan.</span>
                 <button type="button" onclick="document.getElementById('modalTicket').classList.remove('hidden')" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
                     <i class="bi bi-plus-lg"></i>
                     <span>Lapor Kerusakan</span>
@@ -153,7 +153,7 @@
                                 <td class="py-3 px-4 font-mono font-bold text-blue-600 dark:text-blue-400 whitespace-nowrap">{{ $tk->ticket_no }}</td>
                                 <td class="py-3 px-4">
                                     <div class="font-bold text-slate-900 dark:text-white">{{ $tk->location_text }}</div>
-                                    <div class="text-[11px] text-slate-500">{{ $tk->facility_name ?? "Unit {$tk->unit_code}" }}</div>
+                                    <div class="text-[11px] text-slate-600 dark:text-slate-300">{{ $tk->facility_name ?? "Unit {$tk->unit_code}" }}</div>
                                 </td>
                                 <td class="py-3 px-4 max-w-xs">{{ $tk->description }}</td>
                                 <td class="py-3 px-4 text-slate-600 dark:text-slate-400 whitespace-nowrap">{{ $tk->reporter_name }}</td>
@@ -168,7 +168,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="py-12 text-center text-slate-400">Tidak ada tiket kerusakan yang dilaporkan.</td>
+                                <td colspan="5" class="py-12 text-center text-slate-600 dark:text-slate-400">Tidak ada tiket kerusakan yang dilaporkan.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -221,7 +221,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="py-12 text-center text-slate-400">Belum pernah ada sinyal darurat yang diaktifkan. Kondisi kampus aman.</td>
+                                <td colspan="5" class="py-12 text-center text-slate-600 dark:text-slate-400">Belum pernah ada sinyal darurat yang diaktifkan. Kondisi kampus aman.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -233,7 +233,7 @@
         <!-- TAB 4: BUKU TAMU DIGITAL (OP-05) -->
         <div class="space-y-4">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <span class="text-xs text-slate-500 font-medium">Pencatatan identitas tamu, vendor, dan wali murid di gerbang masuk kampus.</span>
+                <span class="text-xs text-slate-600 dark:text-slate-300 font-medium">Pencatatan identitas tamu, vendor, dan wali murid di gerbang masuk kampus.</span>
                 @if($user->can('guestbook.record'))
                     <button type="button" onclick="document.getElementById('modalGuest').classList.remove('hidden')" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
                         <i class="bi bi-person-plus-fill"></i>
@@ -261,20 +261,20 @@
                                 </td>
                                 <td class="py-3 px-4">
                                     <div class="font-bold text-slate-900 dark:text-white">{{ $gl->guest_name }}</div>
-                                    <div class="text-[11px] text-slate-500">{{ $gl->institution ?? 'Pribadi' }} ({{ ucfirst($gl->guest_type) }})</div>
+                                    <div class="text-[11px] text-slate-600 dark:text-slate-300">{{ $gl->institution ?? 'Pribadi' }} ({{ ucfirst($gl->guest_type) }})</div>
                                 </td>
                                 <td class="py-3 px-4 font-mono font-bold text-blue-600 dark:text-blue-400 whitespace-nowrap">{{ $gl->vehicle_plate ?: '-' }}</td>
                                 <td class="py-3 px-4">
                                     <div class="text-slate-800 dark:text-slate-200">{{ $gl->purpose }}</div>
                                     @if($gl->visit_to)
-                                        <div class="text-[11px] text-slate-400 font-mono">Menuju: {{ $gl->visit_to }}</div>
+                                        <div class="text-[11px] text-slate-600 dark:text-slate-400 font-mono">Menuju: {{ $gl->visit_to }}</div>
                                     @endif
                                 </td>
-                                <td class="py-3 px-4 text-slate-500 whitespace-nowrap">{{ $gl->satpam_name }}</td>
+                                <td class="py-3 px-4 text-slate-600 dark:text-slate-300 whitespace-nowrap">{{ $gl->satpam_name }}</td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="py-12 text-center text-slate-400">Belum ada catatan buku tamu untuk hari ini.</td>
+                                <td colspan="5" class="py-12 text-center text-slate-600 dark:text-slate-400">Belum ada catatan buku tamu untuk hari ini.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -290,7 +290,7 @@
     <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 w-full max-w-lg space-y-4 shadow-2xl">
         <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
             <h3 class="font-bold text-sm text-slate-900 dark:text-white">Beri Tugas Lapangan (Direct Tasking)</h3>
-            <button type="button" onclick="document.getElementById('modalTask').classList.add('hidden')" class="text-slate-400 hover:text-white"><i class="bi bi-x-lg"></i></button>
+            <button type="button" onclick="document.getElementById('modalTask').classList.add('hidden')" class="text-slate-600 dark:text-slate-400 hover:text-white"><i class="bi bi-x-lg"></i></button>
         </div>
         <form action="{{ route('operational.store_task') }}" method="POST" class="space-y-3 text-xs">
             @csrf
@@ -332,7 +332,7 @@
     <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 w-full max-w-lg space-y-4 shadow-2xl">
         <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
             <h3 class="font-bold text-sm text-slate-900 dark:text-white">Lapor Kerusakan Sarpras / Insiden</h3>
-            <button type="button" onclick="document.getElementById('modalTicket').classList.add('hidden')" class="text-slate-400 hover:text-white"><i class="bi bi-x-lg"></i></button>
+            <button type="button" onclick="document.getElementById('modalTicket').classList.add('hidden')" class="text-slate-600 dark:text-slate-400 hover:text-white"><i class="bi bi-x-lg"></i></button>
         </div>
         <form action="{{ route('operational.store_ticket') }}" method="POST" class="space-y-3 text-xs">
             @csrf
@@ -384,7 +384,7 @@
     <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 w-full max-w-lg space-y-4 shadow-2xl">
         <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
             <h3 class="font-bold text-sm text-slate-900 dark:text-white">Catat Tamu Masuk Gerbang (Buku Tamu)</h3>
-            <button type="button" onclick="document.getElementById('modalGuest').classList.add('hidden')" class="text-slate-400 hover:text-white"><i class="bi bi-x-lg"></i></button>
+            <button type="button" onclick="document.getElementById('modalGuest').classList.add('hidden')" class="text-slate-600 dark:text-slate-400 hover:text-white"><i class="bi bi-x-lg"></i></button>
         </div>
         <form action="{{ route('operational.store_guest') }}" method="POST" class="space-y-3 text-xs">
             @csrf

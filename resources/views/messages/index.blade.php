@@ -14,7 +14,7 @@
                     Maks. 50 Penerima
                 </span>
             </h2>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
                 Kirim instruksi dan memo dinas satu arah secara privat ke individu atau kelompok staf terpilih (maksimal 50 orang).
             </p>
         </div>
@@ -38,7 +38,7 @@
     <!-- Navigation Tabs (Kotak Masuk vs Pesan Terkirim) -->
     <div class="flex items-center space-x-4 border-b border-slate-200 dark:border-slate-800">
         <a href="{{ route('messages.index', ['tab' => 'inbox']) }}" 
-           class="pb-3 text-xs font-bold transition flex items-center gap-2 border-b-2 {{ $tab === 'inbox' ? 'border-blue-600 text-blue-600 dark:text-blue-400' : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-300' }}">
+           class="pb-3 text-xs font-bold transition flex items-center gap-2 border-b-2 {{ $tab === 'inbox' ? 'border-blue-600 text-blue-600 dark:text-blue-400' : 'border-transparent text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-300' }}">
             <i class="bi bi-inbox-fill"></i>
             <span>Kotak Masuk</span>
             @if($unreadCount > 0)
@@ -48,10 +48,10 @@
             @endif
         </a>
         <a href="{{ route('messages.index', ['tab' => 'sent']) }}" 
-           class="pb-3 text-xs font-bold transition flex items-center gap-2 border-b-2 {{ $tab === 'sent' ? 'border-blue-600 text-blue-600 dark:text-blue-400' : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-300' }}">
+           class="pb-3 text-xs font-bold transition flex items-center gap-2 border-b-2 {{ $tab === 'sent' ? 'border-blue-600 text-blue-600 dark:text-blue-400' : 'border-transparent text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-300' }}">
             <i class="bi bi-send-fill"></i>
             <span>Pesan Terkirim</span>
-            <span class="text-[10px] font-mono text-slate-400">({{ count($sentBatches) }})</span>
+            <span class="text-[10px] font-mono text-slate-600 dark:text-slate-400">({{ count($sentBatches) }})</span>
         </a>
     </div>
 
@@ -82,7 +82,7 @@
                                 <span class="px-2 py-0.5 rounded text-[10px] uppercase font-bold border {{ $badgeClass }}">
                                     {{ $m->category }}
                                 </span>
-                                <span class="inline-flex items-center gap-1 text-[11px] font-mono text-slate-400">
+                                <span class="inline-flex items-center gap-1 text-[11px] font-mono text-slate-600 dark:text-slate-400">
                                     <i class="bi bi-lock-fill text-amber-500 text-[10px]"></i>
                                     <span>Pribadi & Rahasia</span>
                                 </span>
@@ -98,7 +98,7 @@
                         </div>
 
                         <div class="text-right shrink-0">
-                            <span class="text-[11px] font-mono text-slate-400 block">
+                            <span class="text-[11px] font-mono text-slate-600 dark:text-slate-400 block">
                                 {{ $m->created_at->translatedFormat('d M Y, H:i') }}
                             </span>
                         </div>
@@ -106,9 +106,9 @@
 
                     <div class="text-xs text-slate-600 dark:text-slate-300 flex items-center justify-between border-t border-slate-100 dark:border-slate-700/60 pt-2.5">
                         <div>
-                            <span class="text-slate-400 text-[11px]">Dari:</span>
+                            <span class="text-slate-600 dark:text-slate-400 text-[11px]">Dari:</span>
                             <strong class="text-slate-800 dark:text-slate-200">{{ $m->sender->name }}</strong>
-                            <span class="text-[10px] text-slate-400 font-mono">({{ $m->sender->job_title ?? 'Pegawai' }})</span>
+                            <span class="text-[10px] text-slate-600 dark:text-slate-400 font-mono">({{ $m->sender->job_title ?? 'Pegawai' }})</span>
                         </div>
 
                         <a href="{{ route('messages.show', $m->id) }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition shadow-xs">
@@ -118,7 +118,7 @@
                     </div>
                 </div>
             @empty
-                <div class="p-12 text-center rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-400 space-y-2">
+                <div class="p-12 text-center rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 space-y-2">
                     <i class="bi bi-chat-left-dots text-4xl"></i>
                     <div class="text-xs font-semibold">Tidak ada pesan masuk pada kotak ini.</div>
                 </div>
@@ -154,10 +154,10 @@
                         </div>
 
                         <div class="text-right shrink-0 space-y-1">
-                            <span class="text-[11px] font-mono text-slate-400 block">
+                            <span class="text-[11px] font-mono text-slate-600 dark:text-slate-400 block">
                                 {{ $b->created_at->translatedFormat('d M Y, H:i') }}
                             </span>
-                            <div class="inline-flex items-center gap-1 text-[11px] font-mono {{ $b->read_count > 0 ? 'text-emerald-600 dark:text-emerald-400 font-bold' : 'text-slate-400' }}">
+                            <div class="inline-flex items-center gap-1 text-[11px] font-mono {{ $b->read_count > 0 ? 'text-emerald-600 dark:text-emerald-400 font-bold' : 'text-slate-600 dark:text-slate-400' }}">
                                 <i class="bi bi-check2-all text-xs"></i>
                                 <span>Dibaca: {{ $b->read_count }}/{{ $b->total_recipients }}</span>
                             </div>
@@ -166,7 +166,7 @@
 
                     <div class="text-xs text-slate-600 dark:text-slate-300 flex items-center justify-between border-t border-slate-100 dark:border-slate-700/60 pt-2.5">
                         <div class="truncate max-w-[70%]">
-                            <span class="text-slate-400 text-[11px]">Kepada:</span>
+                            <span class="text-slate-600 dark:text-slate-400 text-[11px]">Kepada:</span>
                             <strong class="text-slate-800 dark:text-slate-200">{{ $displayRec }}</strong>
                         </div>
 
@@ -177,7 +177,7 @@
                     </div>
                 </div>
             @empty
-                <div class="p-12 text-center rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-400 space-y-2">
+                <div class="p-12 text-center rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 space-y-2">
                     <i class="bi bi-send-x text-4xl"></i>
                     <div class="text-xs font-semibold">Belum ada pesan yang Anda kirimkan.</div>
                 </div>

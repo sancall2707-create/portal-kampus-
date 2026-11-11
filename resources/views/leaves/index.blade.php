@@ -14,7 +14,7 @@
                     {{ $leaveRequests->count() }} Pengajuan
                 </span>
             </h2>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
                 Alur pengajuan izin, sakit, cuti mandiri, penunjukan guru inval, dan persetujuan berjenjang.
             </p>
         </div>
@@ -40,7 +40,7 @@
     <!-- Monitor Ketidakhadiran Real-Time Hari Ini (LV-07) -->
     <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 space-y-3 shadow-sm dark:shadow-xl transition-colors">
         <div class="flex items-center justify-between">
-            <h3 class="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+            <h3 class="text-xs uppercase font-bold tracking-wider text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
                 <i class="bi bi-person-x-fill text-rose-500 text-sm"></i>
                 <span>Ketidakhadiran Resmi Hari Ini ({{ now()->translatedFormat('d F Y') }})</span>
             </h3>
@@ -57,12 +57,12 @@
                                 {{ $ab->leave_name }} ({{ $ab->unit_code }})
                             </span>
                         </div>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400 truncate">Alasan: {{ $ab->reason }}</p>
+                        <p class="text-[11px] text-slate-600 dark:text-slate-300 truncate">Alasan: {{ $ab->reason }}</p>
                     </div>
                 @endforeach
             </div>
         @else
-            <div class="text-xs text-slate-500 dark:text-slate-400 italic">
+            <div class="text-xs text-slate-600 dark:text-slate-300 italic">
                 Seluruh pegawai dijadwalkan hadir normal hari ini (tidak ada izin yang aktif pada tanggal ini).
             </div>
         @endif
@@ -112,18 +112,18 @@
                         $sub = $substitutes[$lr->id] ?? null;
                     @endphp
                     <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition">
-                        <td class="py-3 px-4 font-mono text-slate-400">{{ $idx + 1 }}</td>
+                        <td class="py-3 px-4 font-mono text-slate-600 dark:text-slate-400">{{ $idx + 1 }}</td>
                         <td class="py-3 px-4">
                             <div class="font-bold text-slate-900 dark:text-white">{{ $lr->applicant_name }}</div>
-                            <div class="text-[11px] text-slate-500 dark:text-slate-400 font-mono">{{ $lr->applicant_nip ?? '-' }} · Unit {{ $lr->unit_code }}</div>
+                            <div class="text-[11px] text-slate-600 dark:text-slate-300 font-mono">{{ $lr->applicant_nip ?? '-' }} · Unit {{ $lr->unit_code }}</div>
                         </td>
                         <td class="py-3 px-4">
                             <span class="font-semibold text-slate-800 dark:text-slate-200">{{ $lr->leave_type_name }}</span>
-                            <div class="text-[10px] text-slate-400 font-mono">{{ $lr->total_days }} Hari Kerja</div>
+                            <div class="text-[10px] text-slate-600 dark:text-slate-400 font-mono">{{ $lr->total_days }} Hari Kerja</div>
                         </td>
                         <td class="py-3 px-4 font-mono">
                             <div class="text-slate-900 dark:text-white font-semibold">{{ \Carbon\Carbon::parse($lr->start_date)->translatedFormat('d M Y') }}</div>
-                            <div class="text-[11px] text-slate-400">s.d. {{ \Carbon\Carbon::parse($lr->end_date)->translatedFormat('d M Y') }}</div>
+                            <div class="text-[11px] text-slate-600 dark:text-slate-400">s.d. {{ \Carbon\Carbon::parse($lr->end_date)->translatedFormat('d M Y') }}</div>
                         </td>
                         <td class="py-3 px-4">
                             @if($sub)
@@ -140,7 +140,7 @@
                                     </span>
                                 @endif
                             @else
-                                <span class="text-slate-400 italic text-[11px]">- Tanpa Inval -</span>
+                                <span class="text-slate-600 dark:text-slate-400 italic text-[11px]">- Tanpa Inval -</span>
                             @endif
                         </td>
                         <td class="py-3 px-4">
@@ -165,7 +165,7 @@
                                     <span>Ditolak</span>
                                 </span>
                             @else
-                                <span class="text-[10px] uppercase font-bold text-slate-400 font-mono">{{ $lr->status }}</span>
+                                <span class="text-[10px] uppercase font-bold text-slate-600 dark:text-slate-400 font-mono">{{ $lr->status }}</span>
                             @endif
                         </td>
                         <td class="py-3 px-4 text-right">
@@ -177,7 +177,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="py-12 text-center text-slate-400">
+                        <td colspan="7" class="py-12 text-center text-slate-600 dark:text-slate-400">
                             <i class="bi bi-inbox text-3xl"></i>
                             <div class="mt-2 text-xs font-semibold">Tidak ada data perizinan pada kategori ini.</div>
                         </td>

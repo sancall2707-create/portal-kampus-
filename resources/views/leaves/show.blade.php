@@ -7,7 +7,7 @@
 
     <!-- Header Back -->
     <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
-        <a href="{{ route('leaves.index') }}" class="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 transition">
+        <a href="{{ route('leaves.index') }}" class="text-xs text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 transition">
             <i class="bi bi-arrow-left"></i>
             <span>Kembali ke Daftar Izin</span>
         </a>
@@ -46,9 +46,9 @@
             <div>
                 <span class="text-xs uppercase font-bold text-blue-600 dark:text-blue-400 tracking-wider">Permohonan Izin Pegawai</span>
                 <h1 class="font-display text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white mt-1">{{ $leave->applicant_name }}</h1>
-                <p class="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5">NIP: {{ $leave->applicant_nip ?? '-' }} · Unit {{ $leave->unit_code }} ({{ $leave->applicant_title }})</p>
+                <p class="text-xs text-slate-600 dark:text-slate-300 font-mono mt-0.5">NIP: {{ $leave->applicant_nip ?? '-' }} · Unit {{ $leave->unit_code }} ({{ $leave->applicant_title }})</p>
             </div>
-            <div class="text-left sm:text-right font-mono text-xs text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-800 shrink-0">
+            <div class="text-left sm:text-right font-mono text-xs text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-800 shrink-0">
                 <div>Diajukan: <span class="text-slate-900 dark:text-white font-semibold">{{ \Carbon\Carbon::parse($leave->submitted_at)->translatedFormat('d M Y, H:i') }} WIB</span></div>
                 <div>Durasi: <span class="text-blue-600 dark:text-blue-400 font-bold">{{ $leave->total_days }} Hari Kerja</span></div>
             </div>
@@ -57,11 +57,11 @@
         <!-- Detail Data -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 text-xs text-slate-700 dark:text-slate-300">
             <div class="space-y-1">
-                <span class="text-slate-400 uppercase tracking-wider text-[11px] font-semibold">Jenis Izin</span>
+                <span class="text-slate-600 dark:text-slate-400 uppercase tracking-wider text-[11px] font-semibold">Jenis Izin</span>
                 <div class="text-sm font-bold text-slate-900 dark:text-white">{{ $leave->leave_type_name }}</div>
             </div>
             <div class="space-y-1 font-mono">
-                <span class="text-slate-400 uppercase tracking-wider text-[11px] font-semibold">Rentang Tanggal</span>
+                <span class="text-slate-600 dark:text-slate-400 uppercase tracking-wider text-[11px] font-semibold">Rentang Tanggal</span>
                 <div class="text-sm font-bold text-slate-900 dark:text-white">
                     {{ \Carbon\Carbon::parse($leave->start_date)->translatedFormat('d M Y') }} s.d. {{ \Carbon\Carbon::parse($leave->end_date)->translatedFormat('d M Y') }}
                 </div>
@@ -69,7 +69,7 @@
         </div>
 
         <div class="space-y-1 text-xs">
-            <span class="text-slate-400 uppercase tracking-wider text-[11px] font-semibold">Alasan Ketidakhadiran</span>
+            <span class="text-slate-600 dark:text-slate-400 uppercase tracking-wider text-[11px] font-semibold">Alasan Ketidakhadiran</span>
             <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-sm leading-relaxed text-slate-800 dark:text-slate-200">
                 {{ $leave->reason }}
             </div>
@@ -77,7 +77,7 @@
 
         @if($leave->substitute_plan)
             <div class="space-y-1 text-xs">
-                <span class="text-slate-400 uppercase tracking-wider text-[11px] font-semibold">Rencana KBM / Titipan Tugas Guru Pengganti (Inval)</span>
+                <span class="text-slate-600 dark:text-slate-400 uppercase tracking-wider text-[11px] font-semibold">Rencana KBM / Titipan Tugas Guru Pengganti (Inval)</span>
                 <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-sm leading-relaxed text-slate-800 dark:text-slate-200 font-mono">
                     {{ $leave->substitute_plan }}
                 </div>
@@ -86,11 +86,11 @@
 
         @if($attachment)
             <div class="pt-2">
-                <span class="text-slate-400 uppercase tracking-wider text-[11px] font-semibold block mb-2">Lampiran Berkas Pendukung</span>
+                <span class="text-slate-600 dark:text-slate-400 uppercase tracking-wider text-[11px] font-semibold block mb-2">Lampiran Berkas Pendukung</span>
                 <a href="{{ asset('storage/' . $attachment->path) }}" target="_blank" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 text-xs font-semibold text-blue-600 dark:text-blue-300 transition">
                     <i class="bi bi-paperclip text-sm"></i>
                     <span>Lihat Berkas: {{ $attachment->original_name }}</span>
-                    <i class="bi bi-box-arrow-up-right text-[10px] text-slate-400"></i>
+                    <i class="bi bi-box-arrow-up-right text-[10px] text-slate-600 dark:text-slate-400"></i>
                 </a>
             </div>
         @endif
@@ -99,17 +99,17 @@
     <!-- Card 2: Status Guru Pengganti (Inval - LV-05) -->
     @if($substitute)
         <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-6 space-y-4 shadow-sm dark:shadow-xl transition-colors">
-            <h3 class="text-xs uppercase font-bold text-slate-500 dark:text-slate-400 tracking-wider flex items-center gap-1.5">
+            <h3 class="text-xs uppercase font-bold text-slate-600 dark:text-slate-300 tracking-wider flex items-center gap-1.5">
                 <i class="bi bi-person-lines-fill text-blue-600 dark:text-blue-400 text-sm"></i>
                 <span>Penugasan Guru Pengganti (Inval) (LV-05)</span>
             </h3>
 
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                 <div class="space-y-1">
-                    <div class="text-xs text-slate-400">Guru yang Ditugaskan:</div>
+                    <div class="text-xs text-slate-600 dark:text-slate-400">Guru yang Ditugaskan:</div>
                     <div class="text-sm font-bold text-slate-900 dark:text-white">{{ $substitute->substitute_name }}</div>
                     @if($substitute->class_subject_info)
-                        <div class="text-[11px] text-slate-500 dark:text-slate-400 font-mono">{{ $substitute->class_subject_info }}</div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-300 font-mono">{{ $substitute->class_subject_info }}</div>
                     @endif
                 </div>
 
@@ -141,7 +141,7 @@
 
     <!-- Card 3: Jejak Persetujuan Berjenjang (Tiered Approval Log - Bagian 6) -->
     <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-6 sm:p-8 space-y-4 shadow-sm dark:shadow-xl transition-colors">
-        <h3 class="text-xs uppercase font-bold text-slate-500 dark:text-slate-400 tracking-wider flex items-center gap-1.5">
+        <h3 class="text-xs uppercase font-bold text-slate-600 dark:text-slate-300 tracking-wider flex items-center gap-1.5">
             <i class="bi bi-diagram-3-fill text-purple-600 dark:text-purple-400 text-sm"></i>
             <span>Alur Persetujuan Berjenjang (Tiered Approval)</span>
         </h3>
@@ -157,7 +157,7 @@
                             <div class="text-xs font-bold text-slate-900 dark:text-white">
                                 {{ $ap->step_role === 'unit_head' ? 'Langkah 1: Validasi Kepala Sekolah Unit' : 'Langkah 2: Pengesahan Akhir Koordinator Kampus' }}
                             </div>
-                            <div class="text-[11px] text-slate-500 dark:text-slate-400">
+                            <div class="text-[11px] text-slate-600 dark:text-slate-300">
                                 @if($ap->approver_name)
                                     Oleh: <strong class="text-slate-700 dark:text-slate-300">{{ $ap->approver_name }}</strong>
                                     @if($ap->delegation_reason)
@@ -220,11 +220,11 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                         <div>
-                            <label for="class_subject_info" class="block text-slate-500 dark:text-slate-400 mb-1">Kelas & Mata Pelajaran Inval</label>
+                            <label for="class_subject_info" class="block text-slate-600 dark:text-slate-300 mb-1">Kelas & Mata Pelajaran Inval</label>
                             <input type="text" name="class_subject_info" id="class_subject_info" placeholder="Contoh: Kelas 3A, Jam ke 1-3" class="w-full px-3 py-2 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white">
                         </div>
                         <div>
-                            <label for="instructions" class="block text-slate-500 dark:text-slate-400 mb-1">Instruksi Tambahan Kepsek</label>
+                            <label for="instructions" class="block text-slate-600 dark:text-slate-300 mb-1">Instruksi Tambahan Kepsek</label>
                             <input type="text" name="instructions" id="instructions" placeholder="Contoh: Awasi pengerjaan LKS hal 24" class="w-full px-3 py-2 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white">
                         </div>
                     </div>

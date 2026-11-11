@@ -14,7 +14,7 @@
                     {{ $facilities->count() }} Fasilitas
                 </span>
             </h2>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
                 Katalog sarana prasarana, kalender ketersediaan jadwal, validasi bentrok atomik, dan penerbitan e-surat izin resmi.
             </p>
         </div>
@@ -38,17 +38,17 @@
     <!-- Main Navigation Tabs (Bookings vs Calendar vs Catalog) -->
     <div class="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-slate-200 dark:border-slate-800">
         <a href="{{ route('facilities.index', ['tab' => 'bookings']) }}" 
-           class="pb-3 text-xs font-bold transition flex items-center gap-2 border-b-2 whitespace-nowrap {{ $tab === 'bookings' ? 'border-blue-600 text-blue-600 dark:text-blue-400' : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-300' }}">
+           class="pb-3 text-xs font-bold transition flex items-center gap-2 border-b-2 whitespace-nowrap {{ $tab === 'bookings' ? 'border-blue-600 text-blue-600 dark:text-blue-400' : 'border-transparent text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-300' }}">
             <i class="bi bi-calendar-check"></i>
             <span>Jadwal & Riwayat Peminjaman</span>
         </a>
         <a href="{{ route('facilities.index', ['tab' => 'calendar']) }}" 
-           class="pb-3 text-xs font-bold transition flex items-center gap-2 border-b-2 whitespace-nowrap {{ $tab === 'calendar' ? 'border-blue-600 text-blue-600 dark:text-blue-400' : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-300' }}">
+           class="pb-3 text-xs font-bold transition flex items-center gap-2 border-b-2 whitespace-nowrap {{ $tab === 'calendar' ? 'border-blue-600 text-blue-600 dark:text-blue-400' : 'border-transparent text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-300' }}">
             <i class="bi bi-calendar-week-fill"></i>
             <span>Kalender Ketersediaan (Slot)</span>
         </a>
         <a href="{{ route('facilities.index', ['tab' => 'catalog']) }}" 
-           class="pb-3 text-xs font-bold transition flex items-center gap-2 border-b-2 whitespace-nowrap {{ $tab === 'catalog' ? 'border-blue-600 text-blue-600 dark:text-blue-400' : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-300' }}">
+           class="pb-3 text-xs font-bold transition flex items-center gap-2 border-b-2 whitespace-nowrap {{ $tab === 'catalog' ? 'border-blue-600 text-blue-600 dark:text-blue-400' : 'border-transparent text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-300' }}">
             <i class="bi bi-building"></i>
             <span>Katalog Master Fasilitas</span>
         </a>
@@ -104,23 +104,23 @@
                                 <td class="py-3 px-4 font-mono font-bold text-blue-600 dark:text-blue-400 whitespace-nowrap">
                                     {{ $b->booking_code }}
                                     @if($b->letter_number)
-                                        <div class="text-[10px] text-slate-400 font-normal">{{ $b->letter_number }}</div>
+                                        <div class="text-[10px] text-slate-600 dark:text-slate-400 font-normal">{{ $b->letter_number }}</div>
                                     @endif
                                 </td>
                                 <td class="py-3 px-4">
                                     <div class="font-bold text-slate-900 dark:text-white">{{ $b->facility_name }}</div>
-                                    <div class="text-[11px] text-slate-500 dark:text-slate-400">{{ $b->event_name ?? $b->purpose }}</div>
+                                    <div class="text-[11px] text-slate-600 dark:text-slate-300">{{ $b->event_name ?? $b->purpose }}</div>
                                     @if($b->destination)
                                         <div class="text-[10px] text-emerald-600 dark:text-emerald-400 font-mono">Tujuan: {{ $b->destination }}</div>
                                     @endif
                                 </td>
                                 <td class="py-3 px-4">
                                     <div class="font-medium text-slate-900 dark:text-white">{{ $b->requester_name }}</div>
-                                    <div class="text-[11px] text-slate-500 dark:text-slate-400 font-mono">PIC: {{ $b->pic_name ?? '-' }} ({{ $b->pic_phone ?? '-' }})</div>
+                                    <div class="text-[11px] text-slate-600 dark:text-slate-300 font-mono">PIC: {{ $b->pic_name ?? '-' }} ({{ $b->pic_phone ?? '-' }})</div>
                                 </td>
                                 <td class="py-3 px-4 font-mono whitespace-nowrap">
                                     <div class="text-slate-900 dark:text-white font-semibold">{{ \Carbon\Carbon::parse($b->start_at)->translatedFormat('d M Y') }}</div>
-                                    <div class="text-[11px] text-slate-500 dark:text-slate-400">{{ \Carbon\Carbon::parse($b->start_at)->format('H:i') }} - {{ \Carbon\Carbon::parse($b->end_at)->format('H:i') }} WIB</div>
+                                    <div class="text-[11px] text-slate-600 dark:text-slate-300">{{ \Carbon\Carbon::parse($b->start_at)->format('H:i') }} - {{ \Carbon\Carbon::parse($b->end_at)->format('H:i') }} WIB</div>
                                 </td>
                                 <td class="py-3 px-4 whitespace-nowrap">
                                     @if($b->status === 'approved')
@@ -165,7 +165,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="py-12 text-center text-slate-400">
+                                <td colspan="6" class="py-12 text-center text-slate-600 dark:text-slate-400">
                                     <i class="bi bi-inbox text-3xl"></i>
                                     <div class="mt-2 text-xs font-semibold">Tidak ada data peminjaman fasilitas pada filter ini.</div>
                                 </td>
@@ -210,7 +210,7 @@
                             @foreach($calendarDays as $day)
                                 <th class="py-3.5 px-3 text-center min-w-[120px] {{ $day->isToday() ? 'bg-blue-100/70 dark:bg-blue-950/80 text-blue-900 dark:text-blue-300 font-bold border-x border-blue-200 dark:border-blue-800/40' : 'text-slate-700 dark:text-slate-300' }}">
                                     <div class="leading-tight">{{ $day->translatedFormat('D') }}</div>
-                                    <div class="text-[10px] font-mono font-normal {{ $day->isToday() ? 'text-blue-800 dark:text-blue-300 font-bold' : 'text-slate-500 dark:text-slate-400' }}">{{ $day->format('d M') }}</div>
+                                    <div class="text-[10px] font-mono font-normal {{ $day->isToday() ? 'text-blue-800 dark:text-blue-300 font-bold' : 'text-slate-600 dark:text-slate-300' }}">{{ $day->format('d M') }}</div>
                                 </th>
                             @endforeach
                         </tr>
@@ -220,7 +220,7 @@
                             <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
                                 <td class="py-3.5 px-4 bg-white dark:bg-slate-800">
                                     <div class="font-bold text-slate-900 dark:text-white leading-snug">{{ $f->name }}</div>
-                                    <div class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">{{ $f->category_name }} · {{ $f->scope === 'campus' ? 'Skala Kampus' : 'Unit ' . $f->unit_code }}</div>
+                                    <div class="text-[10px] text-slate-600 dark:text-slate-300 mt-0.5">{{ $f->category_name }} · {{ $f->scope === 'campus' ? 'Skala Kampus' : 'Unit ' . $f->unit_code }}</div>
                                 </td>
                                 @foreach($calendarDays as $day)
                                     @php
@@ -309,13 +309,13 @@
                         {{ $f->description ?? 'Fasilitas resmi penunjang kegiatan Kampus Pangudi Luhur Deltamas.' }}
                     </p>
 
-                    <div class="grid grid-cols-2 gap-2 text-[11px] text-slate-500 dark:text-slate-400 font-mono bg-slate-50 dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-700">
+                    <div class="grid grid-cols-2 gap-2 text-[11px] text-slate-600 dark:text-slate-300 font-mono bg-slate-50 dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-700">
                         <div>Kapasitas: <span class="text-slate-900 dark:text-white font-bold">{{ $f->capacity ? "~{$f->capacity} orang" : '-' }}</span></div>
                         <div>Akses: <span class="text-slate-900 dark:text-white font-bold">{{ $f->visibility === 'public' ? 'Bisa Dipinjam Umum' : 'Hanya Internal' }}</span></div>
                     </div>
 
                     @if($f->rules_text)
-                        <div class="text-[11px] text-slate-500 dark:text-slate-400 bg-slate-50/50 dark:bg-slate-900/50 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800">
+                        <div class="text-[11px] text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-900/50 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800">
                             <strong class="text-slate-700 dark:text-slate-300">Tata Tertib:</strong> {{ $f->rules_text }}
                         </div>
                     @endif

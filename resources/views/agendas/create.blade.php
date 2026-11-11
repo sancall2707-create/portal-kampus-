@@ -6,12 +6,12 @@
 <div class="w-full max-w-2xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8 space-y-6">
 
     <div class="space-y-1">
-        <a href="{{ route('agendas.index') }}" class="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 transition mb-2">
+        <a href="{{ route('agendas.index') }}" class="text-xs text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 transition mb-2">
             <i class="bi bi-arrow-left"></i>
             <span>Batal & Kembali ke Kalender</span>
         </a>
         <h1 class="font-display text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white tracking-tight">Jadwalkan Agenda Kegiatan</h1>
-        <p class="text-xs text-slate-500 dark:text-slate-400">Daftarkan agenda rapat, KBM khusus, misa bersama, atau acara kampus/unit.</p>
+        <p class="text-xs text-slate-600 dark:text-slate-300">Daftarkan agenda rapat, KBM khusus, misa bersama, atau acara kampus/unit.</p>
     </div>
 
     <!-- Alert Validation Errors -->
@@ -42,7 +42,7 @@
                         <input type="radio" name="category" value="campus" {{ old('category', 'campus') === 'campus' ? 'checked' : '' }} onchange="toggleCategory(this.value)" class="h-4 w-4 text-purple-600 bg-white dark:bg-slate-950 border-slate-300 dark:border-slate-700 focus:ring-purple-500">
                         <div class="ml-2.5">
                             <div class="text-xs font-bold text-slate-900 dark:text-white">Kampus</div>
-                            <div class="text-[10px] text-slate-500 dark:text-slate-400">Seluruh unit</div>
+                            <div class="text-[10px] text-slate-600 dark:text-slate-300">Seluruh unit</div>
                         </div>
                     </label>
                 @endif
@@ -51,7 +51,7 @@
                     <input type="radio" name="category" value="unit" {{ (old('category') === 'unit' || !$user->hasRole(['koordinator', 'kepala_sekolah'])) ? 'checked' : '' }} onchange="toggleCategory(this.value)" class="h-4 w-4 text-blue-600 bg-white dark:bg-slate-950 border-slate-300 dark:border-slate-700 focus:ring-blue-500">
                     <div class="ml-2.5">
                         <div class="text-xs font-bold text-slate-900 dark:text-white">Unit Sekolah</div>
-                        <div class="text-[10px] text-slate-500 dark:text-slate-400">Internal unit</div>
+                        <div class="text-[10px] text-slate-600 dark:text-slate-300">Internal unit</div>
                     </div>
                 </label>
 
@@ -59,7 +59,7 @@
                     <input type="radio" name="category" value="personal" {{ old('category') === 'personal' ? 'checked' : '' }} onchange="toggleCategory(this.value)" class="h-4 w-4 text-emerald-600 bg-white dark:bg-slate-950 border-slate-300 dark:border-slate-700 focus:ring-emerald-500">
                     <div class="ml-2.5">
                         <div class="text-xs font-bold text-slate-900 dark:text-white">Pribadi</div>
-                        <div class="text-[10px] text-slate-500 dark:text-slate-400">Hanya saya</div>
+                        <div class="text-[10px] text-slate-600 dark:text-slate-300">Hanya saya</div>
                     </div>
                 </label>
             </div>
@@ -148,7 +148,7 @@
                     <i class="bi bi-lock-fill"></i>
                     <span>Kunci & Blokir Reservasi Fasilitas (AG-04)</span>
                 </div>
-                <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                <div class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
                     Jika diaktifkan, sistem akan otomatis menolak seluruh pengajuan reservasi umum/internal yang bentrok di jam yang sama.
                 </div>
             </div>
@@ -164,7 +164,7 @@
                 <label for="description" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Rincian Acara
                 </label>
-                <span class="text-[11px] font-mono text-slate-500 dark:text-slate-400">
+                <span class="text-[11px] font-mono text-slate-600 dark:text-slate-300">
                     <span id="charCount">0</span> / {{ $maxChars }} Karakter
                 </span>
             </div>

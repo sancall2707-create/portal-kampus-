@@ -7,7 +7,7 @@
 
     <!-- Header Back -->
     <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
-        <a href="{{ route('facilities.index') }}" class="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 transition">
+        <a href="{{ route('facilities.index') }}" class="text-xs text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 transition">
             <i class="bi bi-arrow-left"></i>
             <span>Kembali ke Fasilitas</span>
         </a>
@@ -94,12 +94,12 @@
             <div>
                 <span class="text-xs uppercase font-bold text-blue-600 dark:text-blue-400 tracking-wider">Detail Permohonan Fasilitas</span>
                 <h1 class="font-display text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white mt-1">{{ $booking->facility_name }}</h1>
-                <p class="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5">Kategori: {{ $booking->category_name }} · Kode: {{ $booking->booking_code }}</p>
+                <p class="text-xs text-slate-600 dark:text-slate-300 font-mono mt-0.5">Kategori: {{ $booking->category_name }} · Kode: {{ $booking->booking_code }}</p>
                 @if($booking->letter_number)
                     <p class="text-xs text-emerald-600 dark:text-emerald-400 font-mono mt-0.5">No. Surat: {{ $booking->letter_number }}</p>
                 @endif
             </div>
-            <div class="text-left sm:text-right font-mono text-xs text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-800 shrink-0 space-y-0.5">
+            <div class="text-left sm:text-right font-mono text-xs text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-800 shrink-0 space-y-0.5">
                 <div>Pemohon: <span class="text-slate-900 dark:text-white font-bold">{{ $booking->requester_name }}</span></div>
                 <div>PIC Lapangan: <span class="text-slate-900 dark:text-white font-bold">{{ $booking->pic_name ?? '-' }}</span></div>
                 <div>WhatsApp PIC: <span class="text-emerald-600 dark:text-emerald-400 font-bold">{{ $booking->pic_phone ?? '-' }}</span></div>
@@ -109,13 +109,13 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 text-xs text-slate-700 dark:text-slate-300 font-mono">
             <div class="space-y-1">
-                <span class="text-slate-400 uppercase tracking-wider text-[11px] font-semibold">Jadwal Penggunaan</span>
+                <span class="text-slate-600 dark:text-slate-400 uppercase tracking-wider text-[11px] font-semibold">Jadwal Penggunaan</span>
                 <div class="text-sm font-bold text-slate-900 dark:text-white">
                     {{ \Carbon\Carbon::parse($booking->start_at)->translatedFormat('d M Y, H:i') }} s.d. {{ \Carbon\Carbon::parse($booking->end_at)->translatedFormat('H:i') }} WIB
                 </div>
             </div>
             <div class="space-y-1">
-                <span class="text-slate-400 uppercase tracking-wider text-[11px] font-semibold">Estimasi Peserta</span>
+                <span class="text-slate-600 dark:text-slate-400 uppercase tracking-wider text-[11px] font-semibold">Estimasi Peserta</span>
                 <div class="text-sm font-bold text-slate-900 dark:text-white">
                     {{ $booking->participants ? "{$booking->participants} Orang" : '- (Tidak diisi)' }}
                 </div>
@@ -125,11 +125,11 @@
         @if(strtolower($booking->category_name) === 'kendaraan')
             <div class="p-4 rounded-2xl bg-blue-50/60 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900/40 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 <div>
-                    <span class="text-slate-500 dark:text-slate-400 block text-[11px] font-semibold">Tujuan Perjalanan Dinas:</span>
+                    <span class="text-slate-600 dark:text-slate-300 block text-[11px] font-semibold">Tujuan Perjalanan Dinas:</span>
                     <strong class="text-slate-900 dark:text-white">{{ $booking->destination ?? 'Dalam Kota' }}</strong>
                 </div>
                 <div>
-                    <span class="text-slate-500 dark:text-slate-400 block text-[11px] font-semibold">Status Kebutuhan Supir:</span>
+                    <span class="text-slate-600 dark:text-slate-300 block text-[11px] font-semibold">Status Kebutuhan Supir:</span>
                     <strong class="text-blue-600 dark:text-blue-400">
                         {{ $booking->driver_needed ? 'Perlu Disediakan Supir Resmi' : 'Mengemudi Mandiri' }}
                     </strong>
@@ -141,7 +141,7 @@
         @endif
 
         <div class="space-y-1 text-xs">
-            <span class="text-slate-400 uppercase tracking-wider text-[11px] font-semibold">Nama Acara / Tujuan Kegiatan</span>
+            <span class="text-slate-600 dark:text-slate-400 uppercase tracking-wider text-[11px] font-semibold">Nama Acara / Tujuan Kegiatan</span>
             <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-sm leading-relaxed text-slate-800 dark:text-slate-200">
                 <div class="font-bold mb-1">{{ $booking->event_name ?? $booking->facility_name }}</div>
                 <div>{{ $booking->purpose }}</div>
@@ -151,7 +151,7 @@
         <!-- Rincian Sarpras Tambahan yang Dipinjam -->
         @if($items->isNotEmpty())
             <div class="space-y-2">
-                <span class="text-slate-400 uppercase tracking-wider text-[11px] font-semibold block">Peralatan Sarpras Tambahan:</span>
+                <span class="text-slate-600 dark:text-slate-400 uppercase tracking-wider text-[11px] font-semibold block">Peralatan Sarpras Tambahan:</span>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     @foreach($items as $it)
                         <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-between text-xs">
@@ -170,11 +170,11 @@
 
         @if($attachment)
             <div class="pt-2">
-                <span class="text-slate-400 uppercase tracking-wider text-[11px] font-semibold block mb-2">Berkas Permohonan Resmi</span>
+                <span class="text-slate-600 dark:text-slate-400 uppercase tracking-wider text-[11px] font-semibold block mb-2">Berkas Permohonan Resmi</span>
                 <a href="{{ asset('storage/' . $attachment->path) }}" target="_blank" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 text-xs font-semibold text-blue-600 dark:text-blue-300 transition">
                     <i class="bi bi-file-earmark-pdf text-sm"></i>
                     <span>Lihat Dokumen: {{ $attachment->original_name }}</span>
-                    <i class="bi bi-box-arrow-up-right text-[10px] text-slate-400"></i>
+                    <i class="bi bi-box-arrow-up-right text-[10px] text-slate-600 dark:text-slate-400"></i>
                 </a>
             </div>
         @endif
@@ -182,7 +182,7 @@
 
     <!-- Card 3: Jejak Persetujuan Berjenjang (Two-Tier Approval Log - PRD Migrasi 5.3) -->
     <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-6 sm:p-8 space-y-4 shadow-sm dark:shadow-xl transition-colors">
-        <h3 class="text-xs uppercase font-bold text-slate-500 dark:text-slate-400 tracking-wider flex items-center gap-1.5">
+        <h3 class="text-xs uppercase font-bold text-slate-600 dark:text-slate-300 tracking-wider flex items-center gap-1.5">
             <i class="bi bi-diagram-3-fill text-purple-600 dark:text-purple-400 text-sm"></i>
             <span>Alur Persetujuan Bertingkat (Two-Tier Approval)</span>
         </h3>
@@ -204,7 +204,7 @@
                                     Tier 2: Pengesahan Akhir Kordinator Sarpras Yayasan
                                 @endif
                             </div>
-                            <div class="text-[11px] text-slate-500 dark:text-slate-400">
+                            <div class="text-[11px] text-slate-600 dark:text-slate-300">
                                 @if($ap->approver_name)
                                     Oleh: <strong class="text-slate-700 dark:text-slate-300">{{ $ap->approver_name }}</strong>
                                 @else

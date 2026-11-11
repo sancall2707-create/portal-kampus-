@@ -47,7 +47,7 @@
                     <h2 class="text-sm font-bold tracking-wider text-slate-700 uppercase">YAYASAN PANGUDI LUHUR PUSAT SEMARANG</h2>
                     <h1 class="text-lg sm:text-xl font-extrabold text-slate-950 uppercase tracking-tight">KAMPUS PANGUDI LUHUR KOTA DELTAMAS</h1>
                     <p class="text-[11px] text-slate-600 font-medium">Jenjang: PG-TK · SD · SMP · SMA Pangudi Luhur Bernardus</p>
-                    <p class="text-[10px] text-slate-500 font-normal mt-0.5">
+                    <p class="text-[10px] text-slate-600 dark:text-slate-300 font-normal mt-0.5">
                         Jl. Deltamas Boulevard No. 1, Hegarmukti, Cikarang Pusat, Kabupaten Bekasi 17530<br>
                         Telepon: (021) 8997-2707 · Email: sekretariat@pangudiluhur-deltamas.sch.id
                     </p>
@@ -154,8 +154,8 @@
                     <div class="h-20 w-20 bg-slate-900 text-white rounded-xl flex flex-col items-center justify-center p-2 mx-auto">
                         <i class="bi bi-qr-code text-3xl text-emerald-400"></i>
                     </div>
-                    <span class="text-[9px] font-mono block mt-1 text-slate-500 font-bold uppercase">Verifikasi Satpam</span>
-                    <span class="text-[8px] font-mono text-slate-400">{{ substr($booking->booking_code, 0, 10) }}</span>
+                    <span class="text-[9px] font-mono block mt-1 text-slate-600 dark:text-slate-300 font-bold uppercase">Verifikasi Satpam</span>
+                    <span class="text-[8px] font-mono text-slate-600 dark:text-slate-400">{{ substr($booking->booking_code, 0, 10) }}</span>
                 </div>
 
                 <!-- Tanda Tangan Koordinator Sarpras -->
@@ -177,7 +177,7 @@
                     <p class="font-extrabold text-slate-950 underline text-sm">
                         {{ $coordinatorApproval->approver_name ?? 'Br. Stefanus Ngadenin, FIC' }}
                     </p>
-                    <p class="text-[10px] text-slate-500 font-mono">
+                    <p class="text-[10px] text-slate-600 dark:text-slate-300 font-mono">
                         Koordinator Sekolah PL Deltamas
                     </p>
                 </div>

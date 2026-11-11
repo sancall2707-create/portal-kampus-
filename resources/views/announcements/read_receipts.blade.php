@@ -23,14 +23,14 @@
                     PENTING
                 </span>
             @endif
-            <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">Disiarkan {{ \Carbon\Carbon::parse($announcement->publish_at)->translatedFormat('d M Y, H:i') }} WIB</span>
+            <span class="text-xs text-slate-600 dark:text-slate-300 font-mono">Disiarkan {{ \Carbon\Carbon::parse($announcement->publish_at)->translatedFormat('d M Y, H:i') }} WIB</span>
         </div>
 
         <div class="text-base text-slate-900 dark:text-white font-medium leading-relaxed">
             "{{ $announcement->body }}"
         </div>
 
-        <div class="text-xs text-slate-500 dark:text-slate-400 pt-1 border-t border-slate-100 dark:border-slate-800/80">
+        <div class="text-xs text-slate-600 dark:text-slate-300 pt-1 border-t border-slate-100 dark:border-slate-800/80">
             Pengirim: <strong class="text-slate-700 dark:text-slate-300">{{ $announcement->sender_name }}</strong> ({{ $announcement->sender_title }})
         </div>
     </div>
@@ -38,8 +38,8 @@
     <!-- Metrics Cards (COM-02) -->
     <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
         <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/40 p-4 space-y-1 shadow-sm transition-colors">
-            <div class="text-[11px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">Total Target</div>
-            <div class="text-2xl font-bold text-slate-900 dark:text-white font-mono">{{ $totalRecipients }} <span class="text-xs text-slate-400">Pegawai</span></div>
+            <div class="text-[11px] uppercase tracking-wider text-slate-600 dark:text-slate-300 font-semibold">Total Target</div>
+            <div class="text-2xl font-bold text-slate-900 dark:text-white font-mono">{{ $totalRecipients }} <span class="text-xs text-slate-600 dark:text-slate-400">Pegawai</span></div>
         </div>
         <div class="rounded-xl border border-emerald-200 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/10 p-4 space-y-1 shadow-sm transition-colors">
             <div class="text-[11px] uppercase tracking-wider text-emerald-700 dark:text-emerald-400 font-semibold">Sudah Membaca</div>
@@ -81,11 +81,11 @@
                 <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
                     @foreach($recipients as $idx => $rec)
                         <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition {{ $rec->read_at ? '' : 'bg-amber-50/40 dark:bg-amber-950/10' }}">
-                            <td class="py-3 px-4 font-mono text-slate-400">{{ $idx + 1 }}</td>
+                            <td class="py-3 px-4 font-mono text-slate-600 dark:text-slate-400">{{ $idx + 1 }}</td>
                             <td class="py-3 px-4 font-mono font-bold text-slate-900 dark:text-white">{{ $rec->nip ?? '-' }}</td>
                             <td class="py-3 px-4">
                                 <div class="font-medium text-slate-900 dark:text-white">{{ $rec->name }}</div>
-                                <div class="text-[11px] text-slate-500 dark:text-slate-400">{{ $rec->job_title ?? 'Staf' }}</div>
+                                <div class="text-[11px] text-slate-600 dark:text-slate-300">{{ $rec->job_title ?? 'Staf' }}</div>
                             </td>
                             <td class="py-3 px-4 font-mono text-slate-600 dark:text-slate-300">
                                 {{ $rec->units_list ?? 'Kampus' }}
@@ -103,7 +103,7 @@
                                     </span>
                                 @endif
                             </td>
-                            <td class="py-3 px-4 font-mono text-xs {{ $rec->read_at ? 'text-slate-700 dark:text-slate-300' : 'text-slate-400' }}">
+                            <td class="py-3 px-4 font-mono text-xs {{ $rec->read_at ? 'text-slate-700 dark:text-slate-300' : 'text-slate-600 dark:text-slate-400' }}">
                                 @if($rec->read_at)
                                     {{ \Carbon\Carbon::parse($rec->read_at)->translatedFormat('d M Y, H:i:s') }} WIB
                                 @else

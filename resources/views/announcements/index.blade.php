@@ -14,7 +14,7 @@
                     {{ $announcements->count() }} Aktif
                 </span>
             </h2>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
                 Pengumuman instruksional satu arah tingkat Kampus dan Unit sekolah.
             </p>
         </div>
@@ -92,7 +92,7 @@
                         @endif
                     </div>
 
-                    <div class="text-[11px] text-slate-500 dark:text-slate-400 font-mono flex items-center gap-2">
+                    <div class="text-[11px] text-slate-600 dark:text-slate-300 font-mono flex items-center gap-2">
                         <span>{{ \Carbon\Carbon::parse($item->publish_at)->translatedFormat('d M Y, H:i') }} WIB</span>
                         @if($item->display_until)
                             <span>· Tayang s.d. {{ \Carbon\Carbon::parse($item->display_until)->translatedFormat('d M') }}</span>
@@ -107,7 +107,7 @@
 
                 <!-- Footer: Sender & Read Status -->
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 text-xs">
-                    <div class="flex items-center space-x-2 text-slate-500 dark:text-slate-400">
+                    <div class="flex items-center space-x-2 text-slate-600 dark:text-slate-300">
                         <span class="h-6 w-6 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center font-bold text-[10px] text-slate-700 dark:text-white">
                             {{ substr($item->sender_name, 0, 1) }}
                         </span>
@@ -146,9 +146,9 @@
             </div>
         @empty
             <div class="text-center py-12 border border-dashed border-slate-300 dark:border-slate-800 rounded-2xl bg-white/40 dark:bg-slate-800/40 p-8 space-y-3">
-                <i class="bi bi-inbox text-3xl text-slate-400"></i>
+                <i class="bi bi-inbox text-3xl text-slate-600 dark:text-slate-400"></i>
                 <h3 class="text-sm font-bold text-slate-800 dark:text-white">Tidak ada siaran untuk kategori ini</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400">Seluruh pengumuman resmi terbaru akan ditampilkan secara real-time di halaman ini.</p>
+                <p class="text-xs text-slate-600 dark:text-slate-300">Seluruh pengumuman resmi terbaru akan ditampilkan secara real-time di halaman ini.</p>
             </div>
         @endforelse
     </div>

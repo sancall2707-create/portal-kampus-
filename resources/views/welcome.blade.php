@@ -38,7 +38,7 @@
                 </span>
                 <span>
                     <span class="block font-display text-base font-semibold leading-tight">SIAP PL Deltamas</span>
-                    <span class="block text-[11px] text-slate-400">Kampus Pangudi Luhur Deltamas</span>
+                    <span class="block text-[11px] text-slate-600 dark:text-slate-400">Kampus Pangudi Luhur Deltamas</span>
                 </span>
             </div>
             <div class="flex items-center gap-2">
@@ -83,19 +83,19 @@
 
         <section class="grid gap-3 sm:grid-cols-3">
             <article class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
-                <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">Skema Basis Data</p>
+                <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 dark:text-slate-300">Skema Basis Data</p>
                 <p class="font-display mt-2 text-3xl text-slate-900 dark:text-white">39 Tabel</p>
-                <p class="mt-1 text-xs text-slate-500">402 kolom & 77 relasi FK terdaftar aktif di MariaDB.</p>
+                <p class="mt-1 text-xs text-slate-600 dark:text-slate-300">402 kolom & 77 relasi FK terdaftar aktif di MariaDB.</p>
             </article>
             <article class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
-                <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">Akses Kontrol (RBAC)</p>
+                <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 dark:text-slate-300">Akses Kontrol (RBAC)</p>
                 <p class="font-display mt-2 text-3xl text-slate-900 dark:text-white">6 Peran / 41 Izin</p>
-                <p class="mt-1 text-xs text-slate-500">Dilindungi penuh oleh Spatie Laravel Permission.</p>
+                <p class="mt-1 text-xs text-slate-600 dark:text-slate-300">Dilindungi penuh oleh Spatie Laravel Permission.</p>
             </article>
             <article class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
-                <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">Unit Terpadu</p>
+                <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 dark:text-slate-300">Unit Terpadu</p>
                 <p class="font-display mt-2 text-3xl text-slate-900 dark:text-white">4 Unit Kampus</p>
-                <p class="mt-1 text-xs text-slate-500">PG-TK (satu unit), SD, SMP, dan SMA terhubung dalam satu portal.</p>
+                <p class="mt-1 text-xs text-slate-600 dark:text-slate-300">PG-TK (satu unit), SD, SMP, dan SMA terhubung dalam satu portal.</p>
             </article>
         </section>
 
@@ -103,7 +103,7 @@
             <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                     <h2 class="font-display text-3xl text-slate-900 dark:text-white">Daftar Akun Pengujian Sistem</h2>
-                    <p class="mt-1 text-sm text-slate-500">Pilih salah satu peran untuk simulasi hak akses dan alur kerja di portal.</p>
+                    <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Pilih salah satu peran untuk simulasi hak akses dan alur kerja di portal.</p>
                 </div>
             </div>
 
@@ -116,10 +116,10 @@
                         </div>
                         <div>
                             <p class="text-sm font-semibold text-slate-900 dark:text-white">{{ $u['name'] }}</p>
-                            <p class="text-xs text-slate-500">{{ $u['title'] }}</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-300">{{ $u['title'] }}</p>
                         </div>
                         <div class="flex items-center justify-between border-t border-slate-100 pt-2 text-xs dark:border-slate-800">
-                            <span class="text-slate-500">Penempatan</span>
+                            <span class="text-slate-600 dark:text-slate-300">Penempatan</span>
                             <span class="font-semibold text-slate-900 dark:text-white">{{ $u['unit'] }}</span>
                         </div>
                         <p class="rounded-xl bg-slate-50 p-2.5 text-[11px] leading-relaxed text-slate-600 dark:bg-slate-950 dark:text-slate-300">{{ $u['desc'] }}</p>
@@ -133,7 +133,7 @@
 
             <div class="hidden overflow-x-auto rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 sm:block">
                 <table class="w-full border-collapse text-left text-xs">
-                    <thead class="border-b border-slate-200 text-[11px] uppercase tracking-wider text-slate-500 dark:border-slate-800">
+                    <thead class="border-b border-slate-200 text-[11px] uppercase tracking-wider text-slate-600 dark:text-slate-300 dark:border-slate-800">
                         <tr>
                             <th class="px-4 py-3 font-semibold">No</th>
                             <th class="px-4 py-3 font-semibold">Peran (Role)</th>
@@ -146,14 +146,14 @@
                     <tbody class="divide-y divide-slate-100 text-slate-700 dark:divide-slate-800 dark:text-slate-300">
                         @foreach($dummyUsers as $idx => $u)
                             <tr class="align-top hover:bg-slate-50 dark:hover:bg-white/5">
-                                <td class="px-4 py-3 font-mono text-slate-400">{{ $idx + 1 }}</td>
+                                <td class="px-4 py-3 font-mono text-slate-600 dark:text-slate-400">{{ $idx + 1 }}</td>
                                 <td class="whitespace-nowrap px-4 py-3">
                                     <span class="rounded border px-2 py-0.5 text-[10px] font-bold uppercase {{ $u['badge'] }}">{{ $u['role'] }}</span>
                                 </td>
                                 <td class="whitespace-nowrap px-4 py-3 font-mono font-bold text-blue-700 dark:text-blue-300">{{ $u['nip'] }}</td>
                                 <td class="px-4 py-3">
                                     <div class="font-semibold text-slate-900 dark:text-white">{{ $u['name'] }}</div>
-                                    <div class="text-[11px] text-slate-500">{{ $u['title'] }}</div>
+                                    <div class="text-[11px] text-slate-600 dark:text-slate-300">{{ $u['title'] }}</div>
                                 </td>
                                 <td class="whitespace-nowrap px-4 py-3 font-semibold text-slate-900 dark:text-white">{{ $u['unit'] }}</td>
                                 <td class="px-4 py-3 text-slate-600 dark:text-slate-300">{{ $u['desc'] }}</td>
@@ -165,7 +165,7 @@
         </section>
     </main>
 
-    <footer class="border-t border-slate-200 py-4 text-center text-xs text-slate-500 dark:border-slate-800">
+    <footer class="border-t border-slate-200 py-4 text-center text-xs text-slate-600 dark:text-slate-300 dark:border-slate-800">
         &copy; 2026 Yayasan Pangudi Luhur Kota Deltamas · SIAP PL Deltamas
     </footer>
 

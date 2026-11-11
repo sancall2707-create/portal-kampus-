@@ -24,20 +24,22 @@
             ? 'Unit '.$portalUser->units->pluck('code')->implode(' & ')
             : 'Kampus Deltamas';
         $navGroups = [
-            'Utama' => [
-                ['route' => 'dashboard', 'pattern' => 'dashboard', 'icon' => 'bi-house-door', 'label' => 'Dashboard Beranda'],
+            'Pusat Informasi' => [
+                ['route' => 'dashboard', 'pattern' => 'dashboard', 'icon' => 'bi-grid-1x2', 'label' => 'Dasbor'],
+                ['route' => 'announcements.index', 'pattern' => 'announcements.*', 'icon' => 'bi-megaphone', 'label' => 'Pengumuman'],
+                ['route' => 'agendas.index', 'pattern' => 'agendas.*', 'icon' => 'bi-calendar3', 'label' => 'Agenda Kampus'],
+            ],
+            'Layanan Pegawai' => [
+                ['route' => 'leaves.index', 'pattern' => 'leaves.*', 'icon' => 'bi-file-earmark-check', 'label' => 'Perizinan & Guru Inval'],
+                ['route' => 'facilities.index', 'pattern' => 'facilities.*', 'icon' => 'bi-building', 'label' => 'Reservasi Fasilitas'],
+                ['route' => 'letters.index', 'pattern' => 'letters.*', 'icon' => 'bi-envelope-paper', 'label' => 'Tata Persuratan & Arsip'],
+            ],
+            'Operasional' => [
+                ['route' => 'operational.index', 'pattern' => 'operational.*', 'icon' => 'bi-tools', 'label' => 'Operasional Lapangan'],
             ],
             'Komunikasi' => [
-                ['route' => 'announcements.index', 'pattern' => 'announcements.*', 'icon' => 'bi-megaphone', 'label' => 'Papan Siaran (Broadcast)'],
                 ['route' => 'messages.index', 'pattern' => 'messages.*', 'icon' => 'bi-chat-left-text', 'label' => 'Pesan'],
                 ['route' => 'greeting.show', 'pattern' => 'greeting.show', 'icon' => 'bi-chat-quote', 'label' => 'Sapaan Koordinator'],
-            ],
-            'Layanan Kampus' => [
-                ['route' => 'agendas.index', 'pattern' => 'agendas.*', 'icon' => 'bi-calendar3', 'label' => 'Kalender Agenda Kampus'],
-                ['route' => 'leaves.index', 'pattern' => 'leaves.*', 'icon' => 'bi-file-earmark-check', 'label' => 'Perizinan & Guru Inval'],
-                ['route' => 'facilities.index', 'pattern' => 'facilities.*', 'icon' => 'bi-building', 'label' => 'Fasilitas & E-Ticket QR'],
-                ['route' => 'letters.index', 'pattern' => 'letters.*', 'icon' => 'bi-envelope-paper', 'label' => 'Tata Persuratan & Arsip'],
-                ['route' => 'operational.index', 'pattern' => 'operational.*', 'icon' => 'bi-tools', 'label' => 'Operasional Lapangan'],
             ],
         ];
     @endphp
@@ -76,7 +78,7 @@
         <nav class="portal-scroll mt-3 flex-1 space-y-4 overflow-y-auto px-3 pb-4">
             @foreach($navGroups as $group => $items)
                 <div>
-                    <p class="px-3 pb-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">{{ $group }}</p>
+                    <p class="label-caps px-3 pb-2">{{ $group }}</p>
                     <div class="space-y-0.5">
                         @foreach($items as $item)
                             @php $active = request()->routeIs($item['pattern']); @endphp
@@ -91,7 +93,7 @@
             @endforeach
 
             <div>
-                <p class="px-3 pb-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">Lainnya</p>
+                <p class="label-caps px-3 pb-2">Lainnya</p>
                 <button type="button" onclick="showDevelopmentNotice()" class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-[13px] font-medium text-slate-300 transition hover:bg-white/10 hover:text-white">
                     <i class="bi bi-book-half w-5 text-center text-base text-gold-400"></i>
                     <span>Kurikulum</span>
@@ -118,7 +120,7 @@
     </aside>
 @endauth
 
-    <div class="flex min-h-screen flex-col pb-16 lg:pb-0 lg:pl-[17.5rem]">
+    <div class="flex min-h-screen flex-col pb-[5.5rem] lg:pb-0 lg:pl-[17.5rem]">
         <header class="sticky top-0 z-30 border-b border-slate-200/80 bg-slate-50/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/85">
             <div class="flex h-16 items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
                 <div class="min-w-0">
@@ -129,11 +131,11 @@
                             </span>
                             <span class="min-w-0">
                                 <span class="block truncate text-sm font-semibold text-slate-900 dark:text-white">SIAP PL Deltamas</span>
-                                <span class="block truncate text-[11px] text-slate-500">{{ $portalUnits }}</span>
+                                <span class="block truncate text-[11px] text-slate-600 dark:text-slate-300">{{ $portalUnits }}</span>
                             </span>
                         </a>
                         <div class="hidden lg:block">
-                            <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-gold-600 dark:text-gold-400">Kampus Pangudi Luhur Deltamas</p>
+                            <p class="label-caps">Kampus Pangudi Luhur Deltamas</p>
                             <p class="truncate text-sm text-slate-600 dark:text-slate-300">{{ $portalRole }} · {{ $portalUnits }}</p>
                         </div>
                     @else
@@ -143,14 +145,14 @@
 
                 <div class="flex items-center gap-2">
                     @auth
-                    <button type="button" onclick="openNotificationModal()" class="relative grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:border-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200" title="Pengaturan Notifikasi Smartphone">
+                    <button type="button" onclick="openNotificationModal()" class="relative grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:border-gold-400 dark:border-white/15 dark:bg-white/5 dark:text-slate-200 dark:hover:border-gold-400" title="Pengaturan Notifikasi Smartphone">
                         <i class="bi bi-bell text-base"></i>
                         <span id="pushHeaderDot" class="absolute right-2 top-2 hidden h-2 w-2 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-slate-900"></span>
                     </button>
                     @endauth
 
-                    <button type="button" onclick="toggleTheme()" class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:border-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200" title="Ganti Tema">
-                        <i id="themeIconSun" class="bi bi-sun-fill hidden text-amber-500 dark:inline"></i>
+                    <button type="button" onclick="toggleTheme()" class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:border-gold-400 dark:border-white/15 dark:bg-white/5 dark:text-slate-200 dark:hover:border-gold-400" title="Ganti Tema">
+                        <i id="themeIconSun" class="bi bi-sun-fill hidden text-gold-400 dark:inline"></i>
                         <i id="themeIconMoon" class="bi bi-moon-stars-fill inline dark:hidden"></i>
                     </button>
 
@@ -167,7 +169,7 @@
             @yield('content')
         </main>
 
-        <footer class="border-t border-slate-200 px-4 py-4 text-center text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
+        <footer class="border-t border-slate-200 px-4 py-4 text-center text-xs text-slate-600 dark:border-slate-800 dark:text-slate-300">
             &copy; 2026 Yayasan Pangudi Luhur Kota Deltamas · SIAP PL Deltamas
         </footer>
     </div>
@@ -175,19 +177,19 @@
     @auth
     <nav class="fixed inset-x-0 bottom-0 z-30 border-t border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95 lg:hidden">
         <div class="grid grid-cols-4">
-            <a href="{{ route('dashboard') }}" class="flex flex-col items-center gap-1 px-2 py-2.5 text-[11px] font-semibold {{ request()->routeIs('dashboard') ? 'text-blue-700 dark:text-blue-300' : 'text-slate-500' }}">
+            <a href="{{ route('dashboard') }}" class="flex flex-col items-center gap-1 px-2 py-2.5 text-[11px] font-semibold {{ request()->routeIs('dashboard') ? 'text-blue-700 dark:text-blue-300' : 'text-slate-600 dark:text-slate-300' }}">
                 <i class="bi bi-house-door text-base"></i>
                 <span>Beranda</span>
             </a>
-            <a href="{{ route('announcements.index') }}" class="flex flex-col items-center gap-1 px-2 py-2.5 text-[11px] font-semibold {{ request()->routeIs('announcements.*') ? 'text-blue-700 dark:text-blue-300' : 'text-slate-500' }}">
+            <a href="{{ route('announcements.index') }}" class="flex flex-col items-center gap-1 px-2 py-2.5 text-[11px] font-semibold {{ request()->routeIs('announcements.*') ? 'text-blue-700 dark:text-blue-300' : 'text-slate-600 dark:text-slate-300' }}">
                 <i class="bi bi-megaphone text-base"></i>
                 <span>Siaran</span>
             </a>
-            <a href="{{ route('agendas.index') }}" class="flex flex-col items-center gap-1 px-2 py-2.5 text-[11px] font-semibold {{ request()->routeIs('agendas.*') ? 'text-blue-700 dark:text-blue-300' : 'text-slate-500' }}">
+            <a href="{{ route('agendas.index') }}" class="flex flex-col items-center gap-1 px-2 py-2.5 text-[11px] font-semibold {{ request()->routeIs('agendas.*') ? 'text-blue-700 dark:text-blue-300' : 'text-slate-600 dark:text-slate-300' }}">
                 <i class="bi bi-calendar3 text-base"></i>
                 <span>Agenda</span>
             </a>
-            <button type="button" onclick="toggleNavDrawer()" class="flex flex-col items-center gap-1 px-2 py-2.5 text-[11px] font-semibold text-slate-500">
+            <button type="button" onclick="toggleNavDrawer()" class="flex flex-col items-center gap-1 px-2 py-2.5 text-[11px] font-semibold text-slate-600 dark:text-slate-300">
                 <i class="bi bi-grid text-base"></i>
                 <span>Menu</span>
             </button>
@@ -204,17 +206,17 @@
                     </div>
                     <div>
                         <h3 class="text-base font-semibold text-slate-900 dark:text-white">Notifikasi Smartphone</h3>
-                        <p class="text-[11px] font-medium text-slate-500">PWA Web Push Notification</p>
+                        <p class="text-[11px] font-medium text-slate-600 dark:text-slate-300">PWA Web Push Notification</p>
                     </div>
                 </div>
-                <button type="button" onclick="closeNotificationModal()" class="grid h-8 w-8 place-items-center rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white">
+                <button type="button" onclick="closeNotificationModal()" class="grid h-8 w-8 place-items-center rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white">
                     <i class="bi bi-x-lg text-sm"></i>
                 </button>
             </div>
 
             <div class="space-y-2 rounded-2xl border border-slate-200 bg-slate-50 p-3.5 dark:border-slate-700 dark:bg-slate-800/80">
                 <div class="flex items-center justify-between text-xs">
-                    <span class="font-medium text-slate-500">Status di HP ini:</span>
+                    <span class="font-medium text-slate-600 dark:text-slate-300">Status di HP ini:</span>
                     <span id="pushStatusBadge" class="rounded-full border border-amber-200 bg-amber-100 px-2.5 py-0.5 text-[10px] font-bold uppercase text-amber-800 dark:border-amber-500/30 dark:bg-amber-500/20 dark:text-amber-300">
                         Memeriksa...
                     </span>
@@ -237,7 +239,7 @@
 
             <div id="pushFeedbackBox" class="hidden items-start gap-2 rounded-xl p-3 text-xs"></div>
 
-            <div class="space-y-1 border-t border-slate-100 pt-3 text-[11px] text-slate-500 dark:border-slate-800">
+            <div class="space-y-1 border-t border-slate-100 pt-3 text-[11px] text-slate-600 dark:text-slate-300 dark:border-slate-800">
                 <div class="font-semibold text-slate-700 dark:text-slate-300">Petunjuk Khusus Smartphone:</div>
                 <ul class="list-disc space-y-0.5 pl-4">
                     <li><strong>Android (Chrome):</strong> Tekan "Aktifkan" lalu pilih <em>"Izinkan" (Allow)</em> saat pop-up browser muncul.</li>

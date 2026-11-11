@@ -14,7 +14,7 @@
                     {{ $letters->count() }} Surat
                 </span>
             </h2>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
                 Agenda surat masuk/keluar, penomoran urut otomatis berjenjang, dan penyimpanan arsip digital kampus.
             </p>
         </div>
@@ -67,10 +67,10 @@
             <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
                 @forelse($letters as $let)
                     <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition">
-                        <td class="py-3 px-4 font-mono font-bold text-blue-600 dark:text-blue-400">
+                        <td class="py-3 px-4 font-mono font-bold text-blue-700 dark:text-blue-300">
                             {{ $let->letter_number }}
                         </td>
-                        <td class="py-3 px-4 font-mono text-slate-500 dark:text-slate-400">
+                        <td class="py-3 px-4 font-mono text-slate-600 dark:text-slate-300">
                             {{ \Carbon\Carbon::parse($let->letter_date)->translatedFormat('d M Y') }}
                         </td>
                         <td class="py-3 px-4">
@@ -83,11 +83,11 @@
                                     Masuk
                                 </span>
                             @endif
-                            <div class="text-[11px] text-slate-500 mt-0.5">{{ $let->category_name }}</div>
+                            <div class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">{{ $let->category_name }}</div>
                         </td>
                         <td class="py-3 px-4">
                             <div class="font-bold text-slate-900 dark:text-white">{{ $let->subject }}</div>
-                            <div class="text-[11px] text-slate-500">Pihak: {{ $let->party_name }}</div>
+                            <div class="text-[11px] text-slate-600 dark:text-slate-300">Pihak: {{ $let->party_name }}</div>
                         </td>
                         <td class="py-3 px-4 font-mono text-slate-700 dark:text-slate-300">
                             Unit {{ $let->unit_code }}
@@ -100,7 +100,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6" class="py-12 text-center text-slate-400">
+                        <td colspan="6" class="py-12 text-center text-slate-600 dark:text-slate-400">
                             <i class="bi bi-folder-x text-3xl"></i>
                             <div class="mt-2 text-xs font-semibold">Belum ada arsip surat yang terdaftar.</div>
                         </td>
@@ -117,7 +117,7 @@
     <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 w-full max-w-lg space-y-4 shadow-2xl">
         <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
             <h3 class="font-bold text-sm text-slate-900 dark:text-white">Registrasi Surat Masuk / Keluar</h3>
-            <button type="button" onclick="document.getElementById('modalLetter').classList.add('hidden')" class="text-slate-400 hover:text-white"><i class="bi bi-x-lg"></i></button>
+            <button type="button" onclick="document.getElementById('modalLetter').classList.add('hidden')" class="text-slate-600 dark:text-slate-400 hover:text-white"><i class="bi bi-x-lg"></i></button>
         </div>
         <form action="{{ route('letters.store') }}" method="POST" enctype="multipart/form-data" class="space-y-3 text-xs">
             @csrf

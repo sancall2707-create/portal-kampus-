@@ -14,7 +14,7 @@
                     {{ $agendas->count() }} Kegiatan
                 </span>
             </h2>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
                 Jadwal resmi terpadu acara kampus, unit sekolah, dan agenda pribadi.
             </p>
         </div>
@@ -116,7 +116,7 @@
                 </div>
 
                 <!-- Location & Creator -->
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/80 text-xs text-slate-500 dark:text-slate-400">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/80 text-xs text-slate-600 dark:text-slate-300">
                     <div class="flex items-center space-x-2">
                         <i class="bi bi-geo-alt-fill text-blue-600 dark:text-blue-400 shrink-0"></i>
                         <span>
@@ -124,7 +124,7 @@
                         </span>
                     </div>
 
-                    <div class="text-[11px] text-slate-500 dark:text-slate-400">
+                    <div class="text-[11px] text-slate-600 dark:text-slate-300">
                         Penyelenggara: <span class="text-slate-700 dark:text-slate-300 font-medium">{{ $item->creator_name }}</span> ({{ $item->creator_title }})
                     </div>
                 </div>
@@ -132,9 +132,9 @@
             </div>
         @empty
             <div class="text-center py-12 border border-dashed border-slate-300 dark:border-slate-800 rounded-2xl bg-white/40 dark:bg-slate-800/40 p-8 space-y-3">
-                <i class="bi bi-calendar-x text-3xl text-slate-400"></i>
+                <i class="bi bi-calendar-x text-3xl text-slate-600 dark:text-slate-400"></i>
                 <h3 class="text-sm font-bold text-slate-800 dark:text-white">Tidak ada agenda untuk kategori ini</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400">Agenda kegiatan baru yang ditambahkan pimpinan atau panitia akan otomatis tampil di kalender ini.</p>
+                <p class="text-xs text-slate-600 dark:text-slate-300">Agenda kegiatan baru yang ditambahkan pimpinan atau panitia akan otomatis tampil di kalender ini.</p>
             </div>
         @endforelse
     </div>

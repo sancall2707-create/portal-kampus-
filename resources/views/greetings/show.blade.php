@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 </head>
 <body class="flex min-h-screen flex-col bg-slate-50 text-slate-800 antialiased selection:bg-blue-800 selection:text-white dark:bg-slate-950 dark:text-slate-100">
-    <header class="border-b border-slate-200 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-950/80">
+    <header class="border-b border-slate-200 bg-white/100 backdrop-blur dark:border-slate-800 dark:bg-slate-950/80">
         <div class="mx-auto flex h-16 max-w-3xl items-center justify-between px-4">
             <div class="flex items-center gap-3">
                 <span class="grid h-9 w-9 place-items-center rounded-full bg-white p-0.5 ring-1 ring-slate-200 dark:ring-white/20">
@@ -27,7 +27,7 @@
                     <i class="bi bi-sun-fill hidden text-amber-500 dark:inline"></i>
                     <i class="bi bi-moon-stars-fill inline dark:hidden"></i>
                 </button>
-                <span class="hidden font-mono text-xs text-slate-500 sm:block">{{ now()->translatedFormat('l, d F Y') }}</span>
+                <span class="hidden font-mono text-xs text-slate-600 dark:text-slate-300 sm:block">{{ now()->translatedFormat('l, d F Y') }}</span>
             </div>
         </div>
     </header>
@@ -44,7 +44,7 @@
                 <div>
                     <p class="text-xs font-semibold uppercase tracking-wider text-gold-600 dark:text-gold-400">Pesan dari Pimpinan Kampus</p>
                     <h1 class="font-display text-xl text-slate-900 dark:text-white sm:text-2xl">{{ $author->name ?? 'Koordinator Sekolah' }}</h1>
-                    <p class="text-xs text-slate-500">{{ $author->job_title ?? 'Koordinator Kampus Pangudi Luhur Deltamas' }}</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-300">{{ $author->job_title ?? 'Koordinator Kampus Pangudi Luhur Deltamas' }}</p>
                 </div>
             </div>
 
@@ -58,11 +58,11 @@
             @if($highlights->isNotEmpty())
                 <div class="space-y-3">
                     <div class="flex items-center justify-between">
-                        <span class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-500">
+                        <span class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
                             <i class="bi bi-info-circle-fill text-amber-500"></i>
                             <span>Highlight Informasi Krusial Hari Ini</span>
                         </span>
-                        <span class="font-mono text-[10px] text-slate-400">{{ $highlights->count() }} Poin Penting</span>
+                        <span class="font-mono text-[10px] text-slate-600 dark:text-slate-400">{{ $highlights->count() }} Poin Penting</span>
                     </div>
                     <div class="space-y-2.5">
                         @foreach($highlights as $h)
@@ -92,14 +92,14 @@
                     <span>{{ $greeting->cta_label ?? 'Masuk Beranda Kampus' }}</span>
                     <i class="bi bi-arrow-right font-bold transition group-hover:translate-x-1"></i>
                 </button>
-                <p class="mt-2.5 text-center text-[11px] text-slate-400">
+                <p class="mt-2.5 text-center text-[11px] text-slate-600 dark:text-slate-400">
                     Menekan tombol ini mencatat konfirmasi keterbacaan (read receipt) resmi ke sistem.
                 </p>
             </form>
         </article>
     </main>
 
-    <footer class="border-t border-slate-200 py-3 text-center text-xs text-slate-500 dark:border-slate-800">
+    <footer class="border-t border-slate-200 py-3 text-center text-xs text-slate-600 dark:text-slate-300 dark:border-slate-800">
         &copy; 2026 Yayasan Pangudi Luhur Kota Deltamas · SIAP PL Deltamas
     </footer>
 

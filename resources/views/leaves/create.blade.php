@@ -6,12 +6,12 @@
 <div class="w-full max-w-2xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8 space-y-6">
 
     <div class="space-y-1">
-        <a href="{{ route('leaves.index') }}" class="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 transition mb-2">
+        <a href="{{ route('leaves.index') }}" class="text-xs text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 transition mb-2">
             <i class="bi bi-arrow-left"></i>
             <span>Batal & Kembali ke Daftar Izin</span>
         </a>
         <h1 class="font-display text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white tracking-tight">Pengajuan Izin / Sakit / Cuti</h1>
-        <p class="text-xs text-slate-500 dark:text-slate-400">Pengajuan diproses berjenjang secara digital dan otomatis terekam ke rekap kehadiran kampus.</p>
+        <p class="text-xs text-slate-600 dark:text-slate-300">Pengajuan diproses berjenjang secara digital dan otomatis terekam ke rekap kehadiran kampus.</p>
     </div>
 
     <!-- Alert Errors -->
@@ -111,7 +111,7 @@
                 <label for="substitute_plan" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Rencana KBM / Titipan Tugas Guru Pengganti (LV-03)
                 </label>
-                <span class="text-[11px] text-slate-400">Khusus Tenaga Pendidik</span>
+                <span class="text-[11px] text-slate-600 dark:text-slate-400">Khusus Tenaga Pendidik</span>
             </div>
             <textarea 
                 name="substitute_plan" 
@@ -128,14 +128,14 @@
                 Unggah Bukti Pendukung (Surat Dokter / Undangan Dinas) (LV-02)
             </label>
             <div class="border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-2xl p-4 text-center hover:border-blue-500 transition bg-slate-50 dark:bg-slate-900/40">
-                <i class="bi bi-cloud-arrow-up text-2xl text-slate-400"></i>
+                <i class="bi bi-cloud-arrow-up text-2xl text-slate-600 dark:text-slate-400"></i>
                 <div class="mt-1 text-xs text-slate-600 dark:text-slate-400">
                     <label for="attachment" class="cursor-pointer text-blue-600 dark:text-blue-400 font-semibold hover:underline">
                         <span>Pilih berkas dari perangkat</span>
                         <input id="attachment" name="attachment" type="file" accept=".jpg,.jpeg,.png,.pdf" class="sr-only" onchange="showFileName(this)">
                     </label>
                 </div>
-                <p id="fileNameDisplay" class="text-[11px] text-slate-400 mt-1 font-mono">Format: PDF, PNG, JPG (Maks. 5 MB)</p>
+                <p id="fileNameDisplay" class="text-[11px] text-slate-600 dark:text-slate-400 mt-1 font-mono">Format: PDF, PNG, JPG (Maks. 5 MB)</p>
             </div>
         </div>
 

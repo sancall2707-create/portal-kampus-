@@ -143,7 +143,7 @@ class PrivateMessageController extends Controller
                 foreach ($targetUsers as $recUser) {
                     $recMsg = collect($createdMessages)->firstWhere('recipient_id', $recUser->id);
                     $pushService->sendToUser($recUser, [
-                        'title' => "🔒 Pesan ({$categoryLabel})",
+                        'title' => "Pesan Rahasia ({$categoryLabel})",
                         'body'  => "Dari {$user->name}: {$validated['subject']}",
                         'url'   => route('messages.show', $recMsg ? $recMsg->id : ''),
                     ]);

@@ -489,7 +489,7 @@
                         'Accept': 'application/json'
                     },
                     body: JSON.stringify({
-                        title: '🔔 SIAP PL Deltamas (Uji Coba)',
+                        title: 'SIAP PL Deltamas (Uji Coba)',
                         body: 'Pemberitahuan berhasil masuk ke smartphone Anda pada ' + new Date().toLocaleTimeString('id-ID') + ' WIB.',
                         url: '{{ route("dashboard") }}'
                     })
@@ -506,7 +506,7 @@
                 } else {
                     if (Notification.permission === 'granted') {
                         const reg = await navigator.serviceWorker.ready;
-                        reg.showNotification('🔔 SIAP PL Deltamas (Lokal)', {
+                        reg.showNotification('SIAP PL Deltamas (Lokal)', {
                             body: 'Notifikasi instan aktif di browser smartphone Anda.',
                             icon: '/icons/icon-192x192.png',
                             badge: '/icons/icon-192x192.png',
